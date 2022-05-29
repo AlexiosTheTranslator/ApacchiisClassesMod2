@@ -1,0 +1,5 @@
+displayName = Apacchii's Classes: Reborn [1.0 Update!]
+author = Apacchii
+version = 1.0.1
+homepage = https://discord.gg/G4TwQCAdxf
+includeSource = true
