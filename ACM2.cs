@@ -76,63 +76,45 @@ namespace ApacchiisClassesMod2
                     {
                         case "Vanguard":
                             if (!acmPlayer.vanguardDefeatedBosses.Contains(bossDefeated))
+                            {
                                 acmPlayer.vanguardDefeatedBosses.Add(bossDefeated);
+                                acmPlayer.vanguardSkillPoints++;
+                            }
                             break;
 
                         case "Blood Mage":
                             if (!acmPlayer.bloodMageDefeatedBosses.Contains(bossDefeated))
+                            {
                                 acmPlayer.bloodMageDefeatedBosses.Add(bossDefeated);
+                                acmPlayer.bloodMageSkillPoints++;
+                            }
                             break;
 
                         case "Commander":
                             if (!acmPlayer.commanderDefeatedBosses.Contains(bossDefeated))
+                            {
                                 acmPlayer.commanderDefeatedBosses.Add(bossDefeated);
+                                acmPlayer.commanderSkillPoints++;
+                            }
                             break;
 
                         case "Scout":
                             if (!acmPlayer.scoutDefeatedBosses.Contains(bossDefeated))
+                            {
                                 acmPlayer.scoutDefeatedBosses.Add(bossDefeated);
+                                acmPlayer.scoutSkillPoints++;
+                            }
                             break;
 
                         case "Soulmancer":
                             if (!acmPlayer.soulmancerDefeatedBosses.Contains(bossDefeated))
+                            {
                                 acmPlayer.soulmancerDefeatedBosses.Add(bossDefeated);
+                                acmPlayer.soulmancerSkillPoints++;
+                            }
                             break;
                     }
                     acmPlayer.levelUpText = true;
-                    break;
-
-                case ACMHandlePacketMessage.SyncTalentPoints:
-                    byte playernumber2 = reader.ReadByte();
-                    string playerClass2 = reader.ReadString();
-
-                    ACMPlayer acmPlayer2 = Main.player[playernumber2].GetModPlayer<ACMPlayer>();
-
-                    switch (playerClass2)
-                    {
-                        case "Vanguard":
-                                acmPlayer2.vanguardSkillPoints++;
-                            break;
-
-                        case "Blood Mage":
-                            //if (acmPlayer2.bloodMageLevel < 10)
-                                acmPlayer2.bloodMageSkillPoints++;
-                            //else
-                                //acmPlayer2.bloodMageSpecPoints += 2;
-                            break;
-
-                        case "Commander":
-                                acmPlayer2.commanderSkillPoints++;
-                            break;
-
-                        case "Scout":
-                                acmPlayer2.scoutSkillPoints++;
-                            break;
-
-                        case "Soulmancer":
-                            acmPlayer2.soulmancerSkillPoints++;
-                            break;
-                    }
                     break;
 
                 case ACMHandlePacketMessage.HealPlayerFast:

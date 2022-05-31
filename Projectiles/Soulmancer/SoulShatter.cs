@@ -52,7 +52,7 @@ namespace ApacchiisClassesMod2.Projectiles.Soulmancer
             {
                 if (Main.npc[i].active)
                 {
-                    if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) <= acmPlayer.soulmancerSoulShatterRange && !Main.npc[i].townNPC && !Main.npc[i].dontTakeDamage && Main.npc[i].type != NPCID.DD2Bartender && Main.npc[i].type != NPCID.DD2EterniaCrystal && Main.npc[i].type != NPCID.DD2LanePortal && !Main.npc[i].friendly)
+                    if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) <= acmPlayer.soulmancerSoulShatterRange && !Main.npc[i].townNPC && !Main.npc[i].CountsAsACritter && !Main.npc[i].dontTakeDamage && Main.npc[i].type != NPCID.DD2Bartender && Main.npc[i].type != NPCID.DD2EterniaCrystal && Main.npc[i].type != NPCID.DD2LanePortal && !Main.npc[i].friendly)
                     {
                         int hitDir;
                         if (Main.npc[i].position.X < Main.player[Projectile.owner].position.X)

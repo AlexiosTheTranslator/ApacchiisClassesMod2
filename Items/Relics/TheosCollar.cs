@@ -8,9 +8,9 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class TheosCollar : ModItem
 	{
-        public string desc = "Increases damage by 3%\n" +
-                             "Increases attack speed by 2%\n" +
-                             "Increases dodge chance by 1%";
+        public string desc = "Increases damage by 3.5%\n" +
+                             "Increases attack speed by 3%\n" +
+                             "Increases dodge chance by 2%";
         string donator = "Dr.Void";
 
         public override void SetStaticDefaults()

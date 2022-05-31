@@ -8,7 +8,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class OldShield : ModItem
 	{
-        public string desc = "Decreases damage taken from projectiles by 15%";
+        public string desc = "Decreases damage taken from projectiles by 14%";
 
         public override void SetStaticDefaults()
         {

@@ -8,7 +8,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class BerserkersBrew : ModItem
 	{
-        public string desc = "Increases potion sickness duration by 8 seconds\nPotions heal for an additional 35% of your missing health";
+        public string desc = "Increases potion sickness duration by 12 seconds\nPotions heal for an additional 35% of your missing health";
 
         public override void SetStaticDefaults()
         {
@@ -34,7 +34,7 @@ namespace ApacchiisClassesMod2.Items.Relics
             var acmPlayer = player.GetModPlayer<ACMPlayerOtherEffects>();
             acmPlayer.hasRelic = true;
             acmPlayer.hasBerserkersBrew = true;
-            player.potionDelayTime += 60 * 10;
+            player.potionDelayTime += 60 * 12;
 
             base.UpdateVanity(player);
         }

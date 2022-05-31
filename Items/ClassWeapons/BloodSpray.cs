@@ -15,8 +15,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
         {
             DisplayName.SetDefault("Blood Spray");
             Tooltip.SetDefault("Uses " + hpCost + " health\n" +
-                               "Fires a spray of 3 blobs of your own blood\n" +
-                               "[c/6758a1:[Weapon upgrades after Hardmode][c/6758a1:]]");
+                               "Fires a spray of 3 blobs of your own blood");
         }
 
 		public override void SetDefaults()
@@ -26,7 +25,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.noMelee = true;
             Item.scale = 1f;
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 4;
+            Item.damage = 6;
             Item.crit = 0;
             Item.mana = 4;
             Item.useStyle = ItemUseStyleID.Shoot;
@@ -35,7 +34,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.UseSound = SoundID.Item21;
             Item.rare = 1;
             Item.knockBack = 2;
-            Item.shootSpeed = 14;
+            Item.shootSpeed = 15;
             Item.shoot = ModContent.ProjectileType<Projectiles.Weapons.BloodSpray>();
             Item.value = 050000;
             Item.autoReuse = true;

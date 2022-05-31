@@ -9,7 +9,8 @@ namespace ApacchiisClassesMod2.Items.Relics
 	public class CursedCandle : ModItem
 	{
         public string desc = "Reduces ability cooldowns by 8%\n" +
-                             "Increases your ability power by 14%";
+                             "Increases your ability power by 14%\n" +
+                             "Increases your healing power by 6%";
         string donator = "";
 
         public override void SetStaticDefaults()
@@ -37,6 +38,7 @@ namespace ApacchiisClassesMod2.Items.Relics
             acmPlayer.hasRelic = true;
             acmPlayer.cooldownReduction -= .08f;
             acmPlayer.abilityPower += .14f;
+            acmPlayer.healingPower += .06f;
 
             base.UpdateVanity(player);
         }

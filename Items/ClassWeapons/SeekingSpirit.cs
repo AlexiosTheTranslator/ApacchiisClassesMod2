@@ -12,8 +12,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Seeking Spirit");
-            Tooltip.SetDefault("Fires a homing spirit at enemies\n" +
-                               "[c/6758a1:[Weapon upgrades after Hardmode][c/6758a1:]]");
+            Tooltip.SetDefault("Fires a homing spirit at enemies");
         }
 
 		public override void SetDefaults()
@@ -23,15 +22,15 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.noMelee = true;
             Item.scale = 1f;
             Item.DamageType = DamageClass.Summon;
-            Item.damage = 14;
+            Item.damage = 15;
             Item.crit = 0;
             Item.mana = 4;
             Item.useStyle = ItemUseStyleID.Shoot;
-            Item.useAnimation = 54;
-            Item.useTime = 54;
+            Item.useAnimation = 52;
+            Item.useTime = 52;
             Item.UseSound = SoundID.Item8;
             Item.rare = 1;
-            Item.knockBack = 2;
+            Item.knockBack = 4;
             Item.shootSpeed = 12;
             Item.shoot = ModContent.ProjectileType<Projectiles.Weapons.SeekingSpirit>();
             Item.value = 050000;

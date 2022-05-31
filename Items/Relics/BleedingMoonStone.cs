@@ -8,7 +8,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class BleedingMoonStone : ModItem
 	{
-        public string desc = "Casting an ability slowly heals you for 3.5% max health\nCasting your ultimate rapidly heals you for 7.5% max health";
+        public string desc = "Casting an ability slowly heals you for 3% max health\nCasting your ultimate rapidly heals you for 7.5% max health";
 
         public override void SetStaticDefaults()
         {

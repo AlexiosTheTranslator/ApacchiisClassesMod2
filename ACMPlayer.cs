@@ -48,6 +48,7 @@ namespace ApacchiisClassesMod2
         public bool hasChaosAccelerant;
         public bool hasTearsOfLife;
         public bool hasOldBlood;
+        public bool hasLuckyLeaf;
         #endregion
 
         string[] accountantRatDeathText =
@@ -419,6 +420,7 @@ namespace ApacchiisClassesMod2
             hasChaosAccelerant = false;
             hasTearsOfLife = false;
             hasOldBlood = false;
+            hasLuckyLeaf = false;
             #endregion
 
             abilityPower = 1f;
@@ -747,7 +749,7 @@ namespace ApacchiisClassesMod2
                 damage = (int)(damage * commanderBannerEndurance);
 
             if (hasOldShield)
-                damage = (int)(damage * .85f);
+                damage = (int)(damage * .86f);
 
             // This stays last in the bottom
             if (hasaccountantRat)
@@ -1885,7 +1887,10 @@ namespace ApacchiisClassesMod2
             if (hasOldBlood)
                 defenseMult -= .15f;
 
-            if(hasChaosAccelerant)
+            if(hasLuckyLeaf)
+                lifeMult -= .2f;
+
+            if (hasChaosAccelerant)
             {
                 lifeMult -= .5f;
                 manaMult -= .5f;
@@ -2122,7 +2127,7 @@ namespace ApacchiisClassesMod2
                     {
                         if (hasBleedingMoonStone && Player.statLife < Player.statLifeMax2)
                         {
-                            int heal = (int)(Player.statLifeMax2 * .035f);
+                            int heal = (int)(Player.statLifeMax2 * .03f);
                             healthToRegenSlow += heal;
                             Player.HealEffect(heal);
                             for (int x = 0; x < 3; x++)
@@ -2201,7 +2206,7 @@ namespace ApacchiisClassesMod2
                     {
                         if (hasBleedingMoonStone && Player.statLife < Player.statLifeMax2 /*&& equippedClass != "Blood Mage"*/)
                         {
-                            int heal = (int)(Player.statLifeMax2 * .035f);
+                            int heal = (int)(Player.statLifeMax2 * .03f);
                             healthToRegenSlow += heal;
                             Player.HealEffect(heal);
                             for (int x = 0; x < 3; x++)

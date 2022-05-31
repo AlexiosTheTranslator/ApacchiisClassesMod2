@@ -24,12 +24,12 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.noMelee = true;
             Item.scale = 1f;
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 6;
-            Item.crit = 0;
+            Item.damage = 9;
+            Item.crit = 1;
             Item.mana = 2;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 23;
-            Item.useTime = 23;
+            Item.useAnimation = 22;
+            Item.useTime = 22;
             Item.UseSound = SoundID.Item8;
             Item.rare = 1;
             Item.knockBack = 0;

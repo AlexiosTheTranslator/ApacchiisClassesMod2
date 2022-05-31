@@ -11,7 +11,7 @@ namespace ApacchiisClassesMod2.Items.Relics
         public string desc = "Increases ability power by 65%\n" +
                              "Increases cooldown reduction by 35%\n" +
                              "Decreases ult cost by 20%\n" +
-                             "Reduces healing power by 75%\n" +
+                             "Reduces healing power by 60%\n" +
                              "Decreases all weapon damage by 25%\n" +
                              "Decreases max health by 50%\n" +
                              "Decreases max mana by 50%";
@@ -44,7 +44,7 @@ namespace ApacchiisClassesMod2.Items.Relics
             acmPlayer.abilityPower += .65f;
             acmPlayer.cooldownReduction -= .35f;
             acmPlayer.ultCooldownReduction -= .2f;
-            acmPlayer.healingPower -= .75f;
+            acmPlayer.healingPower -= .6f;
             player.GetDamage(DamageClass.Generic) -= .25f;
 
 

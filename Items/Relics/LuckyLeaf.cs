@@ -9,8 +9,8 @@ namespace ApacchiisClassesMod2.Items.Relics
 	public class LuckyLeaf : ModItem
 	{
         public string desc = "Increases dodge chance by 8%\n" +
-                             "Increases crit chance by 2%\n" +
-                             "Reduces your base max health by 20%";
+                             "Increases crit chance by 3%\n" +
+                             "Reduces your max health by 20%";
 
         public override void SetStaticDefaults()
         {
@@ -35,9 +35,9 @@ namespace ApacchiisClassesMod2.Items.Relics
         {
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
+            acmPlayer.hasLuckyLeaf = true;
             player.GetCritChance(DamageClass.Generic) += 2;
             acmPlayer.dodgeChance += .03f;
-            acmPlayer.lifeMult -= .2f;
 
             base.UpdateVanity(player);
         }

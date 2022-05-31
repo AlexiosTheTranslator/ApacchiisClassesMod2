@@ -14,8 +14,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Training Rapier");
-            Tooltip.SetDefault("While holding this weapon you reduce any damage taken from enemies by 6\n" +
-                               "[c/6758a1:[Can be upgraded early Hardmode][c/6758a1:]]");
+            Tooltip.SetDefault("While holding this weapon you reduce any damage taken from enemies by 6");
         }
 
 		public override void SetDefaults()
@@ -24,7 +23,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.height = 48;
             Item.scale = 1f;
             Item.DamageType = DamageClass.Melee;
-            Item.damage = 12;
+            Item.damage = 13;
             Item.crit = 0;
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.useAnimation = 14;

@@ -8,7 +8,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class VoidMirror : ModItem
 	{
-        public string desc = "Increases dodge chance by 3%";
+        public string desc = "Increases dodge chance by 4%";
 
         public override void SetStaticDefaults()
         {
@@ -33,7 +33,7 @@ namespace ApacchiisClassesMod2.Items.Relics
         {
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
-            acmPlayer.dodgeChance += .03f;
+            acmPlayer.dodgeChance += .04f;
 
             base.UpdateVanity(player);
         }

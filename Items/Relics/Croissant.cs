@@ -9,7 +9,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 	public class Croissant : ModItem
 	{
         public string desc = "'Well Fed', 'Plenty Satisfied' and 'Exquisitely Satisfied' buffs now grant 50% bonus stats\n" +
-                             "Increases defense by 3 defense";
+                             "Increases defense by 4 defense";
 
         public override void SetStaticDefaults()
         {
@@ -34,7 +34,7 @@ namespace ApacchiisClassesMod2.Items.Relics
         {
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
-            player.statDefense += 3;
+            player.statDefense += 4;
 
             if(player.HasBuff(BuffID.WellFed))
             {

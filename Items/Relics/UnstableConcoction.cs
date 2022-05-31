@@ -8,7 +8,8 @@ namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class UnstableConcoction : ModItem
 	{
-        public string desc = "Casting an ability causes your next attack to deal 4x the damage";
+        public string desc = "Casting an ability causes your next attack to deal 4x the damage\n" +
+                             "Increases cooldown reduction by 4%";
 
         public override void SetStaticDefaults()
         {
@@ -34,6 +35,7 @@ namespace ApacchiisClassesMod2.Items.Relics
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
             acmPlayer.hasUnstableConcoction = true;
+            acmPlayer.cooldownReduction -= .04f;
 
             base.UpdateVanity(player);
         }

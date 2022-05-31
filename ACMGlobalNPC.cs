@@ -84,12 +84,6 @@ namespace ApacchiisClassesMod2
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.GivenOrTypeName);
                                 packet.Send();
-
-                                var packet2 = Mod.GetPacket();
-                                packet2.Write((byte)ACM2.ACMHandlePacketMessage.SyncTalentPoints);
-                                packet2.Write((byte)playerToUpdate);
-                                packet2.Write(acmPlayer.equippedClass);
-                                packet2.Send();
                             }
                             else
                             {
@@ -110,12 +104,6 @@ namespace ApacchiisClassesMod2
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.GivenOrTypeName);
                                 packet.Send();
-
-                                var packet2 = Mod.GetPacket();
-                                packet2.Write((byte)ACM2.ACMHandlePacketMessage.SyncTalentPoints);
-                                packet2.Write((byte)playerToUpdate);
-                                packet2.Write(acmPlayer.equippedClass);
-                                packet2.Send();
                             }
                             else
                             {
@@ -136,12 +124,6 @@ namespace ApacchiisClassesMod2
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.GivenOrTypeName);
                                 packet.Send();
-
-                                var packet2 = Mod.GetPacket();
-                                packet2.Write((byte)ACM2.ACMHandlePacketMessage.SyncTalentPoints);
-                                packet2.Write((byte)playerToUpdate);
-                                packet2.Write(acmPlayer.equippedClass);
-                                packet2.Send();
                             }
                             else
                             {
@@ -162,12 +144,6 @@ namespace ApacchiisClassesMod2
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.GivenOrTypeName);
                                 packet.Send();
-
-                                var packet2 = Mod.GetPacket();
-                                packet2.Write((byte)ACM2.ACMHandlePacketMessage.SyncTalentPoints);
-                                packet2.Write((byte)playerToUpdate);
-                                packet2.Write(acmPlayer.equippedClass);
-                                packet2.Send();
                             }
                             else
                             {
@@ -188,12 +164,6 @@ namespace ApacchiisClassesMod2
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.GivenOrTypeName);
                                 packet.Send();
-
-                                var packet2 = Mod.GetPacket();
-                                packet2.Write((byte)ACM2.ACMHandlePacketMessage.SyncTalentPoints);
-                                packet2.Write((byte)playerToUpdate);
-                                packet2.Write(acmPlayer.equippedClass);
-                                packet2.Send();
                             }
                             else
                             {
