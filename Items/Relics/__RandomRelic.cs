@@ -41,7 +41,7 @@ namespace ApacchiisClassesMod2.Items.Relics
             player.QuickSpawnItem(player.GetSource_OpenItem(Type), player.GetModPlayer<ACMPlayer>().relicList[choice]);
             //if(player.GetModPlayer<ACMPlayer>().relicList[choice] == ModContent.ItemType<Nessie>())
             //{
-            //    SoundEngine.PlaySound();
+            //    SoundEngine.PlaySound(...);
             //}
 
             base.RightClick(player);

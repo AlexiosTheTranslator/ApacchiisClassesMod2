@@ -251,7 +251,7 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
 
         public override bool? CanHitNPC(NPC target)
         {
-            if (hasHitEnemy && !target.townNPC && target.lifeMax > 5)
+            if (hasHitEnemy && !target.townNPC && !target.friendly && target.lifeMax > 5)
                 return false;
             else
                 return true;

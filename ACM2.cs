@@ -66,7 +66,7 @@ namespace ApacchiisClassesMod2
             switch (msgType)
             {
                 case ACMHandlePacketMessage.SyncBosses:
-                    byte playernumber = reader.ReadByte();
+                    int playernumber = reader.ReadInt32();
                     string playerClass = reader.ReadString();
                     string bossDefeated = reader.ReadString();
 
@@ -117,9 +117,17 @@ namespace ApacchiisClassesMod2
                     acmPlayer.levelUpText = true;
                     break;
 
+                case ACMHandlePacketMessage.BuffPlayer:
+                    int playerToBuff = reader.ReadInt32();
+                    int buffType = reader.ReadInt32();
+                    int duration = reader.ReadInt32();
+
+                    Main.player[playerToBuff].AddBuff(buffType, duration);
+                    break;
+
                 case ACMHandlePacketMessage.HealPlayerFast:
 
-                    byte PlayerNumber2 = reader.ReadByte();
+                    int PlayerNumber2 = reader.ReadInt32();
                     int totalHealAmount = reader.ReadInt32();
 
                     Main.player[PlayerNumber2].GetModPlayer<ACMPlayer>().healthToRegen += totalHealAmount;
@@ -128,7 +136,7 @@ namespace ApacchiisClassesMod2
                     if (Main.netMode == NetmodeID.Server)
                     {
                         ModPacket packet = GetPacket();
-                        packet.Write((byte)ACMHandlePacketMessage.SyncRegenStats);
+                        packet.Write((int)ACMHandlePacketMessage.SyncRegenStats);
                         packet.Write(PlayerNumber2);
                         packet.Write(totalHealAmount);
                         packet.Write(0);
@@ -140,7 +148,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.HealPlayerMedium:
 
-                    byte PlayerNumber3 = reader.ReadByte();
+                    int PlayerNumber3 = reader.ReadInt32();
                     int totalHealAmountMedium = reader.ReadInt32();
 
                     Main.player[PlayerNumber3].GetModPlayer<ACMPlayer>().healthToRegenMedium += totalHealAmountMedium;
@@ -161,7 +169,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.HealPlayerSlow:
 
-                    byte PlayerNumber4 = reader.ReadByte();
+                    int PlayerNumber4 = reader.ReadInt32();
                     int totalHealAmountSlow = reader.ReadInt32();
 
                     Main.player[PlayerNumber4].GetModPlayer<ACMPlayer>().healthToRegenSlow += totalHealAmountSlow;
@@ -182,7 +190,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.HealPlayerSnail:
 
-                    byte PlayerNumber5 = reader.ReadByte();
+                    int PlayerNumber5 = reader.ReadInt32();
                     int totalHealAmountSnail = reader.ReadInt32();
 
                     Main.player[PlayerNumber5].GetModPlayer<ACMPlayer>().healthToRegenSnail += totalHealAmountSnail;
@@ -203,7 +211,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.HealPlayer:
 
-                    byte PlayerNumber = reader.ReadByte();
+                    int PlayerNumber = reader.ReadInt32();
                     int healAmount = reader.ReadInt32();
 
                     Main.player[PlayerNumber].statLife += healAmount;
@@ -221,7 +229,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.SyncPlayerHealth:
 
-                    PlayerNumber = reader.ReadByte();
+                    PlayerNumber = reader.ReadInt32();
                     int PlayerHealth = reader.ReadInt32();
 
                     Main.player[PlayerNumber].statLife = PlayerHealth;
@@ -229,7 +237,7 @@ namespace ApacchiisClassesMod2
 
                 case ACMHandlePacketMessage.SyncRegenStats:
 
-                    PlayerNumber = reader.ReadByte();
+                    PlayerNumber = reader.ReadInt32();
                     int regenFast = reader.ReadInt32();
                     int regenMedium = reader.ReadInt32();
                     int regenSlow = reader.ReadInt32();

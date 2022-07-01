@@ -62,6 +62,17 @@ namespace ApacchiisClassesMod2.Configs
         [Range(.5f, 1.5f)]
         [Slider]
         [SliderColor(255, 255, 255)]
+
         public float classStatMult { get; set; }
+
+        [Label("Ability Power gained by held weapon's base DPS")]
+        [Tooltip("Changes how much ability power the player gets depending on the base dps of their currently held weapon\nThe higher this is, the more ability power you get\n[Default: 0.04]")]
+        [DefaultValue(.04f)]
+        [Increment(.01f)]
+        [Range(.01f, .1f)]
+        [Slider]
+        [SliderColor(255, 255, 255)]
+
+        public float abilityPowerWeaponDPSMult { get; set; }
     }
 }

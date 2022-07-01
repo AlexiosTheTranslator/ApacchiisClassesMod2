@@ -31,6 +31,7 @@
     <None Remove="Items\LostRelic.png" />
     <None Remove="Items\OrangeCloth.png" />
     <None Remove="Items\RedCloth.png" />
+    <None Remove="Items\Relics\AccountantRat.png" />
     <None Remove="Items\Relics\AghanimsScepter.png" />
     <None Remove="Items\Relics\AghanimsStaff.png" />
     <None Remove="Items\Relics\ArcaneBlade.png" />
@@ -40,10 +41,12 @@
     <None Remove="Items\Relics\BloodGem.png" />
     <None Remove="Items\Relics\BrokenHeart.png" />
     <None Remove="Items\Relics\BrokenHear_Old.png" />
+    <None Remove="Items\Relics\ChaosAccelerant.png" />
     <None Remove="Items\Relics\ChocolateBar.png" />
     <None Remove="Items\Relics\Croissant.png" />
     <None Remove="Items\Relics\CursedCandle.png" />
     <None Remove="Items\Relics\DarkSign.png" />
+    <None Remove="Items\Relics\EldritchInoculation.png" />
     <None Remove="Items\Relics\FlanPudding.png" />
     <None Remove="Items\Relics\Hourglass.png" />
     <None Remove="Items\Relics\LeysMushroom.png" />
@@ -63,6 +66,7 @@
     <None Remove="Items\Relics\PocketSlime.png" />
     <None Remove="Items\Relics\RandomRelic.png" />
     <None Remove="Items\Relics\RandomRelic_Old.png" />
+    <None Remove="Items\Relics\ScalingWarbanner.png" />
     <None Remove="Items\Relics\SleepingBabySqueaker.png" />
     <None Remove="Items\Relics\SleepingBabySqueaker_Old.png" />
     <None Remove="Items\Relics\SleepingBabySqueaker_OO.png" />

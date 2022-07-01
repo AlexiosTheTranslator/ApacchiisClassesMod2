@@ -381,7 +381,15 @@ namespace ApacchiisClassesMod2
                 tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
                 foreach (TooltipLine line in tooltips)
                     if (line.Mod == "Terraria" && line.Name == "SocialDesc")
-                        line.Text = GetInstance<EldritchInoculation>().desc + "\n[c/e796e8:> Donator Item <]\n[c/e796e8:[Thank you for your support, Grumpy!][c/e796e8:]]";
+                        line.Text = GetInstance<EldritchInoculation>().desc;
+            }
+
+            if (item.type == ItemType<ScalingWarbanner>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<ScalingWarbanner>().desc;
             }
 
             #endregion

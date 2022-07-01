@@ -21,8 +21,6 @@ namespace ApacchiisClassesMod2.Items.Classes
         float baseBadStat = .005f;
         float badStat; // Defense
 
-        
-
         public override void SetStaticDefaults()
         {
             DisplayName.SetDefault("Class: Blood Mage");
@@ -35,6 +33,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 			Item.accessory = true;	
 			Item.value = 0;
 			Item.rare = ItemRarityID.Blue;
+
 
             stat1 = baseStat1 * _ACMConfigServer.Instance.classStatMult;
             stat2 = baseStat2 * _ACMConfigServer.Instance.classStatMult;
@@ -77,17 +76,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100) + "% Magic Damage p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * 100) + "% Max Mana p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100) + "% Max Health p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Magic Damage p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Max Mana p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Defense p/lvl");
 
             var level = modPlayer.bloodMageLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100) + "% Magic Damage\n" +
-                                                                      "+" + level * (decimal)(stat2 * 100) + "% Max Mana\n" +
-                                                                      "+" + level * (decimal)(stat3 * 100) + "% Max Health");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Magic Damage\n" +
+                                                                      "+" + level * (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Max Mana\n" +
+                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + "% Defense");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
@@ -134,17 +133,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             {
                 if (!hideVisual)
                 {
-                    Player.GetDamage(DamageClass.Magic) += acmPlayer.bloodMageLevel * stat1;
-                    acmPlayer.manaMult += stat2 * acmPlayer.bloodMageLevel;
-                    acmPlayer.lifeMult += stat3 * acmPlayer.bloodMageLevel;
+                    Player.GetDamage(DamageClass.Magic) += acmPlayer.bloodMageLevel * stat1 * acmPlayer.classStatMultiplier;
+                    acmPlayer.manaMult += stat2 * acmPlayer.bloodMageLevel* acmPlayer.classStatMultiplier;
+                    acmPlayer.lifeMult += stat3 * acmPlayer.bloodMageLevel * acmPlayer.classStatMultiplier;
                     acmPlayer.defenseMult -= acmPlayer.bloodMageLevel * badStat;
                 }
             }
             else
             {
-                Player.GetDamage(DamageClass.Magic) += acmPlayer.bloodMageLevel * stat1;
-                acmPlayer.manaMult += stat2 * acmPlayer.bloodMageLevel;
-                acmPlayer.lifeMult += stat3 * acmPlayer.bloodMageLevel;
+                Player.GetDamage(DamageClass.Magic) += acmPlayer.bloodMageLevel * stat1 * acmPlayer.classStatMultiplier;
+                acmPlayer.manaMult += stat2 * acmPlayer.bloodMageLevel* acmPlayer.classStatMultiplier;
+                acmPlayer.lifeMult += stat3 * acmPlayer.bloodMageLevel * acmPlayer.classStatMultiplier;
                 acmPlayer.defenseMult -= acmPlayer.bloodMageLevel * badStat;
             }
         }

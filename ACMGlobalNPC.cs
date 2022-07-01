@@ -74,7 +74,7 @@ namespace ApacchiisClassesMod2
                         var acmPlayer = Main.player[playerToUpdate].GetModPlayer<ACMPlayer>();
 
                         //Vanguard List
-                        if (acmPlayer.hasVanguard && !acmPlayer.vanguardDefeatedBosses.Contains(npc.GivenOrTypeName))
+                        if (acmPlayer.hasVanguard && !acmPlayer.vanguardDefeatedBosses.Contains(npc.TypeName))
                         {
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
@@ -82,19 +82,19 @@ namespace ApacchiisClassesMod2
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
                                 packet.Write((byte)playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.GivenOrTypeName);
+                                packet.Write(npc.TypeName);
                                 packet.Send();
                             }
                             else
                             {
-                                acmPlayer.vanguardDefeatedBosses.Add(npc.GivenOrTypeName);
+                                acmPlayer.vanguardDefeatedBosses.Add(npc.TypeName);
                                 acmPlayer.vanguardSkillPoints++;
                                 acmPlayer.levelUpText = true;
                             }
                         }
 
                         //Blood Mage List
-                        if (acmPlayer.hasBloodMage && !acmPlayer.bloodMageDefeatedBosses.Contains(npc.GivenOrTypeName))
+                        if (acmPlayer.hasBloodMage && !acmPlayer.bloodMageDefeatedBosses.Contains(npc.TypeName))
                         {
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
@@ -102,19 +102,19 @@ namespace ApacchiisClassesMod2
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
                                 packet.Write((byte)playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.GivenOrTypeName);
+                                packet.Write(npc.TypeName);
                                 packet.Send();
                             }
                             else
                             {
-                                acmPlayer.bloodMageDefeatedBosses.Add(npc.GivenOrTypeName);
+                                acmPlayer.bloodMageDefeatedBosses.Add(npc.TypeName);
                                 acmPlayer.bloodMageSkillPoints++;
                                 acmPlayer.levelUpText = true;
                             }
                         }
 
                         //Commander List
-                        if (acmPlayer.hasCommander && !acmPlayer.commanderDefeatedBosses.Contains(npc.GivenOrTypeName))
+                        if (acmPlayer.hasCommander && !acmPlayer.commanderDefeatedBosses.Contains(npc.TypeName))
                         {
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
@@ -122,19 +122,19 @@ namespace ApacchiisClassesMod2
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
                                 packet.Write((byte)playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.GivenOrTypeName);
+                                packet.Write(npc.TypeName);
                                 packet.Send();
                             }
                             else
                             {
-                                acmPlayer.commanderDefeatedBosses.Add(npc.GivenOrTypeName);
+                                acmPlayer.commanderDefeatedBosses.Add(npc.TypeName);
                                 acmPlayer.commanderSkillPoints++;
                                 acmPlayer.levelUpText = true;
                             }
                         }
 
                         //Scout List
-                        if (acmPlayer.hasScout && !acmPlayer.scoutDefeatedBosses.Contains(npc.GivenOrTypeName))
+                        if (acmPlayer.hasScout && !acmPlayer.scoutDefeatedBosses.Contains(npc.TypeName))
                         {
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
@@ -142,19 +142,19 @@ namespace ApacchiisClassesMod2
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
                                 packet.Write((byte)playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.GivenOrTypeName);
+                                packet.Write(npc.TypeName);
                                 packet.Send();
                             }
                             else
                             {
-                                acmPlayer.scoutDefeatedBosses.Add(npc.GivenOrTypeName);
+                                acmPlayer.scoutDefeatedBosses.Add(npc.TypeName);
                                 acmPlayer.scoutSkillPoints++;
                                 acmPlayer.levelUpText = true;
                             }
                         }
 
                         //Soulmancer List
-                        if (acmPlayer.hasSoulmancer && !acmPlayer.soulmancerDefeatedBosses.Contains(npc.GivenOrTypeName))
+                        if (acmPlayer.hasSoulmancer && !acmPlayer.soulmancerDefeatedBosses.Contains(npc.TypeName))
                         {
                             if (Main.netMode != NetmodeID.SinglePlayer)
                             {
@@ -162,12 +162,12 @@ namespace ApacchiisClassesMod2
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
                                 packet.Write((byte)playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.GivenOrTypeName);
+                                packet.Write(npc.TypeName);
                                 packet.Send();
                             }
                             else
                             {
-                                acmPlayer.soulmancerDefeatedBosses.Add(npc.GivenOrTypeName);
+                                acmPlayer.soulmancerDefeatedBosses.Add(npc.TypeName);
                                 acmPlayer.soulmancerSkillPoints++;
                                 acmPlayer.levelUpText = true;
                             }

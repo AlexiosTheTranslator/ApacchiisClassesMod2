@@ -74,6 +74,7 @@ namespace ApacchiisClassesMod2.UI
             $"[i:{ItemID.Heart}] Thank you for your support, @Dr.Void! [i:{ItemID.Heart}]",
             $"[i:{ItemID.Heart}] Thank you for your support, @Eloraeon! [i:{ItemID.Heart}]",
             $"[i:{ItemID.Heart}] Thank you for your support, @Grumpy! [i:{ItemID.Heart}]",
+            $"[i:{ItemID.Heart}] Thank you for your support, @Derin! [i:{ItemID.Heart}]",
 
             "You can change the max level a class can reach in the mod's config (10-100).",
             $"You level up each time a boss is defeated, you can see which bosses you've defeated using a 'Class Book' [i:{ItemType<Items.ClassBook>()}].",
@@ -732,7 +733,7 @@ namespace ApacchiisClassesMod2.UI
                     case "Soulmancer":
                         abilityName.SetText("[Self Sacrifice]");
                         abilityText.SetText("Rapidly rip fragments of your own soul, slightly draining your own health per fragment.\n" +
-                                            "Each soul deals 2x [Soul Rip]'s damage.");
+                                            "Each soul deals 1.5x [Soul Rip]'s damage.");
 
                         abilityCooldown.SetText("Cooldown: " + acmPlayer.ultChargeMax / 60 + "s In Battle");
 
@@ -820,10 +821,13 @@ namespace ApacchiisClassesMod2.UI
                 if (acmPlayer.hasScout && GetInstance<ACM2ModSystem>()._ScoutSpecs.CurrentState == null)
                     GetInstance<ACM2ModSystem>()._ScoutSpecs.SetState(new Specializations.ScoutSpecs());
 
-                if(acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._SoulmancerSpecs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._SoulmancerSpecs.SetState(new Specializations.SoulmancerSpecs());
+                //if(acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._SoulmancerSpecs.CurrentState == null)
+                //    GetInstance<ACM2ModSystem>()._SoulmancerSpecs.SetState(new Specializations.SoulmancerSpecs());
 
-                SoundEngine.PlaySound(SoundID.MenuOpen);
+                if (acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._Specs.CurrentState == null)
+                    GetInstance<ACM2ModSystem>()._Specs.SetState(new Specializations.Specs());
+
+                    SoundEngine.PlaySound(SoundID.MenuOpen);
             }
             else
             {

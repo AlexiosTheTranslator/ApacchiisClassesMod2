@@ -49,7 +49,10 @@ namespace ApacchiisClassesMod2
         public bool hasTearsOfLife;
         public bool hasOldBlood;
         public bool hasLuckyLeaf;
+        public bool hasScalingWarbanner;
         #endregion
+
+        public string[] classSpecsText = {"a", "b"};
 
         string[] accountantRatDeathText =
         {
@@ -81,6 +84,7 @@ namespace ApacchiisClassesMod2
         public float lifeMult = 1f;
         public float manaMult = 1f;
         public float pSecHealthRegen = 0f;
+        public float classStatMultiplier = 1f;
         int pSecHealthTimer = 60;
         int globalSingleSecondTimer = 60;
         bool ultSound = false;
@@ -384,6 +388,15 @@ namespace ApacchiisClassesMod2
         public float specSoulmancer_MagicAttackSpeedBase;
         #endregion
 
+        #region Inventor
+        public bool hasInventor;
+
+        public int inventorSentryFirerate;
+        public int inventorSentryRange;
+        public int inventorSentryDamage;
+        public bool inventorIsSentryOverclocked;
+        #endregion
+
         #region Crusader
         public bool hasCrusader;
         public int crusaderLevel = 0;
@@ -421,6 +434,7 @@ namespace ApacchiisClassesMod2
             hasTearsOfLife = false;
             hasOldBlood = false;
             hasLuckyLeaf = false;
+            hasScalingWarbanner = false;
             #endregion
 
             abilityPower = 1f;
@@ -433,6 +447,7 @@ namespace ApacchiisClassesMod2
             defenseMult = 1f;
             lifeMult = 1f;
             manaMult = 1f;
+            classStatMultiplier = 1f;
             pSecHealthRegen = 0f;
             canAddDeaths = true;
             dodgeChance = 0f;
@@ -571,6 +586,14 @@ namespace ApacchiisClassesMod2
             specSoulmancer_CooldownReductionBase = .01f;
             specSoulmancer_MagicAttackSpeedBase = .0035f;
             specSoulmancer_SoulRipChanceBase = .01f;
+            #endregion
+
+            #region Inventor
+            hasInventor = false;
+
+            inventorSentryFirerate = 30;
+            inventorSentryRange = 360;
+            inventorSentryDamage = 5 + (int)(Player.HeldItem.damage * .2f);
             #endregion
 
             #region Crusader
@@ -1027,12 +1050,25 @@ namespace ApacchiisClassesMod2
 
         public override void PreUpdateBuffs()
         {
-            
+            if (Player.HeldItem.damage > 1)
+            {
+                float shotsPerSecond = 60 / Player.HeldItem.useTime;
+                float dps = shotsPerSecond * Player.HeldItem.damage;
+                abilityPower += dps * Configs._ACMConfigServer.Instance.abilityPowerWeaponDPSMult / 100;
+            }
+
             base.PreUpdateBuffs();
         }
 
         public override void PreUpdate()
         {
+            if (hasScalingWarbanner)
+            {
+                classStatMultiplier += .1f;
+                if (Main.hardMode)
+                    classStatMultiplier += .08f;
+            }
+
             chocolateBarTimer--;
 
             if (levelUpText && Main.netMode != NetmodeID.Server)
@@ -1088,6 +1124,9 @@ namespace ApacchiisClassesMod2
                 if (healthToRegen > 0 || healthToRegenMedium > 0 || healthToRegenSlow > 0 || healthToRegenSnail > 0)
                     for (int x = 0; x < 5; x++)
                         Dust.NewDustDirect(Player.position, Player.width, Player.height, DustType<Dusts.HealingDust>(), 0f, 0f, 0, default, Main.rand.NextFloat(1f, 1.75f));
+
+                //Text for debugging overtime healing stuff
+                //Main.NewText($"{healthToRegen}|{healthToRegenMedium}|{healthToRegenSlow}|{healthToRegenSnail}");
             }
 
             if(healthToRegen > 0)
@@ -1137,37 +1176,37 @@ namespace ApacchiisClassesMod2
                     if (Player.statLifeMax2 < 1000)
                     {
                         Player.statLife++;
-                        healthToRegen--;
+                        healthToRegenMedium--;
                     }
 
                     if (Player.statLifeMax2 > 1000 && Player.statLifeMax2 < 2000)
                     {
                         Player.statLife += 2;
-                        healthToRegen -= 2;
+                        healthToRegenMedium -= 2;
                     }
 
                     if (Player.statLifeMax2 > 2000 && Player.statLifeMax2 < 3000)
                     {
                         Player.statLife += 3;
-                        healthToRegen -= 3;
+                        healthToRegenMedium -= 3;
                     }
 
                     if (Player.statLifeMax2 > 3000 && Player.statLifeMax2 < 4000)
                     {
                         Player.statLife += 4;
-                        healthToRegen -= 4;
+                        healthToRegenMedium -= 4;
                     }
 
                     if (Player.statLifeMax2 > 4000 && Player.statLifeMax2 < 5000)
                     {
                         Player.statLife += 5;
-                        healthToRegen -= 5;
+                        healthToRegenMedium -= 5;
                     }
 
                     if (Player.statLifeMax2 > 5000)
                     {
                         Player.statLife += 6;
-                        healthToRegen -= 6;
+                        healthToRegenMedium -= 6;
                     }
                 }    
             }
@@ -1180,37 +1219,37 @@ namespace ApacchiisClassesMod2
                     if (Player.statLifeMax2 < 1000)
                     {
                         Player.statLife++;
-                        healthToRegen--;
+                        healthToRegenSlow--;
                     }
 
                     if (Player.statLifeMax2 > 1000 && Player.statLifeMax2 < 2000)
                     {
                         Player.statLife += 2;
-                        healthToRegen -= 2;
+                        healthToRegenSlow -= 2;
                     }
 
                     if (Player.statLifeMax2 > 2000 && Player.statLifeMax2 < 3000)
                     {
                         Player.statLife += 3;
-                        healthToRegen -= 3;
+                        healthToRegenSlow -= 3;
                     }
 
                     if (Player.statLifeMax2 > 3000 && Player.statLifeMax2 < 4000)
                     {
                         Player.statLife += 4;
-                        healthToRegen -= 4;
+                        healthToRegenSlow -= 4;
                     }
 
                     if (Player.statLifeMax2 > 4000 && Player.statLifeMax2 < 5000)
                     {
                         Player.statLife += 5;
-                        healthToRegen -= 5;
+                        healthToRegenSlow -= 5;
                     }
 
                     if (Player.statLifeMax2 > 5000)
                     {
                         Player.statLife += 6;
-                        healthToRegen -= 6;
+                        healthToRegenSlow -= 6;
                     }
                 }
             }
@@ -1223,37 +1262,37 @@ namespace ApacchiisClassesMod2
                     if (Player.statLifeMax2 < 1000)
                     {
                         Player.statLife++;
-                        healthToRegen--;
+                        healthToRegenSnail--;
                     }
 
                     if (Player.statLifeMax2 > 1000 && Player.statLifeMax2 < 2000)
                     {
                         Player.statLife += 2;
-                        healthToRegen -= 2;
+                        healthToRegenSnail -= 2;
                     }
 
                     if (Player.statLifeMax2 > 2000 && Player.statLifeMax2 < 3000)
                     {
                         Player.statLife += 3;
-                        healthToRegen -= 3;
+                        healthToRegenSnail -= 3;
                     }
 
                     if (Player.statLifeMax2 > 3000 && Player.statLifeMax2 < 4000)
                     {
                         Player.statLife += 4;
-                        healthToRegen -= 4;
+                        healthToRegenSnail -= 4;
                     }
 
                     if (Player.statLifeMax2 > 4000 && Player.statLifeMax2 < 5000)
                     {
                         Player.statLife += 5;
-                        healthToRegen -= 5;
+                        healthToRegenSnail -= 5;
                     }
 
                     if (Player.statLifeMax2 > 5000)
                     {
                         Player.statLife += 6;
-                        healthToRegen -= 6;
+                        healthToRegenSnail -= 6;
                     }
                 }
             }
@@ -1438,7 +1477,7 @@ namespace ApacchiisClassesMod2
                 Vector2 speed = Main.rand.NextVector2CircularEdge(5f, 5f);
                 speed.Normalize();
                 speed *= 15f;
-                Projectile.NewProjectile(default, Player.Center, speed, ProjectileType<Projectiles.Soulmancer.SoulFragment>(), (int)(soulmancerSoulRipDamage * abilityPower * 2), 0, Player.whoAmI);
+                Projectile.NewProjectile(default, Player.Center, speed, ProjectileType<Projectiles.Soulmancer.SoulFragment>(), (int)(soulmancerSoulRipDamage * abilityPower * 1.5f), 0, Player.whoAmI);
 
                 SoundEngine.PlaySound(SoundID.DD2_BookStaffCast, Player.position);
 
@@ -1469,9 +1508,14 @@ namespace ApacchiisClassesMod2
             base.PostUpdateBuffs();
         }
 
+        public override void UpdateEquips()
+        {
+            base.UpdateEquips();
+        }
+
         public override void PostUpdateEquips()
         {
-            //globalLevel = defeatedBosses.Count;
+            //globalLevel = defeatedBosses.Count;   
 
             #region Vanguard
             vanguardLevel = vanguardDefeatedBosses.Count;
@@ -1929,6 +1973,7 @@ namespace ApacchiisClassesMod2
                     int heal = (int)(Player.statLifeMax2 * bloodMageUltRegen * healingPower);
                     HealPlayer(1, 3, heal);
                     bloodMageCurUltTicks--;
+                    Main.NewText($"{bloodMageCurUltTicks}/{bloodMageUltTicks}");
                 }
                 pSecHealthTimer = 60;
             }
@@ -1956,6 +2001,8 @@ namespace ApacchiisClassesMod2
                 for (int x = 0; x < 4; x++)
                     Dust.NewDustDirect(Player.position, Player.width, Player.height, DustType<Dusts.HealingDust>(), 0f, 0f, 0, default, Main.rand.NextFloat(1f, 2f));
             }
+
+            
 
             base.PostUpdateEquips();
         }
@@ -1999,7 +2046,11 @@ namespace ApacchiisClassesMod2
                     }
 
                     if (equippedClass == "" || Main.playerInventory)
+                    {
                         GetInstance<ACM2ModSystem>()._HUD.SetState(null);
+                        GetInstance<ACM2ModSystem>()._Specs.SetState(null);
+
+                    }
                 }
             }
 
@@ -2192,6 +2243,29 @@ namespace ApacchiisClassesMod2
 
                             SoundEngine.PlaySound(SoundID.DD2_WitherBeastAuraPulse, Player.position);
                             break;
+
+                        case "Inventor":
+                            AddAbilityCooldown(1, ability1MaxCooldown);
+                            CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Deploy Sentry!", true);
+
+                            for (int p = 0; p < Main.maxProjectiles; p++)
+                            {
+                                if (Player.ownedProjectileCounts[ProjectileType<Projectiles.Inventor.Sentry>()] > 0)
+                                    if (Main.projectile[p].type == ProjectileType<Projectiles.Inventor.Sentry>())
+                                        ProjectileLoader.Kill(Main.projectile[p], 0);
+                            }
+                            
+                               
+                            int xx = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
+                            int yy = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
+                            int bump = -16;
+                            if (Player.gravDir == -1f)
+                                yy = (int)(Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY) / 16;
+                            Player.FindSentryRestingSpot(ProjectileType<Projectiles.Inventor.Sentry>(), out xx, out yy, out bump);
+                            Projectile.NewProjectile(null, xx, yy - 30, 0, 0, ProjectileType<Projectiles.Inventor.Sentry>(), 0, 0, Player.whoAmI);
+
+                            SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, Player.position);
+                            break;
                     }
                     a1Sound = false;
                 }
@@ -2311,9 +2385,7 @@ namespace ApacchiisClassesMod2
                             case "Commander":
                                 CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Inspire!", true);
                                 SoundEngine.PlaySound(SoundID.Thunder, Player.position);
-                                for (int i = 0; i < 255; i++)
-                                    if (Main.player[i].active)
-                                        Main.player[i].AddBuff(ModContent.BuffType<Buffs.Commander.Inspire>(), commanderUltDuration);
+                                ApplyBuffToAllPlayers(BuffType<Buffs.Commander.Inspire>(), commanderUltDuration);
                                 break;
 
                             case "Scout":
@@ -2809,6 +2881,29 @@ namespace ApacchiisClassesMod2
                         Player.HealEffect(healAmount);
                         break;
                 }
+            }
+        }
+
+        void ApplyBuffToAllPlayers(int buffType, int duration)
+        {
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                for (int i = 0; i < 255; i++)
+                {
+                    if (Main.player[i].active && !Main.player[i].dead)
+                    {
+                        ModPacket packet = Mod.GetPacket();
+                        packet.Write((byte)ACM2.ACMHandlePacketMessage.BuffPlayer);
+                        packet.Write((byte)i);
+                        packet.Write(buffType);
+                        packet.Write(duration);
+                        packet.Send(-1, -1);
+                    }
+                }
+            }
+            if(Main.netMode == NetmodeID.SinglePlayer)
+            {
+                Player.AddBuff(buffType, duration);
             }
         }
     }

@@ -40,7 +40,7 @@ namespace ApacchiisClassesMod2.Projectiles.Soulmancer
         public override void AI()
         {
             Player player = Main.player[Main.myPlayer];
-            var acmPlayer = Main.player[Main.myPlayer].GetModPlayer<ACMPlayer>();
+            var acmPlayer = player.GetModPlayer<ACMPlayer>();
 
             var dust = Dust.NewDustPerfect(Projectile.Center, 63, new Vector2(Projectile.velocity.X * .8f, Projectile.velocity.Y * .8f), 110, Color.Red, 3f);
             dust.noGravity = true;
@@ -97,7 +97,7 @@ namespace ApacchiisClassesMod2.Projectiles.Soulmancer
                     {
                         float num143_2 = Main.player[num142_2].position.X + (float)(Main.player[num142_2].width / 2);
                         float num144_2 = Main.player[num142_2].position.Y + (float)(Main.player[num142_2].height / 2);
-                        if (Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num143_2) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num144_2) < range) //Range ???
+                        if (Math.Abs(Projectile.position.X + (float)(Projectile.width / 2) - num143_2) + Math.Abs(Projectile.position.Y + (float)(Projectile.height / 2) - num144_2) < range)
                         {
                             flag3_2 = true;
                             num134_2 = Main.player[num142_2].position.X + (float)(Main.player[num142_2].width / 2);
@@ -130,10 +130,9 @@ namespace ApacchiisClassesMod2.Projectiles.Soulmancer
                 #endregion
 
                 float dist = Projectile.Distance(player.Center);
-                if (dist < 32)
+                if (dist < 16)
                 {
                     int healing = (int)(player.statLifeMax2 * acmPlayer.soulmancerConsumeHeal);
-                    if (healing < 1) healing = 1;
                     player.GetModPlayer<ACMPlayer>().HealPlayer(0, 0, healing);
                     Projectile.Kill();
                 }

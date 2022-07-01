@@ -76,17 +76,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100) + "% Melee Damage p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * 100) + "% Defense p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100) + "% Max Health p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Melee Damage p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Defense p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Attack Speed p/lvl (does not apply to tools)");
 
             var level = modPlayer.vanguardLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + (decimal)(level * 1.2f) + "% Melee Damage\n" +
-                                                                      "+" + (decimal)(level * stat2 * 100) + "% Defense\n" +
-                                                                      "+" + (decimal)(level * stat3 * 100) + "% Max Health");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + (decimal)(level * stat1 * modPlayer.classStatMultiplier) + "% Melee Damage\n" +
+                                                                      "+" + (decimal)(level * stat2 * 100 * modPlayer.classStatMultiplier) + "% Defense\n" +
+                                                                      "+" + (decimal)(level * stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + (decimal)(level * badStat * 100) + "% Attack Speed");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
@@ -134,21 +134,21 @@ namespace ApacchiisClassesMod2.Items.Classes
             {
                 if (!hideVisual)
                 {
-                    Player.GetDamage(DamageClass.Melee) += acmPlayer.vanguardLevel * stat1;
-                    acmPlayer.defenseMult += acmPlayer.vanguardLevel * stat2;
-                    acmPlayer.lifeMult += acmPlayer.vanguardLevel * stat3;
+                    Player.GetDamage(DamageClass.Melee) += acmPlayer.vanguardLevel * stat1 * acmPlayer.classStatMultiplier;
+                    acmPlayer.defenseMult += acmPlayer.vanguardLevel * stat2 * acmPlayer.classStatMultiplier;
+                    acmPlayer.lifeMult += acmPlayer.vanguardLevel * stat3 * acmPlayer.classStatMultiplier;
                     Player.GetAttackSpeed(DamageClass.Melee) -= acmPlayer.vanguardLevel * badStat;
-                    if (acmPlayer.defenseMult * acmPlayer.bloodMageLevel * stat2 < 1)
+                    if (acmPlayer.defenseMult * acmPlayer.bloodMageLevel * stat2 * acmPlayer.classStatMultiplier < 1)
                         Player.statDefense++;
                 }
             }
             else
             {
-                Player.GetDamage(DamageClass.Melee) += acmPlayer.vanguardLevel * stat1;
-                acmPlayer.defenseMult += acmPlayer.vanguardLevel * stat2;
-                acmPlayer.lifeMult += acmPlayer.vanguardLevel * stat3;
+                Player.GetDamage(DamageClass.Melee) += acmPlayer.vanguardLevel * stat1 * acmPlayer.classStatMultiplier;
+                acmPlayer.defenseMult += acmPlayer.vanguardLevel * stat2 * acmPlayer.classStatMultiplier;
+                acmPlayer.lifeMult += acmPlayer.vanguardLevel * stat3 * acmPlayer.classStatMultiplier;
                 Player.GetAttackSpeed(DamageClass.Melee) -= acmPlayer.vanguardLevel * badStat;
-                if (acmPlayer.defenseMult * acmPlayer.bloodMageLevel * stat2 < 1)
+                if (acmPlayer.defenseMult * acmPlayer.bloodMageLevel * stat2 * acmPlayer.classStatMultiplier < 1)
                     Player.statDefense++;
             }
         }

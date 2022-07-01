@@ -76,17 +76,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100) + "% Summon Damage p/lvl\n" +
-                                                                         "+" + (decimal)stat2 + " Minion Slots p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100) + "% Whip Range p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Summon Damage p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + " Minion Slots p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Whip Range p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)badStat * 100 + "% Movement Acceleration p/lvl");
 
             var level = modPlayer.commanderLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100) + "% Summon Damage\n" +
-                                                                      "+" + level * (decimal)stat2 + " Minion Slots\n" +
-                                                                      "+" + level * (decimal)(stat3 * 100) + "% Whip Range");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Summon Damage\n" +
+                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + " Minion Slots\n" +
+                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Whip Range");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)badStat * 100 + "% Movement Acceleration");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
@@ -133,17 +133,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             {
                 if (!hideVisual)
                 {
-                    Player.GetDamage(DamageClass.Summon) += acmPlayer.commanderLevel * stat1;
-                    Player.maxMinions += (int)(stat2 * acmPlayer.commanderLevel);
-                    Player.whipRangeMultiplier += stat3 * acmPlayer.commanderLevel;
+                    Player.GetDamage(DamageClass.Summon) += acmPlayer.commanderLevel * stat1 * acmPlayer.classStatMultiplier;
+                    Player.maxMinions += (int)(stat2 * acmPlayer.commanderLevel * acmPlayer.classStatMultiplier);
+                    Player.whipRangeMultiplier += stat3 * acmPlayer.commanderLevel * acmPlayer.classStatMultiplier;
                     Player.runAcceleration -= badStat;
                 }
             }
             else
             {
-                Player.GetDamage(DamageClass.Magic) += acmPlayer.commanderLevel * stat1;
-                Player.maxMinions += (int)(stat2 * acmPlayer.commanderLevel);
-                Player.whipRangeMultiplier += stat3 * acmPlayer.commanderLevel;
+                Player.GetDamage(DamageClass.Magic) += acmPlayer.commanderLevel * stat1 * acmPlayer.classStatMultiplier;
+                Player.maxMinions += (int)(stat2 * acmPlayer.commanderLevel * acmPlayer.classStatMultiplier);
+                Player.whipRangeMultiplier += stat3 * acmPlayer.commanderLevel * acmPlayer.classStatMultiplier;
                 Player.runAcceleration -= badStat;
             }
         }

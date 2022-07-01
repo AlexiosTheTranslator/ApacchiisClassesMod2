@@ -72,22 +72,22 @@ namespace ApacchiisClassesMod2.Items.Classes
                 "-(A2: Soul Shatter)-\n" +
                 "Shatter the soul of nearby enemies dealing heavy damage and ripping an additional fragment per soul shattered.\n" +
                 "-(Ult: Self Sacrifice)-\n" +
-                "Rapidly rip fragments of your own soul, slightly draining your own health per fragment. Each soul fragment deals 2x [Soul Rip]'s damage.");
+                "Rapidly rip fragments of your own soul, slightly draining your own health per fragment. Each soul fragment deals 1.5x [Soul Rip]'s damage.");
 
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100) + "% Ability Power p/lvl\n" +
-                                                                         "+" + (decimal)stat2 + "% Magic Crit p/lvl\n" +
-                                                                         "-" + (decimal)(stat3 * 100) + "% Mana Costs p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ability Power p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + "% Magic Crit p/lvl\n" +
+                                                                         "-" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Mana Costs p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Magic Damage p/lvl");
 
             var level = modPlayer.soulmancerLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100) + "% Ability Power\n" +
-                                                                      "+" + level * (decimal)stat2 + "% Magic Crit\n" +
-                                                                      "-" + level * (decimal)(stat3 * 100) + "% Mana Costs");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ability Power\n" +
+                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + "% Magic Crit\n" +
+                                                                      "-" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Mana Costs");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + "% Magic Damage");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
@@ -134,17 +134,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             {
                 if (!hideVisual)
                 {
-                    acmPlayer.abilityPower += acmPlayer.soulmancerLevel * stat1;
-                    Player.GetCritChance(DamageClass.Magic) += (int)(stat2 * acmPlayer.soulmancerLevel);
-                    Player.manaCost -= stat3 * acmPlayer.soulmancerLevel;
+                    acmPlayer.abilityPower += acmPlayer.soulmancerLevel * stat1 * acmPlayer.classStatMultiplier;
+                    Player.GetCritChance(DamageClass.Magic) += (int)(stat2 * acmPlayer.soulmancerLevel * acmPlayer.classStatMultiplier);
+                    Player.manaCost -= stat3 * acmPlayer.soulmancerLevel * acmPlayer.classStatMultiplier;
                     Player.GetDamage(DamageClass.Magic) -= acmPlayer.soulmancerLevel * badStat;
                 }
             }
             else
             {
-                acmPlayer.abilityPower += acmPlayer.soulmancerLevel * stat1;
-                Player.GetCritChance(DamageClass.Magic) += (int)(stat2 * acmPlayer.soulmancerLevel);
-                Player.manaCost -= stat3 * acmPlayer.soulmancerLevel;
+                acmPlayer.abilityPower += acmPlayer.soulmancerLevel * stat1 * acmPlayer.classStatMultiplier;
+                Player.GetCritChance(DamageClass.Magic) += (int)(stat2 * acmPlayer.soulmancerLevel * acmPlayer.classStatMultiplier);
+                Player.manaCost -= stat3 * acmPlayer.soulmancerLevel * acmPlayer.classStatMultiplier;
                 Player.GetDamage(DamageClass.Magic) -= acmPlayer.soulmancerLevel * badStat;
             }
         }

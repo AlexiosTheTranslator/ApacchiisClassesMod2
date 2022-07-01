@@ -57,10 +57,11 @@ namespace ApacchiisClassesMod2
         internal SoulmancerSpecs SoulmancerSpecs;
         internal UserInterface _SoulmancerSpecs;
 
+        internal Specs Specs;
+        internal UserInterface _Specs;
 
         public override void Load()
         {
-
             ClassAbility1 = KeybindLoader.RegisterKeybind(Mod, "Class Ability: 1", "Q");
             ClassAbility2 = KeybindLoader.RegisterKeybind(Mod, "Class Ability: 2", "C");
             ClassAbilityUltimate = KeybindLoader.RegisterKeybind(Mod, "Class Ability: Ultimate", "V");
@@ -101,6 +102,9 @@ namespace ApacchiisClassesMod2
                 _SoulmancerTalents = new UserInterface();
                 SoulmancerSpecs = new SoulmancerSpecs();
                 _SoulmancerSpecs = new UserInterface();
+
+                Specs = new Specs();
+                _Specs = new UserInterface();
             }
 
             base.Load();
@@ -143,6 +147,9 @@ namespace ApacchiisClassesMod2
                 _SoulmancerTalents.Update(gameTime);
             if (_SoulmancerSpecs?.CurrentState != null)
                 _SoulmancerSpecs.Update(gameTime);
+
+            if (_Specs?.CurrentState != null)
+                _Specs.Update(gameTime);
 
             base.UpdateUI(gameTime);
         }
@@ -306,6 +313,17 @@ namespace ApacchiisClassesMod2
                    {
                        if (_lastUpdateUiGameTime != null && _SoulmancerSpecs?.CurrentState != null)
                            _SoulmancerSpecs.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+
+                       return true;
+                   },
+                      InterfaceScaleType.UI));
+
+                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                   "ApacchiisClassesMod2: Specs",
+                   delegate
+                   {
+                       if (_lastUpdateUiGameTime != null && _Specs?.CurrentState != null)
+                           _Specs.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
 
                        return true;
                    },

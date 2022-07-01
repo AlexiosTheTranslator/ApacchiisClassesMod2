@@ -18,7 +18,7 @@ namespace ApacchiisClassesMod2.Items.Classes
         float baseStat3 = .0035f;
         float stat3; // Dodge
 
-        float baseBadStat = .0056f;
+        float baseBadStat = .0048f;
         float badStat; // Health
 
         public override void SetStaticDefaults()
@@ -66,7 +66,7 @@ namespace ApacchiisClassesMod2.Items.Classes
                 "-(P: Agility)-\n" +
                 "The scout can double jump and has slightly increased movement speed.\n" +
                 "-(A1: Hit-a-Soda)-\n" +
-                "Take a sip an energy drink you made yourself, increasing the damage you deal by temporarily.\n" +
+                "Take a sip from an energy drink you made yourself, increasing the damage you deal by temporarily.\n" +
                 "-(A2: Explosive Trap)-\n" +
                 "Place a low cooldown explosive trap under your cursor, enemies that get too close to the trap will take damage.\n" +
                 "-(Ult: Nuclear-Slap (TM))-\n" +
@@ -75,17 +75,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100) + "% Ranged Damage p/lvl\n" +
-                                                                         "+" + (decimal)stat2 * 100 + "% Movement Acceleration p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100) + "% Dodge Chance p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ranged Damage p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Movement Acceleration p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Dodge Chance p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Health p/lvl");
 
             var level = modPlayer.scoutLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100) + "% Ranged Damage\n" +
-                                                                      "+" + level * (decimal)stat2 * 100 + "% Movement Acceleration\n" +
-                                                                      "+" + level * (decimal)(stat3 * 100) + "% Dodge Chance");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ranged Damage\n" +
+                                                                      "+" + level * (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Movement Acceleration\n" +
+                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Dodge Chance");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + "% Health");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
@@ -132,17 +132,17 @@ namespace ApacchiisClassesMod2.Items.Classes
             {
                 if (!hideVisual)
                 {
-                    Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1;
-                    Player.runAcceleration += stat2 * acmPlayer.scoutLevel;
-                    acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel;
+                    Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1 * acmPlayer.classStatMultiplier;
+                    Player.runAcceleration += stat2 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
+                    acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
                     acmPlayer.lifeMult -= (int)(badStat * acmPlayer.scoutLevel);
                 }
             }
             else
             {
-                Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1;
-                Player.runAcceleration += stat2 * acmPlayer.scoutLevel;
-                acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel;
+                Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1 * acmPlayer.classStatMultiplier;
+                Player.runAcceleration += stat2 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
+                acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
                 acmPlayer.lifeMult -= (int)(badStat * acmPlayer.scoutLevel);
             }
 

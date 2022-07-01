@@ -56,8 +56,7 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
         
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            var rot = reader.Read();
-            Projectile.rotation = rot;
+            Projectile.rotation = reader.Read();
             base.ReceiveExtraAI(reader);
         }
 
@@ -113,8 +112,7 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            var rot = reader.Read();
-            Projectile.rotation = rot;
+            Projectile.rotation = reader.Read();
             base.ReceiveExtraAI(reader);
         }
 
@@ -170,8 +168,7 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            var rot = reader.Read();
-            Projectile.rotation = rot;
+            Projectile.rotation = reader.Read();
             base.ReceiveExtraAI(reader);
         }
 
@@ -227,8 +224,7 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
 
         public override void ReceiveExtraAI(BinaryReader reader)
         {
-            var rot = reader.Read();
-            Projectile.rotation = rot;
+            Projectile.rotation = reader.Read();
             base.ReceiveExtraAI(reader);
         }
 
