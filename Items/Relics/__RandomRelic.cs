@@ -1,6 +1,7 @@
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
  
 namespace ApacchiisClassesMod2.Items.Relics
@@ -8,7 +9,7 @@ namespace ApacchiisClassesMod2.Items.Relics
     public class RandomRelic : ModItem
     {
         public override void SetStaticDefaults(){
-			DisplayName.SetDefault("Random Relic");
+			DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.RandomRelic")}");
 			Tooltip.SetDefault("Gives you a random relic\n{$CommonItemTooltip.RightClickToOpen}");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 0;
         }

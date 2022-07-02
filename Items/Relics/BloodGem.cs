@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ApacchiisClassesMod2.Items.Relics
@@ -14,7 +15,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[Relic] Blood Gem");
+            DisplayName.SetDefault($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.RelicPrefix")}] Blood Gem");
             Tooltip.SetDefault(desc + $"\n[c/e796e8:> Donator Item <]\n[c/e796e8:[Thank you for your support, {donator}!][c/e796e8:]]");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }

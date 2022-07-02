@@ -1,0 +1,138 @@
+Mods: {
+	ApacchiisClassesMod2: {
+
+	    # 
+
+		# Player Stats
+		PlayerStatsText: Player Stats
+		MagicDamage: Magic Damage
+		MagicCrit: Magic Crit
+	    MeleeDamage: Melee Damage
+		MeleeCrit: Melee Crit
+	    RangedDamage: Ranged Damage
+		RangedCrit: Ranged Crit
+	    SummonDamage: Summon Damage
+	    AllDamage: All Damage
+		AllCrit: All Crit
+	    MaxHealth: Max Health
+	    MaxMana: Max Mana
+	    Defense: Defense
+		ManaCost: Mana Cost
+		MaxMinions: Max Minions
+		WhipRange: Whip Range
+	    DamageReduction: Damage Reduction
+	    MovementSpeed: Movement Speed
+		MovementAcceleration: Movement Acceleration
+	    AttackSpeed: Attack Speed
+	    AbilityPower: Ability Power
+		HealingPower: Healing Power
+	    CooldownReduction: Cooldown Reduction
+	    UltCost: Ultimate Cost
+		UltCostReduction: Ult Cost Reduction
+	    DodgeChance: Dodge Chance
+		TimesDied: Times Died
+		EnemiesKilled: Enemies Killed
+		DamageTaken: Damage Taken
+		HighestCrit: Highest Crit
+
+		# General
+		HoldToPreviewAbilities: Hold 'UP' to preview abilities
+		ClassPrefix: Class
+		Passive: Passive
+		Ability1: Ability 1
+		Ability2: Ability 2
+		Ultimate: Ultimate
+		RandomRelic: Random Relic
+	    RelicPrefix: Relic
+		Talents: Talents
+		Specializations: Specializations
+		UnlocksAfter10Text: Unlocks after spending 10 skill points on the talent tree
+		Locked: Locked
+
+		# -------------------------------------------------------------------------------------------------------------------------------
+		# FOR CLASSES, YOU DONT NEED TO TRANSLATE ABILITY/CLASS NAMES IF YOU DON'T WANT TO OR IF THERE ISN'T A DIRECT/CORRECT TRANSLATION
+		# -------------------------------------------------------------------------------------------------------------------------------
+
+		# Blood Mage
+		BloodMage: Blood Mage
+		BloodMage_P_Name: Blood Well
+		BloodMage_P_Prev: Every second in battle gain a stack of 'Blood', each stack slightly increases your life regen.
+
+		BloodMage_A1_Name: Transfusion
+		BloodMage_A1_Prev: Throw a blob of your own blood that will seek out the nearest enemy, damage it, and come back to you with a bit of its blood, restoring your health.
+
+		BloodMage_A2_Name: Blood Enchantment
+		BloodMage_A2_Prev: Enchant your weapon with your own blood, constantly losing health per second but increasing damage dealt.
+
+		BloodMage_Ult_Name: Regeneration
+		BloodMage_Ult_Prev: Regen yours and your allies' health every second over a duration.
+
+
+
+		# Commander
+		Commander: Commander
+		Commander_P_Name: Commander's Will
+		Commander_P_Prev: For each minion slot you have gain a small amount of damage reduction.
+
+		Commander_A1_Name: War Banner
+		Commander_A1_Prev: Place a war banner at your feet, players standing inside its area will deal increased damage and take reduced damage
+
+		Commander_A2_Name: Battle Cry
+		Commander_A2_Prev: Scream loudly, intimidating enemies around you and increasing the damage they take for a period of time.
+
+		Commander_Ult_Name: Inspire
+		Commander_Ult_Prev: Inspire yourself and your teammates, granting everyone guaranteed critical hits for a period of time.
+
+
+
+		# Scout
+		Scout: Scout
+		Scout_P_Name: Agility
+		Scout_P_Prev: The scout can double jump and has slightly increased movement speed.
+		Scout_P_DisableDoubleJump: Disable scout's passive double jump
+		Scout_P_EnableDoubleJump: Enable scout's passive double jump
+
+		Scout_A1_Name: Hit-a-Soda
+		Scout_A1_Prev: Take a sip from an energy drink you made yourself, increasing the damage you deal by temporarily.
+
+		Scout_A2_Name: Explosive Trap
+		Scout_A2_Prev: Place a low cooldown explosive trap under your cursor, enemies that get too close to the trap will take damage.
+
+		Scout_Ult_Name: Nuclear-Slap (TM)
+		Scout_Ult_Prev_1: Become invincible for
+		Scout_Ult_Prev_2: seconds, and gain increased mobility for a perid of time.
+
+
+
+		# Soulmancer
+		Soulmancer: Soulmancer
+		Soulmancer_P_Name: Soul Rip
+		Soulmancer_P_Prev_1: Hitting enemies with magic weapons has a chance to rip a fragment of their soul, causing it to harm any nearby enemies.
+		Soulmancer_P_Prev_2: These soul fragments can critically strike.
+
+		Soulmancer_A1_Name: Consume
+		Soulmancer_A1_Prev: For a short duration, everytime you hit an enemy with a soul fragment, recall it to yourself, consuming it and healing you for a small percentage of your max health per fragment consumed.
+
+		Soulmancer_A2_Name: Soul Shatter
+		Soulmancer_A2_Prev: Shatter the soul of nearby enemies dealing heavy damage and ripping an additional fragment per soul shattered.
+
+		Soulmancer_Ult_Name: Self Sacrifice
+		Soulmancer_Ult_Prev: Rapidly rip fragments of your own soul, slightly draining your own health per fragment. Each soul fragment deals 1.5x [Soul Rip]'s damage.
+
+
+
+		# Vanguard
+		Vanguard: Vanguard
+		Vanguard_P_Name: Enchanted Armor
+		Vanguard_P_Prev: Enemies take damage when hitting you.
+
+		Vanguard_A1_Name: Spear Of Light
+		Vanguard_A1_Prev: Throw a spear of light, the spear explodes if it comes close to an enemy, dealing damage to all enemies around it.
+
+		Vanguard_A2_Name: Barrier Of Light
+		Vanguard_A2_Prev: Cast a light barrier around you, reducing damage taken.
+
+		Vanguard_Ult_Name: Sword Of Judgement
+		Vanguard_Ult_Prev: A huge sword comes falling from the skies, dealing heavy damage and executing enemies.
+	}
+}

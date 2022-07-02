@@ -1,6 +1,7 @@
 using Microsoft.Xna.Framework;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ApacchiisClassesMod2.UI.Other
@@ -49,10 +50,10 @@ namespace ApacchiisClassesMod2.UI.Other
 			switch (context)
 			{
 				case AccessorySlotType.FunctionalSlot:
-					Main.hoverItemName = "Class";
+					Main.hoverItemName = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}";
 					break;
 				case AccessorySlotType.VanitySlot:
-					Main.hoverItemName = "Relic";
+					Main.hoverItemName = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.RelicPrefix")}";
 					break;
 			}
 		}

@@ -447,7 +447,6 @@ namespace ApacchiisClassesMod2
             defenseMult = 1f;
             lifeMult = 1f;
             manaMult = 1f;
-            classStatMultiplier = 1f;
             pSecHealthRegen = 0f;
             canAddDeaths = true;
             dodgeChance = 0f;
@@ -1062,13 +1061,6 @@ namespace ApacchiisClassesMod2
 
         public override void PreUpdate()
         {
-            if (hasScalingWarbanner)
-            {
-                classStatMultiplier += .1f;
-                if (Main.hardMode)
-                    classStatMultiplier += .08f;
-            }
-
             chocolateBarTimer--;
 
             if (levelUpText && Main.netMode != NetmodeID.Server)
@@ -1515,6 +1507,12 @@ namespace ApacchiisClassesMod2
 
         public override void PostUpdateEquips()
         {
+            if (hasScalingWarbanner)
+            {
+                classStatMultiplier += .1f;
+                if (Main.hardMode)
+                    classStatMultiplier += .08f;
+            }
             //globalLevel = defeatedBosses.Count;   
 
             #region Vanguard
@@ -2007,6 +2005,11 @@ namespace ApacchiisClassesMod2
             base.PostUpdateEquips();
         }
 
+        public override void PostUpdateMiscEffects()
+        {
+            base.PostUpdateMiscEffects();
+        }
+
         public override void PostUpdate()
         {
             if (!updatedRelicList)
@@ -2056,6 +2059,8 @@ namespace ApacchiisClassesMod2
 
             base.PostUpdate();
         }
+
+
 
         public override void OnRespawn(Player player)
         {

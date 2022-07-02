@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ApacchiisClassesMod2.Configs;
+using Terraria.Localization;
 
 namespace ApacchiisClassesMod2.Items.Classes
 {
@@ -23,7 +24,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Class: Scout");
+            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Scout");
         }
 
 		public override void SetDefaults()
@@ -61,32 +62,32 @@ namespace ApacchiisClassesMod2.Items.Classes
 
             var modPlayer = Player.GetModPlayer<ACMPlayer>();
 
-            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", "[Hold 'W' to preview abilities]");
+            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
-                "-(P: Agility)-\n" +
-                "The scout can double jump and has slightly increased movement speed.\n" +
-                "-(A1: Hit-a-Soda)-\n" +
-                "Take a sip from an energy drink you made yourself, increasing the damage you deal by temporarily.\n" +
-                "-(A2: Explosive Trap)-\n" +
-                "Place a low cooldown explosive trap under your cursor, enemies that get too close to the trap will take damage.\n" +
-                "-(Ult: Nuclear-Slap (TM))-\n" +
-                "Become invincible for " + modPlayer.scoutUltInvDuration / 60 + " seconds, and gain increased mobility for a perid of time.");
+                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_P_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_P_Prev")}\n" +
+                $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A1_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A1_Prev")}\n" +
+                $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A2_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A2_Prev")}\n" +
+                $"-(Ult: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_Ult_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_Ult_Prev_1")} " + modPlayer.scoutUltInvDuration / 60 + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_Ult_Prev_2")}");
 
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ranged Damage p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Movement Acceleration p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Dodge Chance p/lvl");
-            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Health p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.RangedDamage")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.DodgeChance")} p/lvl");
+            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxHealth")} p/lvl");
 
             var level = modPlayer.scoutLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ranged Damage\n" +
-                                                                      "+" + level * (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Movement Acceleration\n" +
-                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Dodge Chance");
-            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + "% Health");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.RangedDamage")}\n" +
+                                                                      "+" + level * (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")}\n" +
+                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.DodgeChance")}");
+            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxHealth")}");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
             lineBadStat.OverrideColor = new Color(200, 50, 25);
@@ -162,6 +163,8 @@ namespace ApacchiisClassesMod2.Items.Classes
             }
             
             Player.moveSpeed += acmPlayer.scoutPassiveSpeedBonus;
+
+            acmPlayer.classStatMultiplier = 1f;
         }
 
         public override bool CanEquipAccessory(Player player, int slot, bool modded)

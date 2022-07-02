@@ -5,6 +5,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ApacchiisClassesMod2.Configs;
+using Terraria.Localization;
 
 namespace ApacchiisClassesMod2.Items.Classes
 {
@@ -24,7 +25,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Class: Vanguard");
+            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard")}");
         }
 
 		public override void SetDefaults()
@@ -62,32 +63,32 @@ namespace ApacchiisClassesMod2.Items.Classes
 
             var modPlayer = Player.GetModPlayer<ACMPlayer>();
 
-            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", "[Hold 'W' to preview abilities]");
+            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
-                "-(P: Enchanted Armor)-\n" +
-                "Enemies take damage when hitting you.\n" +
-                "-(A1: Spear Of Light)-\n" +
-                "Throw a spear of light, the spear explodes if it comes close to an enemy, dealing damage to all enemies around it.\n" +
-                "-(A2: Barrier Of Light)-\n" +
-                "Cast a light barrier around you, reducing damage taken.\n" +
-                "-(Ult: Sword Of Judgement)-\n" +
-                "A huge sword comes falling from the skies, dealing heavy damage and executing enemies.");
+                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_P_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_P_Prev")}\n" +
+                $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A1_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A1_Prev")}\n" +
+                $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A2_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A2_Prev")}\n" +
+                $"-(Ult: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_Ult_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_Ult_Prev")}");
 
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Melee Damage p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + "% Defense p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health p/lvl");
-            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Attack Speed p/lvl (does not apply to tools)");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MeleeDamage")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.Defense")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxHealth")} p/lvl");
+            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.AttackSpeed")} p/lvl (does not apply to tools)");
 
             var level = modPlayer.vanguardLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + (decimal)(level * stat1 * modPlayer.classStatMultiplier) + "% Melee Damage\n" +
-                                                                      "+" + (decimal)(level * stat2 * 100 * modPlayer.classStatMultiplier) + "% Defense\n" +
-                                                                      "+" + (decimal)(level * stat3 * 100 * modPlayer.classStatMultiplier) + "% Max Health");
-            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + (decimal)(level * badStat * 100) + "% Attack Speed");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + (decimal)(level * stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MeleeDamage")}\n" +
+                                                                      "+" + (decimal)(level * stat2 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.Defense")}\n" +
+                                                                      "+" + (decimal)(level * stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.Maxhealth")}");
+            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + (decimal)(level * badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.AttackSpeed")}");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
             lineBadStat.OverrideColor = new Color(200, 50, 25);
@@ -151,6 +152,8 @@ namespace ApacchiisClassesMod2.Items.Classes
                 if (acmPlayer.defenseMult * acmPlayer.bloodMageLevel * stat2 * acmPlayer.classStatMultiplier < 1)
                     Player.statDefense++;
             }
+
+            acmPlayer.classStatMultiplier = 1f;
         }
 
         public override bool CanEquipAccessory(Player player, int slot, bool modded)

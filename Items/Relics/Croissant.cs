@@ -13,7 +13,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[Relic] Croissant");
+            DisplayName.SetDefault($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.RelicPrefix")}] Croissant");
             Tooltip.SetDefault(desc);
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }

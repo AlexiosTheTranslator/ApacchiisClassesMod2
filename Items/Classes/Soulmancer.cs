@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ApacchiisClassesMod2.Configs;
+using Terraria.Localization;
 
 namespace ApacchiisClassesMod2.Items.Classes
 {
@@ -25,7 +26,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Class: Soulmancer");
+            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Soulmancer");
         }
 
 		public override void SetDefaults()
@@ -63,32 +64,32 @@ namespace ApacchiisClassesMod2.Items.Classes
             Player Player = Main.player[Main.myPlayer];
             var modPlayer = Player.GetModPlayer<ACMPlayer>();
             
-            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", "[Hold 'W' to preview abilities]");
+            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
-                "-(P: Soul Rip)-\n" +
-                "Hitting enemies with magic weapons has a chance to rip a fragment of their soul, causing it to harm any nearby enemies.\nThese soul fragments can critically strike\n" +
-                "-(A1: Consume)-\n" +
-                "For a short duration, everytime you hit an enemy with a soul fragment, recall it to yourself, consuming it and healing you for a small percentage of your max health per fragment consumed.\n" +
-                "-(A2: Soul Shatter)-\n" +
-                "Shatter the soul of nearby enemies dealing heavy damage and ripping an additional fragment per soul shattered.\n" +
-                "-(Ult: Self Sacrifice)-\n" +
-                "Rapidly rip fragments of your own soul, slightly draining your own health per fragment. Each soul fragment deals 1.5x [Soul Rip]'s damage.");
+                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_1")}\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_1")}\n" +
+                $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Prev")}\n" +
+                $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A2_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A2_Prev")}\n" +
+                $"-(Ult: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_Ult_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_Ult_Prev")}");
 
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ability Power p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + "% Magic Crit p/lvl\n" +
-                                                                         "-" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Mana Costs p/lvl");
-            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + "% Magic Damage p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.AbilityPower")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MagicCrit")} p/lvl\n" +
+                                                                         "-" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.ManaCost")} p/lvl");
+            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)(badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MagicDamage")} p/lvl");
 
             var level = modPlayer.soulmancerLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Ability Power\n" +
-                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + "% Magic Crit\n" +
-                                                                      "-" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Mana Costs");
-            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + "% Magic Damage");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.AbilityPower")}\n" +
+                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MagicCrit")}\n" +
+                                                                      "-" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.ManaCost")}");
+            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)(badStat * 100) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MagicDamage")}");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
             lineBadStat.OverrideColor = new Color(200, 50, 25);
@@ -147,6 +148,8 @@ namespace ApacchiisClassesMod2.Items.Classes
                 Player.manaCost -= stat3 * acmPlayer.soulmancerLevel * acmPlayer.classStatMultiplier;
                 Player.GetDamage(DamageClass.Magic) -= acmPlayer.soulmancerLevel * badStat;
             }
+
+            acmPlayer.classStatMultiplier = 1f;
         }
 
         public override bool CanEquipAccessory(Player player, int slot, bool modded)

@@ -38,6 +38,8 @@ namespace ApacchiisClassesMod2
             ClassAbilityUltimate = KeybindLoader.RegisterKeybind(this, "Class Ability: Ultimate", "V");
             Menu = KeybindLoader.RegisterKeybind(this, "Menu", "N");
 
+
+
             base.Load();
         }
 

@@ -4,6 +4,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using ApacchiisClassesMod2.Configs;
+using Terraria.Localization;
 
 namespace ApacchiisClassesMod2.Items.Classes
 {
@@ -23,7 +24,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Class: Commander");
+            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Commander");
         }
 
 		public override void SetDefaults()
@@ -62,32 +63,32 @@ namespace ApacchiisClassesMod2.Items.Classes
 
             var modPlayer = Player.GetModPlayer<ACMPlayer>();
 
-            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", "[Hold 'W' to preview abilities]");
+            TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
-                "-(P: Commander's Will)-\n" +
-                "For each minion slot you have gain a small amount of damage reduction.\n" +
-                "-(A1: War Banner)-\n" +
-                "Place a war banner at your feet, players standing inside its area will deal increased damage and take reduced damage\n" +
-                "-(A2: Battle Cry)-\n" +
-                "Scream loudly, intimidating enemies around you and increasing the damage they take for a period of time.\n" +
-                "-(Ult: Inspire)-\n" +
-                "Inspire yourself and your teammates, granting everyone guaranteed critical hits for a period of time.");
+                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_P_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_P_Prev")}\n" +
+                $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A1_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A1_Prev")}\n" +
+                $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A2_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A2_Prev")}\n" +
+                $"-(Ult: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_Ult_Name")})-\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_Ult_Prev")}");
 
             HoldSToPreview.OverrideColor = Color.CadetBlue;
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
-            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Summon Damage p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + " Minion Slots p/lvl\n" +
-                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Whip Range p/lvl");
-            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)badStat * 100 + "% Movement Acceleration p/lvl");
+            TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.SummonDamage")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MinionSlots")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.WhipRange")} p/lvl");
+            TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)badStat * 100 + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")} p/lvl");
 
             var level = modPlayer.commanderLevel;
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
-            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + "% Summon Damage\n" +
-                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + " Minion Slots\n" +
-                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + "% Whip Range");
-            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)badStat * 100 + "% Movement Acceleration");
+            TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.SummonDamage")}\n" +
+                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MinionSlots")}\n" +
+                                                                      "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.WhipRange")}");
+            TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)badStat * 100 + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")}");
 
             lineLevel.OverrideColor = new Color(200, 150, 25);
             lineBadStat.OverrideColor = new Color(200, 50, 25);
@@ -146,6 +147,8 @@ namespace ApacchiisClassesMod2.Items.Classes
                 Player.whipRangeMultiplier += stat3 * acmPlayer.commanderLevel * acmPlayer.classStatMultiplier;
                 Player.runAcceleration -= badStat;
             }
+
+            acmPlayer.classStatMultiplier = 1f;
         }
 
         public override bool CanEquipAccessory(Player player, int slot, bool modded)

@@ -8,6 +8,7 @@ using static Terraria.ModLoader.ModContent;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria.Audio;
+using Terraria.Localization;
 
 namespace ApacchiisClassesMod2.UI
 {
@@ -256,22 +257,22 @@ namespace ApacchiisClassesMod2.UI
             ability3Button.BorderColor = new Color(25, 25, 25);
             background.Append(ability3Button);
 
-            passiveStaticText = new UIText("Passive");
+            passiveStaticText = new UIText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Passive")}");
             passiveStaticText.VAlign = .5f;
             passiveStaticText.HAlign = .5f;
             passiveButton.Append(passiveStaticText);
 
-            ability1StaticText = new UIText("Ability 1");
+            ability1StaticText = new UIText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Ability1")}");
             ability1StaticText.VAlign = .5f;
             ability1StaticText.HAlign = .5f;
             ability1Button.Append(ability1StaticText);
 
-            ability2StaticText = new UIText("Ability 2");
+            ability2StaticText = new UIText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Ability2")}");
             ability2StaticText.VAlign = .5f;
             ability2StaticText.HAlign = .5f;
             ability2Button.Append(ability2StaticText);
 
-            ability3StaticText = new UIText("Ultimate");
+            ability3StaticText = new UIText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Ultimate")}");
             ability3StaticText.VAlign = .5f;
             ability3StaticText.HAlign = .5f;
             ability3Button.Append(ability3StaticText);
@@ -345,7 +346,7 @@ namespace ApacchiisClassesMod2.UI
                 
 
             selectedClass = Player.GetModPlayer<ACMPlayer>().equippedClass;
-            className.SetText("Class: " + selectedClass);
+            className.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: " + selectedClass);
             abilityName.SetText("");
             abilityText.SetText("");
             castType.SetText("");
@@ -361,9 +362,9 @@ namespace ApacchiisClassesMod2.UI
                 extraFunctionButton.Append(extraFunctionText);
 
                 if (acmPlayer.scoutCanDoubleJump)
-                    extraFunctionText.SetText("Disable scout's passive double jump");
+                    extraFunctionText.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_P_DisableDoubleJump")}");
                 else
-                    extraFunctionText.SetText("Enable scout's passive double jump");
+                    extraFunctionText.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_P_EnableeDoubleJump")}");
             }
             else
             {
@@ -415,9 +416,9 @@ namespace ApacchiisClassesMod2.UI
             }
 
             if (acmPlayer.spentSkillPointsGlobal >= 10)
-                specsText.SetText("Specializations");
+                specsText.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Specializations")}");
             else
-                specsText.SetText("[LOCKED]");
+                specsText.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Locked")}]");
 
             if (specsButton.IsMouseHovering || specsText.IsMouseHovering)
             {
@@ -454,19 +455,19 @@ namespace ApacchiisClassesMod2.UI
 
             if(!passiveButton.IsMouseHovering && ! ability1Button.IsMouseHovering && !ability2Button.IsMouseHovering && !ability3Button.IsMouseHovering)
             {
-                abilityName.SetText("-Player Stats-" +
-                                    $"\nTimes Died: {acmPlayer.timesDied}" +
-                                    $"\nEnemies Killed: {acmPlayer.enemiesKilled}" +
-                                    $"\nDamage Taken: {acmPlayer.totalDamageTaken} " +
-                                    $"\nHighest Crit: {acmPlayer.highestCrit} " +
-                                    $"\nEndurance: {(decimal)((acmPlayer.trueEndurance + Player.endurance - 1f) * 100)}%" +
-                                    $"\nAbility Power: {(decimal)(acmPlayer.abilityPower * 100)}%" +
-                                    $"\nHealing Power: {(decimal)(acmPlayer.healingPower * 100)}%" +
-                                    $"\nCooldown Reduction: {-(int)((acmPlayer.cooldownReduction - 1f) * 100)}%" +
-                                    $"\nUltimate Cost Reduction: {(int)(acmPlayer.ultCooldownReduction * 100)}%");
+                abilityName.SetText($"-{Language.GetTextValue("Mods.ApacchiisClassesMod2.PlayerStatsText")}-" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.TimesDied")}: {acmPlayer.timesDied}" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.EnemiesKilled")}: {acmPlayer.enemiesKilled}" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.DamageTaken")}: {acmPlayer.totalDamageTaken} " +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.HighestCrit")}: {acmPlayer.highestCrit} " +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.DamageReduction")}: {(decimal)((acmPlayer.trueEndurance + Player.endurance - 1f) * 100)}%" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.AbilityPower")}: {(decimal)(acmPlayer.abilityPower * 100)}%" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.HealingPower")}: {(decimal)(acmPlayer.healingPower * 100)}%" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.CooldownReduction")}: {-(int)((acmPlayer.cooldownReduction - 1f) * 100)}%" +
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.UltCostReduction")}: {(int)(acmPlayer.ultCooldownReduction * 100)}%");
 
                 abilityCooldown.SetText("\n" +
-                                       $"Dodge Chance: {(decimal)(acmPlayer.dodgeChance * 100)}%\n");
+                                       $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.DodgeChance")}: {(decimal)(acmPlayer.dodgeChance * 100)}%\n");
             }
 
             if (!passiveButton.IsMouseHovering && !ability1Button.IsMouseHovering && !ability2Button.IsMouseHovering && !ability3Button.IsMouseHovering && !buttonTalents.IsMouseHovering && !relicsButton.IsMouseHovering && !relicsText.IsMouseHovering && !specsButton.IsMouseHovering && !specsText.IsMouseHovering)
@@ -485,7 +486,7 @@ namespace ApacchiisClassesMod2.UI
                 {
                     case "Vanguard":
                         //castType.SetText("-Constant Passive-");
-                        abilityName.SetText("[Enchanted Armor]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_P_Name")}]");
                         abilityText.SetText("Your armor is enchanted with light properties.\n" +
                                             "Enemies that directly attack you take a percentage of your defense as mitigable damage.");
                         abilityEffect1.SetText($"Reflected Damage: {acmPlayer.vanguardPassiveReflectAmount * 100 + acmPlayer.vanguardLevel * 2.5f}% = {acmPlayer.vanguardPassiveReflectAmount * 100}% + 2.5% p/Level{acmPlayer.vanguardLevel * 2.5f}%)");
@@ -493,7 +494,7 @@ namespace ApacchiisClassesMod2.UI
 
                     case "Blood Mage":
                         //castType.SetText("-Constant Passive-");
-                        abilityName.SetText("[Blood Well]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_P_Name")}]");
                         abilityText.SetText("Every second in battle earn a stack of 'Blood'.\n" +
                                             "Each stack will regenerate a small percentage of yourhealth each second.\n" +
                                             "Stacks decay out of battle and are lost on death.");
@@ -513,7 +514,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Commander":
-                        abilityName.SetText("[Commander's Will]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_P_Name")}]");
                         abilityText.SetText("Gain bonus damage reduction for each minion slot you have.");
 
                         abilityEffect1.SetText($"Endurance: {(decimal)(acmPlayer.commanderPassiveEndurance * acmPlayer.Player.maxMinions * 100)}%");
@@ -521,7 +522,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Scout":
-                        abilityName.SetText("[Scout's Agility]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_P_Name")}]");
                         abilityText.SetText("The scout has a free double jump and has increased movement speed.");
 
                         if(acmPlayer.scoutCanDoubleJump)
@@ -533,7 +534,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Soulmancer":
-                        abilityName.SetText("[Soul Rip]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Name")}]");
                         abilityText.SetText("Hitting enemies with magic weapons has a chance to rip a fragment of their soul causing it to\n" +
                                             "harm any nearby enemies.\n" +
                                             "Soul Rip chance increases by 1% per level.");
@@ -557,7 +558,7 @@ namespace ApacchiisClassesMod2.UI
                 {
                     case "Vanguard":
                         //castType.SetText("-Cursor Target-");
-                        abilityName.SetText("[Spear Of Light]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A1_Name")}]");
                         abilityText.SetText("Throw a spear of light that will explode if an enemy is nearby, dealing damage to all enemies around.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
                         abilityEffect1.SetText($"Explosion Damage: {(int)(acmPlayer.vanguardSpearBaseDamage + acmPlayer.vanguardLevel * 9)} = {acmPlayer.vanguardSpearBaseDamage} + 9 p/Level ({acmPlayer.vanguardLevel * 9})");
@@ -565,7 +566,7 @@ namespace ApacchiisClassesMod2.UI
 
                     case "Blood Mage":
                         //castType.SetText("-Cursor Target-");
-                        abilityName.SetText("[Transfusion]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Name")}]");
                         abilityText.SetText("Throw a blob of your own blood to seek out an enemy, when the blob hits its target it will return to\n" +
                                             "you with a bit of the enemy's blood and heal you for 10% of the enemy's max health.\n" +
                                             $"(Healing cannot be greater than {(decimal)(acmPlayer.bloodMageSiphonHealMax * 100)}% of your max health)");
@@ -575,7 +576,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Commander":
-                        abilityName.SetText("[War banner]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A1_Name")}]");
                         abilityText.SetText("Place a war banner at your feet." +
                                             "Players inside the banner's radius are granted damage reduction and\n" +
                                             "increased damage.\n" +
@@ -588,7 +589,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Scout":
-                        abilityName.SetText("[Hit-a-Soda]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A1_Name")}]");
                         abilityText.SetText("Take a sip from an energy drink you made yourself.\n" +
                                             "This drink will increase the damage you deal temporarily.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
@@ -598,7 +599,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Soulmancer":
-                        abilityName.SetText("[Consume]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Name")}]");
                         abilityText.SetText("For a short duration, everytime you hit an enemy with a soul fragment, recall it to yourself, consuming\n" +
                                             "it and healing you for a small percentage of your max health per fragment consumed.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
@@ -622,7 +623,7 @@ namespace ApacchiisClassesMod2.UI
                 {
                     case "Vanguard":
                         //castType.SetText("-No Target-");
-                        abilityName.SetText("[Light Barrier]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A2_Name")}]");
                         abilityText.SetText("Surround yourself in a barrier of light. Any damage taken when the barrier is active will be\n" +
                                             "reduced by a percentage.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability2MaxCooldown}s");
@@ -632,7 +633,7 @@ namespace ApacchiisClassesMod2.UI
 
                     case "Blood Mage":
                         //castType.SetText("-No Target Toggle-");
-                        abilityName.SetText("[Blood Enchantment]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A2_Name")}]");
                         abilityText.SetText("Enchant you weapon with your own blood, draining your health each second, but increasing the\n" +
                                             "damage you deal.");
                         abilityCooldown.SetText("[Toggleable]");
@@ -642,7 +643,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Commander":
-                        abilityName.SetText("[Battle Cry]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_A2_Name")}]");
                         abilityText.SetText("Scream loudly, intimidating enemies around you and knocking them back, increasing the damage they\n" +
                                             "take for a period of time.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability2MaxCooldown}s");
@@ -653,7 +654,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Scout":
-                        abilityName.SetText("[Explosive Trap]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_A2_Name")}]");
                         abilityText.SetText("Place an explosive trap under your cursor's position, it'll take some time to arm itself.\n" +
                                             "The trap will explode if an enemy gets too close, dealing damage to all enemies within 2x the trap's\n" +
                                             "detection range.");
@@ -664,7 +665,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Soulmancer":
-                        abilityName.SetText("[Soul Shatter]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A2_Name")}]");
                         if(acmPlayer.hasAghanims)
                             abilityText.SetText("Shatter the soul of nearby enemies dealing heavy damage and ripping an additional fragment per soul\n" +
                                                 "shattered.\n" +
@@ -692,7 +693,7 @@ namespace ApacchiisClassesMod2.UI
                 {
                     case "Vanguard":
                         //castType.SetText("-Point Target-");
-                        abilityName.SetText("[Sword Of Judgement]");                                                                            //100 chars p/line
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_Ult_Name")}]");                                                                            //100 chars p/line
                         abilityText.SetText("Call in a giant sword from the heavens. The sword hits enemies all around it, dealing massive damage\n" +
                                             "and executing enemies below 50% health.\n" +
                                             "(Bosses are executed below " + acmPlayer.vanguardUltimateBossExecute * 100 + "% health)");
@@ -702,7 +703,7 @@ namespace ApacchiisClassesMod2.UI
 
                     case "Blood Mage":
                         //castType.SetText("-No Target-");
-                        abilityName.SetText("[Regeneration]");
+                        abilityName.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_Ult_Name")}]");
                         abilityText.SetText("Quickly regenerate the blood of you and all your allies over time, regenerating a percentage of the\n" +
                                             "healed player's max health at a medium rate for a limited number of ticks.");
                         abilityCooldown.SetText("Cooldown: " + acmPlayer.ultChargeMax / 60 + "s In Battle");
@@ -711,7 +712,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Commander":
-                        abilityName.SetText("[Inspire]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Commander_Ult_Name")}]");
                         abilityText.SetText("Inspire all players, causing them to always land critical hits on enemies.\n" +
                                             "Minions can also crit during this duration");
                         abilityCooldown.SetText("Cooldown: " + acmPlayer.ultChargeMax / 60 + "s In Battle");
@@ -720,7 +721,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Scout":
-                        abilityName.SetText("[Nuclear-Slap (TM)]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Scout_Ult_Name")}]");
                         abilityText.SetText("Become invincible for " + acmPlayer.scoutUltInvDuration / 60 + " seconds and gain increased movement speed, jump height and\n" +
                                             "auto jump for a longer duration.");
                         abilityCooldown.SetText("Cooldown: " + acmPlayer.ultChargeMax / 60 + "s In Battle");
@@ -731,7 +732,7 @@ namespace ApacchiisClassesMod2.UI
                         break;
 
                     case "Soulmancer":
-                        abilityName.SetText("[Self Sacrifice]");
+                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_Ult_Name")}]");
                         abilityText.SetText("Rapidly rip fragments of your own soul, slightly draining your own health per fragment.\n" +
                                             "Each soul deals 1.5x [Soul Rip]'s damage.");
 
