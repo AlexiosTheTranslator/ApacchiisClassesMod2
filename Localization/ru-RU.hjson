@@ -1,0 +1,139 @@
+Mods: {
+	ApacchiisClassesMod2: {
+
+		# Translation by: @Alexios (Discord: Alexios#8580)
+		# Note by Alexios: It's my first Translation But i think i did it good.
+
+		# Player Stats
+		PlayerStatsText: Статы Игрока
+		MagicDamage: Магический Урон
+		MagicCrit: Шанс Магического Крита
+	    MeleeDamage: Урон В Ближнем Бою
+		MeleeCrit: Шанс Ближнего Крита
+	    RangedDamage: Дистанционный Урон
+		RangedCrit: Шанс Дистанционного Крита
+	    SummonDamage: Урон Призываемого Существа
+	    AllDamage: Любой Урон
+		AllCrit: Любой Крит
+	    MaxHealth: Максимальное Здоровье
+	    MaxMana: Максимальная Мана
+	    Defense: Защита 
+		ManaCost: Потребление Маны
+		MaxMinions: Максимальное Миньонов
+		WhipRange: Длина Кнута
+	    DamageReduction: Сопротивление Урону
+	    MovementSpeed: Скорость Движения
+		MovementAcceleration: Скорость Ускорения
+	    AttackSpeed: Скорость Урона
+	    AbilityPower: Сила Способности
+		HealingPower: Сила Лечения
+	    CooldownReduction: Снижение Перезарядка
+	    UltCost: Цена Ульты
+		UltCostReduction: Снижение Цены Ульты
+	    DodgeChance: Шанс Уворота
+		TimesDied: Раз Умер
+		EnemiesKilled: Врагов Убил
+		DamageTaken: Полученого Урона
+		HighestCrit: Высочайший Крит
+
+		# General
+		HoldToPreviewAbilities: Зажмите 'ВВЕРХ' Чтобы Просмотреть Способности
+		ClassPrefix: Класс
+		Passive: Пасивная Способность
+		Ability1: Способность 1
+		Ability2: Способность 2
+		Ultimate: Ульта
+		RandomRelic: Рандомная Реликвия
+	    RelicPrefix: Реликвия
+		Talents: Талант
+		Specializations: Специализация
+		UnlocksAfter10Text: Открывается после траты 10 очков навыка в дереве навыков
+		Locked: Закрыто
+
+		# -------------------------------------------------------------------------------------------------------------------------------
+		# FOR CLASSES, YOU DONT NEED TO TRANSLATE ABILITY/CLASS NAMES IF YOU DON'T WANT TO OR IF THERE ISN'T A DIRECT/CORRECT TRANSLATION
+		# -------------------------------------------------------------------------------------------------------------------------------
+
+		# Blood Mage's translated name is Кровавый Маг
+		BloodMage: Blood Mage
+		BloodMage_P_Name: Кровавый Колодец
+		BloodMage_P_Prev: Каждую секунду Во время сражения получите ячейку 'Крови', каждая ячейка немного увеличевает вашу регенерацую здоровья.
+
+		BloodMage_A1_Name: Пересадка Крови
+		BloodMage_A1_Prev: Киньте каплю собственной крови которая будет следовать за ближайшим врагом, нанесёт урон, и вернётся к вам с частью его крови, выстонавливая ваше здоровье.
+
+		BloodMage_A2_Name: Кровавое Зачеревание 
+		BloodMage_A2_Prev: Зачеруйте ваше оружие собственной кровью, постепенно теряя ваше здоровье но увеличивая наносимый урон.
+
+		BloodMage_Ult_Name: Регенерация
+		BloodMage_Ult_Prev: Регенераируйте ваше здоровье и ваших союзников каждую секунду через время.
+
+
+
+		# Commander's translated name is Командир
+		Commander: Commander
+		Commander_P_Name: Воля Командира
+		Commander_P_Prev: За каждого слота миньона вы получайте малое количество сопротивление урона.
+
+		Commander_A1_Name: Военного Знамя
+		Commander_A1_Prev: Поставьте военное знаме перед вашими ногами, все игроки стоящие внутри этой области увеличат урон и снизят получаймый урон.
+
+		Commander_A2_Name: Боевой Клич
+		Commander_A2_Prev: Кричит Громко, устрашая врагов вокруг вас увеличивая их получаймый урон которые они получают на некий период времени.
+
+		Commander_Ult_Name: Вдохновение
+		Commander_Ult_Prev: Вдохновите вас и ваших союзников, надиляя всем гарантированые критические удары на некий период времени.
+
+
+
+		# Scout's translated name is Скаут
+		Scout: Scout
+		Scout_P_Name: Подвижность
+		Scout_P_Prev: Скаут может делать двойной прыжок и имеет увеличинаю скорость движения.
+		Scout_P_DisableDoubleJump: Отключить Пасивный Двойной прыжок Скаута
+		Scout_P_EnableDoubleJump: Включить Пасивный Двойной прыжок Скаута
+
+		Scout_A1_Name: Хит-А-Сода
+		Scout_A1_Prev: Возьмите глоток вашего самодельного энергетика, увеличивая наносимый урон на время.
+
+		Scout_A2_Name: Взрывная Ловушка
+		Scout_A2_Prev: Поставьте взрывную ловушку с малой перезарядкой под вашим курсором, враги которые окажутся слишком близко к ловушке получат урон.
+
+		Scout_Ult_Name: Ядерный-Лещ (TM)
+		Scout_Ult_Prev_1: Станьте Бесмертным на
+		Scout_Ult_Prev_2: секунд, и получите увеличат повышанную мобильность на некий период времени.
+
+
+
+		# Soulmancer's translated name is Заклинатель Душ
+		Soulmancer: Soulmancer
+		Soulmancer_P_Name: Вырывание Души
+		Soulmancer_P_Prev_1:Ударяя врагов магическим оружием имеет шанс вырвать фрагмент их души, причиняя вред ближайшим врагам.
+		Soulmancer_P_Prev_2: Те фрагменты души могут нанести критический урон.
+
+		Soulmancer_A1_Name: Потребление
+		Soulmancer_A1_Prev: На короткое время, каждый раз когда фрагмент души коснётся врага, верьните его вам, потребляя его consuming it and исцеляя вас на маленький процент за каждый фрагмент потреблённый.
+
+		Soulmancer_A2_Name: Раскол Души
+		Soulmancer_A2_Prev: Расколите души ближайших врагов нанеся тяжёлый урон и вырывая допольнительные фрагменты за каждую раскаленную душу.
+
+		Soulmancer_Ult_Name: Самопожертвование
+		Soulmancer_Ult_Prev: Стремительно вырьвите фрагменты вашей души, слегка истощая ваше здоровье за каждый фрагмент. Каждый фрагмент души наносит 1.5x урона у [Вырывание Души].
+
+
+
+		# Vanguard's translated name is Авангард
+		Vanguard: Vanguard
+		Vanguard_P_Name: Зачеруйте Броню
+		Vanguard_P_Prev: Враги получают урон когда ударяя вас.
+
+		Vanguard_A1_Name: Копьё Света
+		Vanguard_A1_Prev: киньте копьё света, то копьё если оно близко к врагу, нанося всем врагам в окружении копья.
+
+		Vanguard_A2_Name: Баррьер Света
+		Vanguard_A2_Prev: Произнесите светового баррьера вокруг вас, снижая получаймый урон.
+
+		Vanguard_Ult_Name: Меч Правосудия
+		Vanguard_Ult_Prev: Гиганский меч падает с неба, нанеся тяжёлый урон и казня врагов.
+	}
+}
