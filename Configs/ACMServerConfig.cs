@@ -31,23 +31,44 @@ namespace ApacchiisClassesMod2.Configs
         [Range(1f, 1.25f)]
         [Label("Enemy Damage Multiplier")]
         [Tooltip("Increases how much damage enemies deal to the player\n[Default: 1.05x]")]
-
         public float enemyDamageMultiplier { get; set; }
 
-        [DefaultValue(true)]
-        [Label("Class-Specific Weapons")]
-        [Tooltip("If true, whenever you craft a class you'll receive a weak weapon specific to that class.\n[Default: On]")]
-        public bool classWeaponsEnabled { get; set; }
+        [Slider]
+        [DefaultValue(1.05f)]
+        [Increment(.01f)]
+        [Range(1f, 2f)]
+        [Label("Enemy(Non-boss) Health Multiplier")]
+        [Tooltip("Increases how much max health enemies that are NOT bosses have\n[Default: 1.05x]")]
+        public float enemyHealthMultiplier { get; set; }
 
-        [DefaultValue(false)]
-        [Label("Start with a random relic")]
-        [Tooltip("If true, characters will start with a random relic item.\n[Default: Off]")]
-        public bool startWithRelic { get; set; }
+        [Slider]
+        [DefaultValue(1.05f)]
+        [Increment(.01f)]
+        [Range(1f, 2f)]
+        [Label("Boss Health Multiplier")]
+        [Tooltip("Increases how much max health Bosses have\n[Default: 1.05x]")]
+        public float bossHealthMultiplier { get; set; }
+
+
+        //[DefaultValue(true)]
+        //[Label("Class-Specific Weapons")]
+        //[Tooltip("If true, whenever you craft a class you'll receive a weak weapon specific to that class.\n[Default: On]")]
+        //public bool classWeaponsEnabled { get; set; }
+
+        //[DefaultValue(false)]
+        //[Label("Start with a random relic")]
+        //[Tooltip("If true, characters will start with a random relic item.\nWorks even after a character has been created\n[Default: Off]")]
+        //public bool startWithRelic { get; set; }
 
         [DefaultValue(false)]
         [Label("Hidden Accessory Disables Stats")]
         [Tooltip("If true, all classes wont grant you stats when the accessory slot's visual is hidden\n[Default: Off]")]
         public bool configHidden { get; set; }
+
+        [DefaultValue(false)]
+        [Label("Extra Relic Slot")]
+        [Tooltip("If true, you get to equip two relics at a time instead of only one\n(Relics slotted on this slot will remain on it until removed, even with this setting disabled)\n(Make sure to remove said relics before deactivating this option if you want to keep it)\n[Default: Off]")]
+        public bool doubleRelics { get; set; }
 
         //[DefaultValue(false)]
         //[Label("Double Talents")]
@@ -66,10 +87,10 @@ namespace ApacchiisClassesMod2.Configs
         public float classStatMult { get; set; }
 
         [Label("Ability Power gained by held weapon's base DPS")]
-        [Tooltip("Changes how much ability power the player gets depending on the base dps of their currently held weapon\nThe higher this is, the more ability power you get\n[Default: 0.04]")]
-        [DefaultValue(.04f)]
+        [Tooltip("Changes how much ability power the player gets depending on the base dps of their currently held weapon\nThe higher this is, the more ability power you get\n[Default: 0.05]")]
+        [DefaultValue(.05f)]
         [Increment(.01f)]
-        [Range(.01f, .1f)]
+        [Range(.01f, .15f)]
         [Slider]
         [SliderColor(255, 255, 255)]
 

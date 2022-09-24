@@ -11,7 +11,6 @@ namespace ApacchiisClassesMod2.Items
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Class Book");
             Tooltip.SetDefault("[Can also be used to open the Classes Menu]\nDefeated bosses:\n");
         }
 
@@ -51,30 +50,35 @@ namespace ApacchiisClassesMod2.Items
                 
             if (modPlayer.hasVanguard)
             {
+                modPlayer.vanguardDefeatedBosses.Sort();
                 lineKills = new TooltipLine(Mod, "Kills", string.Join("\n", modPlayer.vanguardDefeatedBosses));
                 level = new TooltipLine(Mod, "Level", "Level  [" + modPlayer.vanguardDefeatedBosses.Count + "/" + Configs._ACMConfigServer.Instance.maxClassLevel + "]");
             }
                 
             if (modPlayer.hasBloodMage)
             {
+                modPlayer.bloodMageDefeatedBosses.Sort();
                 lineKills = new TooltipLine(Mod, "Kills", string.Join("\n", modPlayer.bloodMageDefeatedBosses));
                 level = new TooltipLine(Mod, "Level", "Level  [" + modPlayer.bloodMageDefeatedBosses.Count + "/" + Configs._ACMConfigServer.Instance.maxClassLevel + "]");
             }
 
             if (modPlayer.hasCommander)
-            { 
+            {
+                modPlayer.commanderDefeatedBosses.Sort();
                 lineKills = new TooltipLine(Mod, "Kills", string.Join("\n", modPlayer.commanderDefeatedBosses));
                 level = new TooltipLine(Mod, "Level", "Level [" + modPlayer.commanderDefeatedBosses.Count + "/" + Configs._ACMConfigServer.Instance.maxClassLevel + "]");
             }
 
             if (modPlayer.hasScout)
             {
+                modPlayer.scoutDefeatedBosses.Sort();
                 lineKills = new TooltipLine(Mod, "Kills", string.Join("\n", modPlayer.scoutDefeatedBosses));
                 level = new TooltipLine(Mod, "Level", "Level [" + modPlayer.scoutDefeatedBosses.Count + "/" + Configs._ACMConfigServer.Instance.maxClassLevel + "]");
             }
 
             if (modPlayer.hasSoulmancer)
             {
+                modPlayer.soulmancerDefeatedBosses.Sort();
                 lineKills = new TooltipLine(Mod, "Kills", string.Join("\n", modPlayer.soulmancerDefeatedBosses));
                 level = new TooltipLine(Mod, "Level", "Level [" + modPlayer.soulmancerDefeatedBosses.Count + "/" + Configs._ACMConfigServer.Instance.maxClassLevel + "]");
             }

@@ -68,9 +68,9 @@ namespace ApacchiisClassesMod2.Projectiles.Vanguard
             target.immune[Projectile.owner] = 1;
 
             if (target.type == NPCID.TheDestroyer || target.type == NPCID.TheDestroyerBody || target.type == NPCID.TheDestroyerTail)
-                damage /= 4;
+                damage /= 8;
             if (target.type == NPCID.EaterofWorldsBody || target.type == NPCID.EaterofWorldsHead || target.type == NPCID.EaterofWorldsTail)
-                damage /= 5;
+                damage /= 8;
 
             base.OnHitNPC(target, damage, knockback, crit);
         }

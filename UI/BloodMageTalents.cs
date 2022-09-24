@@ -735,46 +735,117 @@ namespace ApacchiisClassesMod2.UI
                 button10_Right.BackgroundColor = new Color(75, 75, 75);
             }
 
+
+
             if (acmPlayer.bloodMageTalent_1 == "L")
+            {
                 button1_Left.BackgroundColor = Color.DarkOrange;
+                button1_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_1 == "R")
+            {
                 button1_Right.BackgroundColor = Color.DarkOrange;
+                button1_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_2 == "L")
+            {
                 button2_Left.BackgroundColor = Color.DarkOrange;
+                button2_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_2 == "R")
+            {
                 button2_Right.BackgroundColor = Color.DarkOrange;
+                button2_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_3 == "L")
+            {
                 button3_Left.BackgroundColor = Color.DarkOrange;
+                button3_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_3 == "R")
+            {
                 button3_Right.BackgroundColor = Color.DarkOrange;
+                button3_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_4 == "L")
+            {
                 button4_Left.BackgroundColor = Color.DarkOrange;
+                button4_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_4 == "R")
+            {
                 button4_Right.BackgroundColor = Color.DarkOrange;
+                button4_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_5 == "L")
+            {
                 button5_Left.BackgroundColor = Color.DarkOrange;
+                button5_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_5 == "R")
+            {
                 button5_Right.BackgroundColor = Color.DarkOrange;
+                button5_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_6 == "L")
+            {
                 button6_Left.BackgroundColor = Color.DarkOrange;
+                button6_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_6 == "R")
+            {
                 button6_Right.BackgroundColor = Color.DarkOrange;
+                button6_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_7 == "L")
+            {
                 button7_Left.BackgroundColor = Color.DarkOrange;
+                button7_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_7 == "R")
+            {
                 button7_Right.BackgroundColor = Color.DarkOrange;
+                button7_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_8 == "L")
+            {
                 button8_Left.BackgroundColor = Color.DarkOrange;
+                button8_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_8 == "R")
+            {
                 button8_Right.BackgroundColor = Color.DarkOrange;
+                button8_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_9 == "L")
+            {
                 button9_Left.BackgroundColor = Color.DarkOrange;
+                button9_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_9 == "R")
+            {
                 button9_Right.BackgroundColor = Color.DarkOrange;
+                button9_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.bloodMageTalent_10 == "L")
+            {
                 button10_Left.BackgroundColor = Color.DarkOrange;
+                button10_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.bloodMageTalent_10 == "R")
+            {
                 button10_Right.BackgroundColor = Color.DarkOrange;
+                button10_Left.BackgroundColor = new Color(75, 75, 75);
+            }
 
             base.Update(gameTime);
         }
@@ -788,6 +859,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_1 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_1 == "R")
+                acmPlayer.bloodMageTalent_1 = "L";
         }
 
         private void Button1R(UIMouseEvent evt, UIElement listeningElement)
@@ -799,6 +873,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_1 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_1 == "L")
+                acmPlayer.bloodMageTalent_1 = "R";
         }
 
         private void Button2L(UIMouseEvent evt, UIElement listeningElement)
@@ -810,6 +887,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_2 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_2 == "R")
+                acmPlayer.bloodMageTalent_2 = "L";
         }
         private void Button2R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -820,6 +900,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_2 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_2 == "L")
+                acmPlayer.bloodMageTalent_2 = "R";
         }
 
         private void Button3L(UIMouseEvent evt, UIElement listeningElement)
@@ -831,6 +914,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_3 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_3 == "R")
+                acmPlayer.bloodMageTalent_3 = "L";
         }
         private void Button3R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -841,6 +927,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_3 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_3 == "L")
+                acmPlayer.bloodMageTalent_3 = "R";
         }
 
         private void Button4L(UIMouseEvent evt, UIElement listeningElement)
@@ -852,6 +941,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_4 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_4 == "R")
+                acmPlayer.bloodMageTalent_4 = "L";
         }
         private void Button4R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -862,6 +954,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_4 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_4 == "L")
+                acmPlayer.bloodMageTalent_4 = "R";
         }
 
         private void Button5L(UIMouseEvent evt, UIElement listeningElement)
@@ -873,6 +968,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_5 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_5 == "R")
+                acmPlayer.bloodMageTalent_5 = "L";
         }
         private void Button5R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -883,6 +981,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_5 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_5 == "L")
+                acmPlayer.bloodMageTalent_5 = "R";
         }
 
         private void Button6L(UIMouseEvent evt, UIElement listeningElement)
@@ -894,6 +995,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_6 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_6 == "R")
+                acmPlayer.bloodMageTalent_6 = "L";
         }
         private void Button6R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -904,6 +1008,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_6 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_6 == "L")
+                acmPlayer.bloodMageTalent_6 = "R";
         }
 
         private void Button7L(UIMouseEvent evt, UIElement listeningElement)
@@ -915,6 +1022,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_7 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_7 == "R")
+                acmPlayer.bloodMageTalent_7 = "L";
         }
         private void Button7R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -925,6 +1035,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_7 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_7 == "L")
+                acmPlayer.bloodMageTalent_7 = "R";
         }
 
         private void Button8L(UIMouseEvent evt, UIElement listeningElement)
@@ -936,6 +1049,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_8 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_8 == "R")
+                acmPlayer.bloodMageTalent_8 = "L";
         }
         private void Button8R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -946,6 +1062,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_8 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_8 == "L")
+                acmPlayer.bloodMageTalent_8 = "R";
         }
 
         private void Button9L(UIMouseEvent evt, UIElement listeningElement)
@@ -957,6 +1076,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_9 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_9 == "R")
+                acmPlayer.bloodMageTalent_9 = "L";
         }
         private void Button9R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -967,6 +1089,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_9 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_9 == "L")
+                acmPlayer.bloodMageTalent_9 = "R";
         }
 
         private void Button10L(UIMouseEvent evt, UIElement listeningElement)
@@ -978,6 +1103,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_10 = "L";
             }
+
+            if (acmPlayer.bloodMageTalent_10 == "R")
+                acmPlayer.bloodMageTalent_10 = "L";
         }
         private void Button10R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -988,6 +1116,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.bloodMageSpentSkillPoints++;
                 acmPlayer.bloodMageTalent_10 = "R";
             }
+
+            if (acmPlayer.bloodMageTalent_10 == "L")
+                acmPlayer.bloodMageTalent_10 = "R";
         }
 
         private void Close(UIMouseEvent evt, UIElement listeningElement)

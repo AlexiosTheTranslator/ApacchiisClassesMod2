@@ -22,15 +22,9 @@ namespace ApacchiisClassesMod2.Items.Classes
         float baseBadStat = .005f;
         float badStat; // Defense
 
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Blood Mage");
-            //DisplayName.GetTranslation(Language.ActiveCulture);
-        }
-
 		public override void SetDefaults()
 		{
-			Item.width = 30;
+            Item.width = 30;
 			Item.height = 30;
 			Item.accessory = true;	
 			Item.value = 0;
@@ -52,22 +46,22 @@ namespace ApacchiisClassesMod2.Items.Classes
             recipe.Register();
         }
 
-        public override void OnCreate(ItemCreationContext context)
-        {
-            if(_ACMConfigServer.Instance.classWeaponsEnabled)
-                Main.player[Main.myPlayer].QuickSpawnItem(Main.player[Main.myPlayer].GetSource_GiftOrReward(), ModContent.ItemType<ClassWeapons.BloodSpray>(), 1);
-            base.OnCreate(context);
-        }
+        //public override void OnCreate(ItemCreationContext context)
+        //{
+        //    if(_ACMConfigServer.Instance.classWeaponsEnabled)
+        //        Main.player[Main.myPlayer].QuickSpawnItemDirect(null, ModContent.ItemType<ClassWeapons.BloodSpray>(), 1);
+        //    base.OnCreate(context);
+        //}
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player Player = Main.player[Main.myPlayer];
             var modPlayer = Player.GetModPlayer<ACMPlayer>();
-            
+
             TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
-                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Name")})-\n" + //Blood Well
-                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Prev")}\n" +
+                $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_P_Name")})-\n" + //Blood Well
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_P_Prev")}\n" +
                 $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Name")})-\n" + //Transfusion
                 $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Prev")}\n" +
                 $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A2_Name")})-\n" + //Blood Enchantment

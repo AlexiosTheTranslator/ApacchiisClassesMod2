@@ -1,5 +1,5 @@
-displayName = Apacchii's Classes: Reborn
+displayName = Apacchii's Classes: Reborn [Runes]
 author = Apacchii
-version = 1.0.3
+version = 1.1.2
 homepage = https://discord.gg/G4TwQCAdxf
 includeSource = true

@@ -1,3 +1,5 @@
+using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
@@ -9,20 +11,20 @@ namespace ApacchiisClassesMod2.Items.Relics
     public class RandomRelic : ModItem
     {
         public override void SetStaticDefaults(){
-			DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.RandomRelic")}");
-			Tooltip.SetDefault("Gives you a random relic\n{$CommonItemTooltip.RightClickToOpen}");
+			Tooltip.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.GivesRelic")}\n" + "{CommonItemTooltip.RightClickToOpen}");
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 0;
         }
 
         public override void SetDefaults()
         {
+            //DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.RandomRelic")}");
+
             Item.width = 26;
             Item.height = 20;
             Item.rare = 11;
             Item.maxStack = 99;
             Item.value = 0;
         }
-
 
         //public override void AddRecipes()
         //{

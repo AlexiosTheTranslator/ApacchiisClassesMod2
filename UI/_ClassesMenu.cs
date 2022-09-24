@@ -76,13 +76,17 @@ namespace ApacchiisClassesMod2.UI
             $"[i:{ItemID.Heart}] Thank you for your support, @Eloraeon! [i:{ItemID.Heart}]",
             $"[i:{ItemID.Heart}] Thank you for your support, @Grumpy! [i:{ItemID.Heart}]",
             $"[i:{ItemID.Heart}] Thank you for your support, @Derin! [i:{ItemID.Heart}]",
+            $"[i:{ItemID.Heart}] Thank you for your support, @CaineSenpai! [i:{ItemID.Heart}]",
+            $"[i:{ItemID.Heart}] Thank you for your support, @Icarus' Bullet! [i:{ItemID.Heart}]",
+            $"[i:{ItemID.Heart}] Thank you for your support, @Capraeus! [i:{ItemID.Heart}]",
+            $"[i:{ItemID.Heart}] Thank you for your support, @Degeneracy! [i:{ItemID.Heart}]",
 
             "You can change the max level a class can reach in the mod's config (10-100).",
             $"You level up each time a boss is defeated, you can see which bosses you've defeated using a 'Class Book' [i:{ItemType<Items.ClassBook>()}].",
             "Ability Power increases how much effect, such as damage, an ability has.",
             "Cooldown Reduction reduces the cooldown of all your non-ultimate abilities.",
             $"You can craft new classes by crafting 'White Cloth' [i:{ItemType<Items.WhiteCloth>()}] on a 'Loom' [i:{ItemID.Loom}].",
-            $"You can reset your equipped class by cheating in a dose of 'Super ZIP' [i:{ItemType<Items.SuperZIP>()}].",
+            $"You can reset your equipped class by cheating in a dose of 'Super ZIP' [i:{ItemType<Items.ZIP>()}].",
             "You can make it so classes don't give you bonus stats by enabling 'Hidden Accessory Disables Stats' in the mod's config.", // Limit for text
             "You build up your ultimate by being in battle. You are considered to be in battle for 3s everytime you hit or are hit.",
             "Your ultimate build up decays at half the rate it builds up if you haven't been in battle for 5 seconds.",
@@ -106,7 +110,8 @@ namespace ApacchiisClassesMod2.UI
             "All relics have the same drop chance.",
             $"This server's settings has a {Configs._ACMConfigServer.Instance.classStatMult}x multiplier for class stats!",
             $"This server's settings has a {Configs._ACMConfigServer.Instance.enemyDamageMultiplier}x multiplier for all enemy damage!",
-            $"Healing Power does NOT affect potions[i:{ItemID.LesserHealingPotion} and/or relics!]"
+            $"Healing Power does NOT affect potions [i:{ItemID.LesserHealingPotion} and/or relics!]",
+            $"You get Ability Power based on your currently held weapon's base DPS, the higher it is, the more you get!"
         };
         int chosenTip = 0;
         int prevTip = -1;
@@ -186,7 +191,7 @@ namespace ApacchiisClassesMod2.UI
             specsButton.BorderColor = new Color(25, 25, 25);
             Append(specsButton);
 
-            specsText = new UIText("");
+            specsText = new UIText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Runes")}");
             specsText.VAlign = .5f;
             specsText.HAlign = .5f;
             specsButton.Append(specsText);
@@ -343,8 +348,8 @@ namespace ApacchiisClassesMod2.UI
                 prevTip = chosenTip;
                 tipsText.SetText("" + tip[chosenTip]);
             }
-                
 
+            specsText.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Runes")} ({acmPlayer.cardsPoints})");
             selectedClass = Player.GetModPlayer<ACMPlayer>().equippedClass;
             className.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: " + selectedClass);
             abilityName.SetText("");
@@ -415,11 +420,6 @@ namespace ApacchiisClassesMod2.UI
                 relicsButton.BorderColor = new Color(25, 25, 25);
             }
 
-            if (acmPlayer.spentSkillPointsGlobal >= 10)
-                specsText.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Specializations")}");
-            else
-                specsText.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Locked")}]");
-
             if (specsButton.IsMouseHovering || specsText.IsMouseHovering)
             {
                 Main.LocalPlayer.mouseInterface = true;
@@ -464,10 +464,11 @@ namespace ApacchiisClassesMod2.UI
                                     $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.AbilityPower")}: {(decimal)(acmPlayer.abilityPower * 100)}%" +
                                     $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.HealingPower")}: {(decimal)(acmPlayer.healingPower * 100)}%" +
                                     $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.CooldownReduction")}: {-(int)((acmPlayer.cooldownReduction - 1f) * 100)}%" +
-                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.UltCostReduction")}: {(int)(acmPlayer.ultCooldownReduction * 100)}%");
+                                    $"\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.UltCost")}: {(int)(acmPlayer.ultCooldownReduction * 100)}%");
 
                 abilityCooldown.SetText("\n" +
-                                       $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.DodgeChance")}: {(decimal)(acmPlayer.dodgeChance * 100)}%\n");
+                                       $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.DodgeChance")}: {(decimal)(acmPlayer.dodgeChance * 100)}%\n" +
+                                       $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxMinions")}: {acmPlayer.Player.maxMinions}");
             }
 
             if (!passiveButton.IsMouseHovering && !ability1Button.IsMouseHovering && !ability2Button.IsMouseHovering && !ability3Button.IsMouseHovering && !buttonTalents.IsMouseHovering && !relicsButton.IsMouseHovering && !relicsText.IsMouseHovering && !specsButton.IsMouseHovering && !specsText.IsMouseHovering)
@@ -482,16 +483,16 @@ namespace ApacchiisClassesMod2.UI
                     tick = true;
                 }
 
+                abilityName.SetText($"[{acmPlayer.P_Name}]");
+                abilityText.SetText($"{acmPlayer.P_Desc_1}\n{acmPlayer.P_Desc_2}\n{acmPlayer.P_Desc_3}\n{acmPlayer.P_Desc_4}");
+
+                abilityEffect1.SetText(acmPlayer.P_Effect_1);
+                abilityEffect2.SetText(acmPlayer.P_Effect_2);
+                abilityEffect3.SetText(acmPlayer.P_Effect_3);
+                abilityEffect4.SetText(acmPlayer.P_Effect_4);
+
                 switch (selectedClass)
                 {
-                    case "Vanguard":
-                        //castType.SetText("-Constant Passive-");
-                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_P_Name")}]");
-                        abilityText.SetText("Your armor is enchanted with light properties.\n" +
-                                            "Enemies that directly attack you take a percentage of your defense as mitigable damage.");
-                        abilityEffect1.SetText($"Reflected Damage: {acmPlayer.vanguardPassiveReflectAmount * 100 + acmPlayer.vanguardLevel * 2.5f}% = {acmPlayer.vanguardPassiveReflectAmount * 100}% + 2.5% p/Level{acmPlayer.vanguardLevel * 2.5f}%)");
-                        break;
-
                     case "Blood Mage":
                         //castType.SetText("-Constant Passive-");
                         abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_P_Name")}]");
@@ -554,16 +555,18 @@ namespace ApacchiisClassesMod2.UI
                     tick = true;
                 }
 
+                abilityCooldown.SetText($"Cooldown: {(decimal)acmPlayer.ability1MaxCooldown}s");
+
+                abilityName.SetText($"[{acmPlayer.A1_Name}]");
+                abilityText.SetText($"{acmPlayer.A1_Desc_1}\n{acmPlayer.A1_Desc_2}\n{acmPlayer.A1_Desc_3}\n{acmPlayer.A1_Desc_4}");
+                
+                abilityEffect1.SetText(acmPlayer.A1_Effect_1);
+                abilityEffect2.SetText(acmPlayer.A1_Effect_2);
+                abilityEffect3.SetText(acmPlayer.A1_Effect_3);
+                abilityEffect4.SetText(acmPlayer.A1_Effect_4);
+
                 switch (selectedClass)
                 {
-                    case "Vanguard":
-                        //castType.SetText("-Cursor Target-");
-                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A1_Name")}]");
-                        abilityText.SetText("Throw a spear of light that will explode if an enemy is nearby, dealing damage to all enemies around.");
-                        abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
-                        abilityEffect1.SetText($"Explosion Damage: {(int)(acmPlayer.vanguardSpearBaseDamage + acmPlayer.vanguardLevel * 9)} = {acmPlayer.vanguardSpearBaseDamage} + 9 p/Level ({acmPlayer.vanguardLevel * 9})");
-                        break;
-
                     case "Blood Mage":
                         //castType.SetText("-Cursor Target-");
                         abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A1_Name")}]");
@@ -571,7 +574,7 @@ namespace ApacchiisClassesMod2.UI
                                             "you with a bit of the enemy's blood and heal you for 10% of the enemy's max health.\n" +
                                             $"(Healing cannot be greater than {(decimal)(acmPlayer.bloodMageSiphonHealMax * 100)}% of your max health)");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
-                        abilityEffect1.SetText($"Damage: {(decimal)(acmPlayer.bloodMageSiphonBaseDamage + acmPlayer.bloodMageLevel * 5)} = {acmPlayer.bloodMageSiphonBaseDamage} + 5 p/Level({ acmPlayer.bloodMageLevel * 5})");
+                        abilityEffect1.SetText($"Damage: {(decimal)(acmPlayer.bloodMageSiphonBaseDamage + acmPlayer.bloodMageLevel * 6)} = {acmPlayer.bloodMageSiphonBaseDamage} + 6 p/Level({ acmPlayer.bloodMageLevel * 6})");
                         abilityEffect2.SetText($"Max Healing: {(decimal)acmPlayer.bloodMageSiphonHealMax * 100}% of your max health, except via healing power");
                         break;
 
@@ -594,18 +597,22 @@ namespace ApacchiisClassesMod2.UI
                                             "This drink will increase the damage you deal temporarily.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
 
-                        abilityEffect1.SetText($"Total Damage Dealt: {(decimal)(acmPlayer.scoutColaDamageBonus) * 100}% {acmPlayer.scoutColaDamageBonusLevel * 100}% p/Level({(decimal)(acmPlayer.scoutColaDamageBonusLevel * acmPlayer.scoutLevel * 100)}%) = {(decimal)((acmPlayer.scoutColaDamageBonus + acmPlayer.scoutColaDamageBonusLevel * acmPlayer.scoutLevel) * 100)}%");
+                        abilityEffect1.SetText($"Bonus Damage Dealt: {(decimal)(acmPlayer.scoutColaDamageBonus -1f) * 100}% + {acmPlayer.scoutColaDamageBonusLevel * 100}% p/Level({(decimal)(acmPlayer.scoutColaDamageBonusLevel * acmPlayer.scoutLevel * 100)}%) = {(decimal)(((acmPlayer.scoutColaDamageBonus - 1f) + acmPlayer.scoutColaDamageBonusLevel * acmPlayer.scoutLevel) * 100)}%");
                         abilityEffect2.SetText($"Duration: {acmPlayer.scoutColaDuration / 60}s");
                         break;
 
                     case "Soulmancer":
                         abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Name")}]");
                         abilityText.SetText("For a short duration, everytime you hit an enemy with a soul fragment, recall it to yourself, consuming\n" +
-                                            "it and healing you for a small percentage of your max health per fragment consumed.");
+                                            "it and healing you for a small percentage of your max health per fragment consumed.\n" +
+                                            "Healing only applies if you are below 50% health.");
                         abilityCooldown.SetText($"Cooldown: {acmPlayer.ability1MaxCooldown}s");
 
                         abilityEffect2.SetText($"Heal p/Fragment: {(decimal)(acmPlayer.soulmancerConsumeHeal * 100)}%");
                         abilityEffect1.SetText($"Duration: {(decimal)(acmPlayer.soulmancerConsumeDuration / 60)}s");
+                        break;
+
+                    case "Crusader":
                         break;
                 }
             }
@@ -619,18 +626,18 @@ namespace ApacchiisClassesMod2.UI
                     tick = true;
                 }
 
+                abilityCooldown.SetText($"Cooldown: {(decimal)acmPlayer.ability2MaxCooldown}s");
+
+                abilityName.SetText($"[{acmPlayer.A2_Name}]");
+                abilityText.SetText($"{acmPlayer.A2_Desc_1}\n{acmPlayer.A2_Desc_2}\n{acmPlayer.A2_Desc_3}\n{acmPlayer.A2_Desc_4}");
+
+                abilityEffect1.SetText(acmPlayer.A2_Effect_1);
+                abilityEffect2.SetText(acmPlayer.A2_Effect_2);
+                abilityEffect3.SetText(acmPlayer.A2_Effect_3);
+                abilityEffect4.SetText(acmPlayer.A2_Effect_4);
+
                 switch (selectedClass)
                 {
-                    case "Vanguard":
-                        //castType.SetText("-No Target-");
-                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_A2_Name")}]");
-                        abilityText.SetText("Surround yourself in a barrier of light. Any damage taken when the barrier is active will be\n" +
-                                            "reduced by a percentage.");
-                        abilityCooldown.SetText($"Cooldown: {acmPlayer.ability2MaxCooldown}s");
-                        abilityEffect1.SetText("Damage Reduction: " + (decimal)(acmPlayer.vanguardShieldDamageReduction * 100) + "%");
-                        abilityEffect2.SetText("Duration: " + (decimal)(acmPlayer.vanguardShieldBaseDuration / 60) + "s + 0.3s p/Level(" + (decimal)(acmPlayer.vanguardLevel * 0.3) + "s) = " + (decimal)(acmPlayer.vanguardShieldBaseDuration / 60 + acmPlayer.vanguardLevel * 0.3f) + "s");
-                        break;
-
                     case "Blood Mage":
                         //castType.SetText("-No Target Toggle-");
                         abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_A2_Name")}]");
@@ -689,18 +696,18 @@ namespace ApacchiisClassesMod2.UI
                     tick = true;
                 }
 
+                abilityCooldown.SetText($"Cooldown: {(decimal)(acmPlayer.ultChargeMax / 60)}s In Battle");
+
+                abilityName.SetText($"[{acmPlayer.Ult_Name}]");
+                abilityText.SetText($"{acmPlayer.Ult_Desc_1}\n{acmPlayer.A1_Desc_2}\n{acmPlayer.A1_Desc_3}\n{acmPlayer.A1_Desc_4}");
+
+                abilityEffect1.SetText(acmPlayer.Ult_Effect_1);
+                abilityEffect2.SetText(acmPlayer.Ult_Effect_2);
+                abilityEffect3.SetText(acmPlayer.Ult_Effect_3);
+                abilityEffect4.SetText(acmPlayer.Ult_Effect_4);
+
                 switch (selectedClass)
                 {
-                    case "Vanguard":
-                        //castType.SetText("-Point Target-");
-                        abilityName.SetText($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.Vanguard_Ult_Name")}]");                                                                            //100 chars p/line
-                        abilityText.SetText("Call in a giant sword from the heavens. The sword hits enemies all around it, dealing massive damage\n" +
-                                            "and executing enemies below 50% health.\n" +
-                                            "(Bosses are executed below " + acmPlayer.vanguardUltimateBossExecute * 100 + "% health)");
-                        abilityCooldown.SetText("Cooldown: " + acmPlayer.ultChargeMax / 60 + "s In Battle");
-                        abilityEffect1.SetText("Damage: " + acmPlayer.vanguardSwordBaseDamage + " + 14 p/Level(" + acmPlayer.vanguardLevel * 14 + ") = " + (int)(acmPlayer.vanguardSwordBaseDamage + (acmPlayer.vanguardLevel * 14)));
-                        break;
-
                     case "Blood Mage":
                         //castType.SetText("-No Target-");
                         abilityName.SetText($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.BloodMage_Ult_Name")}]");
@@ -751,11 +758,11 @@ namespace ApacchiisClassesMod2.UI
         {
             var acmPlayer = Player.GetModPlayer<ACMPlayer>();
 
-            if (specsButton.IsMouseHovering || specsText.IsMouseHovering)
-            {
-                if (acmPlayer.spentSkillPointsGlobal < 10)
-                    Main.hoverItemName = "Unlocks after spending 10 skill points on the talent tree";
-            }
+            //if (specsButton.IsMouseHovering || specsText.IsMouseHovering)
+            //{
+            //    if (acmPlayer.spentSkillPointsGlobal < 10)
+            //        Main.hoverItemName = "Unlocks after spending 10 skill points on the talent tree";
+            //}
                 base.DrawSelf(spriteBatch);
         }
 
@@ -806,35 +813,37 @@ namespace ApacchiisClassesMod2.UI
         private void OpenSpecs(UIMouseEvent evt, UIElement listeningElement)
         {
             var acmPlayer = Player.GetModPlayer<ACMPlayer>();
-            if(acmPlayer.spentSkillPointsGlobal >= 10)
-            {
+            //if(acmPlayer.spentSkillPointsGlobal >= 10)
+            //{
+            //    GetInstance<ACM2ModSystem>()._ClassesMenu.SetState(null);
+            //
+            //    if (acmPlayer.hasBloodMage && GetInstance<ACM2ModSystem>()._BloodMageSpecs.CurrentState == null)
+            //        GetInstance<ACM2ModSystem>()._BloodMageSpecs.SetState(new Specializations.BloodMageSpecs());
+            //
+            //    if (acmPlayer.hasVanguard && GetInstance<ACM2ModSystem>()._VanguardSpecs.CurrentState == null)
+            //        GetInstance<ACM2ModSystem>()._VanguardSpecs.SetState(new Specializations.VanguardSpecs());
+            //
+            //    if (acmPlayer.hasCommander && GetInstance<ACM2ModSystem>()._CommanderSpecs.CurrentState == null)
+            //        GetInstance<ACM2ModSystem>()._CommanderSpecs.SetState(new Specializations.CommanderSpecs());
+            //
+            //    if (acmPlayer.hasScout && GetInstance<ACM2ModSystem>()._ScoutSpecs.CurrentState == null)
+            //        GetInstance<ACM2ModSystem>()._ScoutSpecs.SetState(new Specializations.ScoutSpecs());
+            //
+            //    if(acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._SoulmancerSpecs.CurrentState == null)
+            //        GetInstance<ACM2ModSystem>()._SoulmancerSpecs.SetState(new Specializations.SoulmancerSpecs());
+            //
+            //        SoundEngine.PlaySound(SoundID.MenuOpen);
+            //}
+            //else
+            //{
+            //    SoundEngine.PlaySound(SoundID.Unlock);
+            //}
+            //Cards
+            if (GetInstance<ACM2ModSystem>()._MyDeck.CurrentState == null)
+                GetInstance<ACM2ModSystem>()._MyDeck.SetState(new Specializations.MyDeck());
+
                 GetInstance<ACM2ModSystem>()._ClassesMenu.SetState(null);
 
-                if (acmPlayer.hasBloodMage && GetInstance<ACM2ModSystem>()._BloodMageSpecs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._BloodMageSpecs.SetState(new Specializations.BloodMageSpecs());
-
-                if (acmPlayer.hasVanguard && GetInstance<ACM2ModSystem>()._VanguardSpecs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._VanguardSpecs.SetState(new Specializations.VanguardSpecs());
-
-                if (acmPlayer.hasCommander && GetInstance<ACM2ModSystem>()._CommanderSpecs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._CommanderSpecs.SetState(new Specializations.CommanderSpecs());
-
-                if (acmPlayer.hasScout && GetInstance<ACM2ModSystem>()._ScoutSpecs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._ScoutSpecs.SetState(new Specializations.ScoutSpecs());
-
-                //if(acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._SoulmancerSpecs.CurrentState == null)
-                //    GetInstance<ACM2ModSystem>()._SoulmancerSpecs.SetState(new Specializations.SoulmancerSpecs());
-
-                if (acmPlayer.hasSoulmancer && GetInstance<ACM2ModSystem>()._Specs.CurrentState == null)
-                    GetInstance<ACM2ModSystem>()._Specs.SetState(new Specializations.Specs());
-
-                    SoundEngine.PlaySound(SoundID.MenuOpen);
-            }
-            else
-            {
-                SoundEngine.PlaySound(SoundID.Unlock);
-            }
-            
         }
     }
 }

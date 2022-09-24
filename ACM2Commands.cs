@@ -1,5 +1,7 @@
 using IL.Terraria.Localization;
+using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Chat;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -15,10 +17,10 @@ namespace ApacchiisClassesMod2
             => "acr";
 
         public override string Usage
-            => "/acr resetHUD";
+            => "/acr <command>";
 
         public override string Description
-            => "Resets the HUD from 'Apacchii's Clases: Reborn' if it is stuck";
+            => "Mostly used for debugging";
 
         public override void Action(CommandCaller caller, string input, string[] args)
         {
@@ -46,6 +48,64 @@ namespace ApacchiisClassesMod2
                 modPlayer.InBattle();
 
                 caller.Reply("All cooldowns removed from player: '" + Main.player[player].name + "'");
+            }
+
+            if(args[0] == "resetRunes" || args[0] == "resetCards")
+            {
+                modPlayer.card_ProwlerCount = 0;
+                modPlayer.card_CarryCount = 0;
+                modPlayer.card_DeadeyeCount = 0;
+                modPlayer.card_FortifiedCount = 0;
+                modPlayer.card_HealerCount = 0;
+                modPlayer.card_HealthyCount = 0;
+                modPlayer.card_ImpenetrableCount = 0;
+                modPlayer.card_MagicalCount = 0;
+                modPlayer.card_MasterfulCount = 0;
+                modPlayer.card_MendingCount = 0;
+                modPlayer.card_MightyCount = 0;
+                modPlayer.card_NimbleHandsCount = 0;
+                modPlayer.card_PowerfulCount = 0;
+                modPlayer.card_SneakyCount = 0;
+                modPlayer.card_SparkOfGeniusCount = 0;
+                modPlayer.card_TimelessCount = 0;
+                modPlayer.card_VeteranCount = 0;
+
+                caller.Reply("All runes removed from player: '" + Main.player[player].name + "'");
+            }
+
+            if (args[0] == "cheatLevelUp")
+            {
+                if (modPlayer.hasBloodMage)
+                {
+                    modPlayer.bloodMageSkillPoints++;
+                    modPlayer.bloodMageDefeatedBosses.Add("Cheat Level");
+                }
+
+                if (modPlayer.hasCommander)
+                {
+                    modPlayer.commanderSkillPoints++;
+                    modPlayer.commanderDefeatedBosses.Add("Cheat Level");
+                }
+
+                if (modPlayer.hasScout)
+                {
+                    modPlayer.scoutSkillPoints++;
+                    modPlayer.scoutDefeatedBosses.Add("Cheat Level");
+                }
+
+                if (modPlayer.hasSoulmancer)
+                {
+                    modPlayer.soulmancerSkillPoints++;
+                    modPlayer.soulmancerDefeatedBosses.Add("Cheat Level");
+                }
+
+                if (modPlayer.hasVanguard)
+                {
+                    modPlayer.vanguardSkillPoints++;
+                    modPlayer.vanguardDefeatedBosses.Add("Cheat Level");
+                }
+
+                caller.Reply($"Added a cheat level to the player's currently equipped class");
             }
 
             if (args[0] == "resetHUD")

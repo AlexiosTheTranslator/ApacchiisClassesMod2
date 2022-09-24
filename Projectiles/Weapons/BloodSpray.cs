@@ -10,9 +10,6 @@ namespace ApacchiisClassesMod2.Projectiles.Weapons
 {
     public class BloodSpray : ModProjectile
     {
-        bool hasHitEnemy = false;
-        int healing = 0;
-
         public override string Texture => "ApacchiisClassesMod2/Projectiles/Invisible";
 
         public override void SetStaticDefaults()

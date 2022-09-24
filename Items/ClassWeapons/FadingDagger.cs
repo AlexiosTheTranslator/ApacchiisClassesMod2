@@ -9,8 +9,6 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 {
     public class FadingDagger : ModItem
 	{
-        Player player = Main.player[Main.myPlayer];
-
         public override void SetStaticDefaults()
         {
             Tooltip.SetDefault("Critical hits deal an additional 4 damage");

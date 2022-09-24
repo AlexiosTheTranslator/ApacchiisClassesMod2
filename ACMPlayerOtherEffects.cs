@@ -29,7 +29,7 @@ namespace ApacchiisClassesMod2
         int bloodGemMeleeTimer = 0;
 
         float leysMushroomBuffChance = .14f;
-        float leysMushroomHealChance = .04f;
+        float leysMushroomHealChance = .03f;
         float leysMushroomHeal = .03f;
 
         string[] nessieProcText =

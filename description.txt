@@ -9,12 +9,15 @@ Freatures:
 - Highly customizable game/mod balancing via mod configuration
 - Partial localization support (need translators)
 
+(Mod Configuration allows you to change how many stats you get from classes, how much damage/health enemies have/deal and much more, please take a look at them if you want to balance things out yourself)
 
 As of now there are 5 classes.
 Each class has at least 1 passive ability, 2 active abilities, 1 ultimate ability, and 2 trees (Talents/Specializations) specific for that class.
 
 Classes level up automatically each time a boss is defeated and the levels are player and class-sided, which means your classes will all progress individually per character.
 The class' max level is as high as the amount of bosses you have in the game, including modded.
+
+
 
 Dont forget to bind your mod keybinds!
 

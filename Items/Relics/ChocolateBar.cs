@@ -14,7 +14,7 @@ namespace ApacchiisClassesMod2.Items.Relics
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault($"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.RelicPrefix")}] Chocolate Bar");
+            DisplayName.SetDefault($"[Relic] Chocolate Bar");
             Tooltip.SetDefault(desc);
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -39,11 +39,18 @@ namespace ApacchiisClassesMod2.Items.Relics
 
             base.UpdateVanity(player);
         }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            foreach (TooltipLine line in tooltips)
+                if (line.Mod == "Terraria" && line.Name == "Equipable")
+                    line.Text = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.EquipableRelic")}";
+
+            base.ModifyTooltips(tooltips);
+        }
+
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
-            if (player.GetModPlayer<ACMPlayer>().hasRelic == true)
-                return false;
-
             if (!modded)
                 return false;
 

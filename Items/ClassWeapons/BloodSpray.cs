@@ -13,7 +13,6 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Blood Spray");
             Tooltip.SetDefault("Uses " + hpCost + " health\n" +
                                "Fires a spray of 3 blobs of your own blood");
         }
@@ -68,6 +67,15 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
                 }
             }
             return false;
+        }
+
+        public override void AddRecipes()
+        {
+            var recipe = CreateRecipe(1);
+            recipe.AddIngredient(this);
+            recipe.AddTile(TileID.WorkBenches);
+            recipe.ReplaceResult(ModContent.ItemType<Relics.RandomRelic>(), 1);
+            recipe.Register();
         }
 
         public override Vector2? HoldoutOrigin()

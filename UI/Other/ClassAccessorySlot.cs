@@ -8,26 +8,23 @@ namespace ApacchiisClassesMod2.UI.Other
 {
 	public class ClasAccessorySlot : ModAccessorySlot
 	{
-		public override string FunctionalTexture => "ApacchiisClassesMod2/Assets/Class";
+        public override string FunctionalTexture => "ApacchiisClassesMod2/Assets/Class";
         public override string VanityTexture => "ApacchiisClassesMod2/Assets/Relic";
-		public override bool DrawVanitySlot => true;
-		public override bool DrawDyeSlot => false;
-		//public override Vector2? CustomLocation => new Vector2(Main.screenWidth * .85f, Main.screenHeight * .51f);
-
 		public override string FunctionalBackgroundTexture => "Terraria/Images/Inventory_Back7"; //7
 		public override string VanityBackgroundTexture => "Terraria/Images/Inventory_Back11";
+		public override bool DrawVanitySlot => true;
+		public override bool DrawDyeSlot => false;
 
 		public override bool CanAcceptItem(Item checkItem, AccessorySlotType context)
 		{
 			if (context == AccessorySlotType.FunctionalSlot && checkItem.GetGlobalItem<ACMGlobalItem>().isClass)
-            {
 				return true;
-			}
 			
 			if (context == AccessorySlotType.VanitySlot && checkItem.GetGlobalItem<ACMGlobalItem>().isRelic)
-            {
 				return true;
-			}
+
+			//if (context == AccessorySlotType.DyeSlot && checkItem.GetGlobalItem<ACMGlobalItem>().isRelic)
+			//	return true;
 
 			return false;
 		}
@@ -40,11 +37,6 @@ namespace ApacchiisClassesMod2.UI.Other
 			return false;
 		}
 
-        //public override bool IsVisibleWhenNotEnabled()
-        //{
-        //	return false;
-        //}
-
         public override void OnMouseHover(AccessorySlotType context)
 		{
 			switch (context)
@@ -53,8 +45,11 @@ namespace ApacchiisClassesMod2.UI.Other
 					Main.hoverItemName = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}";
 					break;
 				case AccessorySlotType.VanitySlot:
-					Main.hoverItemName = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.RelicPrefix")}";
+					Main.hoverItemName = $"Relic";
 					break;
+				//case AccessorySlotType.DyeSlot:
+				//	Main.hoverItemName = $"Relic";
+				//	break;
 			}
 		}
 	}

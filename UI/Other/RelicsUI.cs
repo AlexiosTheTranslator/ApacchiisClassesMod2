@@ -18,8 +18,6 @@ namespace ApacchiisClassesMod2.UI.Other
 
         int relicCount; // 15 relics per line
         bool updated = false;
-        int n = 0;
-        int line = 0;
 
         UIPanel background;
         UIPanel[] relicSlot;
@@ -27,6 +25,9 @@ namespace ApacchiisClassesMod2.UI.Other
 
         UIPanel close;
         UIText closeText;
+
+        UIPanel helpPanel;
+        UIText helpText;
 
         public override void OnInitialize()
         {
@@ -112,6 +113,22 @@ namespace ApacchiisClassesMod2.UI.Other
             closeText.OnClick += Close;
             close.Append(closeText);
 
+            helpPanel = new UIPanel();
+            helpPanel.VAlign = .5f;
+            helpPanel.HAlign = .5f;
+            helpPanel.Top.Set(-270, 0f);
+            helpPanel.Left.Set(305, 0f);
+            helpPanel.Width.Set(50, 0f);
+            helpPanel.Height.Set(50, 0f);
+            helpPanel.BackgroundColor = Color.Blue;
+            helpPanel.BorderColor = Color.SkyBlue;
+            Append(helpPanel);
+
+            helpText = new UIText("?");
+            helpText.VAlign = .5f;
+            helpText.HAlign = .5f;
+            helpPanel.Append(helpText);
+
             base.OnInitialize();
         }
 
@@ -145,6 +162,11 @@ namespace ApacchiisClassesMod2.UI.Other
                                          $"{ItemLoader.GetItem(acmPlayer.relicList[i]).Item.GetGlobalItem<ACMGlobalItem>().desc}";
                 }
             }
+
+            if (helpPanel.IsMouseHovering || helpText.IsMouseHovering)
+                Main.hoverItemName = "Relics are items dropped from 'Random Relics', which randomly drop from all enemies\n" +
+                                     "These relics are equipable on the slot right next to the your class' banner accessory slot\n" +
+                                     "All relics have the same chance to drop and only one can be equipped at a time";
 
             base.Draw(spriteBatch);
         }

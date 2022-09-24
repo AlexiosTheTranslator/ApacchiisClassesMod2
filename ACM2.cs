@@ -74,6 +74,7 @@ namespace ApacchiisClassesMod2
 
                     ACMPlayer acmPlayer = Main.player[playernumber].GetModPlayer<ACMPlayer>();
 
+
                     switch (playerClass)
                     {
                         case "Vanguard":
@@ -81,6 +82,7 @@ namespace ApacchiisClassesMod2
                             {
                                 acmPlayer.vanguardDefeatedBosses.Add(bossDefeated);
                                 acmPlayer.vanguardSkillPoints++;
+                                acmPlayer.cardsPoints += 2;
                             }
                             break;
 
@@ -89,6 +91,7 @@ namespace ApacchiisClassesMod2
                             {
                                 acmPlayer.bloodMageDefeatedBosses.Add(bossDefeated);
                                 acmPlayer.bloodMageSkillPoints++;
+                                acmPlayer.cardsPoints += 2;
                             }
                             break;
 
@@ -97,6 +100,7 @@ namespace ApacchiisClassesMod2
                             {
                                 acmPlayer.commanderDefeatedBosses.Add(bossDefeated);
                                 acmPlayer.commanderSkillPoints++;
+                                acmPlayer.cardsPoints += 2;
                             }
                             break;
 
@@ -105,6 +109,7 @@ namespace ApacchiisClassesMod2
                             {
                                 acmPlayer.scoutDefeatedBosses.Add(bossDefeated);
                                 acmPlayer.scoutSkillPoints++;
+                                acmPlayer.cardsPoints += 2;
                             }
                             break;
 
@@ -113,10 +118,11 @@ namespace ApacchiisClassesMod2
                             {
                                 acmPlayer.soulmancerDefeatedBosses.Add(bossDefeated);
                                 acmPlayer.soulmancerSkillPoints++;
+                                acmPlayer.cardsPoints += 2;
                             }
                             break;
                     }
-                    acmPlayer.levelUpText = true;
+                    //acmPlayer.levelUpText = true;
                     break;
 
                 case ACMHandlePacketMessage.BuffPlayer:
@@ -125,6 +131,16 @@ namespace ApacchiisClassesMod2
                     int duration = reader.ReadInt32();
 
                     Main.player[playerToBuff].AddBuff(buffType, duration);
+
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        ModPacket packet = GetPacket();
+                        packet.Write((byte)ACMHandlePacketMessage.BuffPlayer);
+                        packet.Write(playerToBuff);
+                        packet.Write(buffType);
+                        packet.Write(duration);
+                        packet.Send(-1, -1);
+                    }
                     break;
 
                 case ACMHandlePacketMessage.HealPlayerFast:
@@ -250,6 +266,10 @@ namespace ApacchiisClassesMod2
                     Main.player[PlayerNumber].GetModPlayer<ACMPlayer>().healthToRegenSlow += regenSlow;
                     Main.player[PlayerNumber].GetModPlayer<ACMPlayer>().healthToRegenSnail += regenSnail;
 
+                    break;
+
+                default:
+                    Logger.WarnFormat("ACM2:Message type unknown: {0}", msgType);
                     break;
             }
         }

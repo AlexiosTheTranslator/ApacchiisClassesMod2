@@ -22,6 +22,105 @@ namespace ApacchiisClassesMod2
 
         int resetHUD = 1800;
         public bool levelUpText = false;
+        public string P_Name;
+        public string P_Desc_1;
+        public string P_Desc_2;
+        public string P_Desc_3;
+        public string P_Desc_4;
+        public string P_Effect_1;
+        public string P_Effect_2;
+        public string P_Effect_3;
+        public string P_Effect_4;
+
+        public string A1_Name;
+        public string A1_Desc_1;
+        public string A1_Desc_2;
+        public string A1_Desc_3;
+        public string A1_Desc_4;
+        public string A1_Effect_1;
+        public string A1_Effect_2;
+        public string A1_Effect_3;
+        public string A1_Effect_4;
+
+        public string A2_Name;
+        public string A2_Desc_1;
+        public string A2_Desc_2;
+        public string A2_Desc_3;
+        public string A2_Desc_4;
+        public string A2_Effect_1;
+        public string A2_Effect_2;
+        public string A2_Effect_3;
+        public string A2_Effect_4;
+
+        public string Ult_Name;
+        public string Ult_Desc_1;
+        public string Ult_Desc_2;
+        public string Ult_Desc_3;
+        public string Ult_Desc_4;
+        public string Ult_Effect_1;
+        public string Ult_Effect_2;
+        public string Ult_Effect_3;
+        public string Ult_Effect_4;
+
+        #region Cards
+        public int cardsPoints = 0;
+
+        // Basic
+        public int card_CarryCount; //dmg
+        public float card_CarryValue;
+        public int card_HealthyCount; //+hp
+        public float card_HealthyValue;
+        public int card_PowerfulCount; //+ap
+        public float card_PowerfulValue;
+        public int card_MendingCount; //+heal
+        public float card_MendingValue;
+        public int card_TimelessCount; //+cdr
+        public float card_TimelessValue;
+        public int card_MightyCount; //+ucdr
+        public float card_MightyValue;
+        public int card_SneakyCount; //+dodge
+        public float card_SneakyValue;
+        public int card_NimbleHandsCount; //+as
+        public float card_NimbleHandsValue;
+        public int card_ImpenetrableCount; //+def
+        public float card_ImpenetrableValue;
+        public int card_MagicalCount; //+mana
+        public float card_MagicalValue;
+        public int card_DeadeyeCount; //+cdmg
+        public float card_DeadeyeValue;
+
+
+        // Complex
+        public int card_FortifiedCount; //+hp +def
+        public float card_FortifiedValue_1;
+        public float card_FortifiedValue_2;
+        public int card_MasterfulCount; //+ap +heal
+        public float card_MasterfulValue_1;
+        public float card_MasterfulValue_2;
+        public int card_SparkOfGeniusCount; //+cdr +ucdr
+        public float card_SparkOfGeniusValue_1;
+        public float card_SparkOfGeniusValue_2;
+        public int card_ProwlerCount; //+ms +jump
+        public float card_ProwlerValue_1;
+        public float card_ProwlerValue_2;
+        public int card_VeteranCount; //+hp +mana
+        public float card_VeteranValue_1;
+        public float card_VeteranValue_2;
+        public int card_HealerCount; //+cdr +heal
+        public float card_HealerValue_1;
+        public float card_HealerValue_2;
+        public int card_MischievousCount; //+cdmg +dodge
+        public float card_MischievousValue_1;
+        public float card_MischievousValue_2;
+        public int card_SeerCount; //+ap +ucdr
+        public float card_SeerValue_1;
+        public float card_SeerValue_2;
+        public int card_FerociousCount; //+dmg +as
+        public float card_FerociousValue_1;
+        public float card_FerociousValue_2;
+        #endregion
+
+        bool gotFreeRelic = false;
 
         #region Relics
         public bool hasBleedingMoonStone;
@@ -50,6 +149,9 @@ namespace ApacchiisClassesMod2
         public bool hasOldBlood;
         public bool hasLuckyLeaf;
         public bool hasScalingWarbanner;
+        public bool hasPeanut;
+        public bool hasCactusRing;
+        public bool hasPorcelainMask;
         #endregion
 
         public string[] classSpecsText = {"a", "b"};
@@ -58,8 +160,8 @@ namespace ApacchiisClassesMod2
         {
             "'s accountant rat has forgot how to do basic maths!",
             "'s accountant rat quit their job!",
-            "'s accountant rat has overdosed on maths!",
-            "'s accountant rat had a stroke!",
+            "'s accountant rat has overdosed on math!",
+            "'s accountant rat had a stroke trying to do math!",
             "'s accountant rat has given up hope!",
             "'s accountant rat has failed at doing their job!",
             "'s accountant rat had a 'bruh moment'!",
@@ -83,7 +185,7 @@ namespace ApacchiisClassesMod2
         public float defenseMult = 1f;
         public float lifeMult = 1f;
         public float manaMult = 1f;
-        public float pSecHealthRegen = 0f;
+        public int pSecHealthRegen = 0;
         public float classStatMultiplier = 1f;
         int pSecHealthTimer = 60;
         int globalSingleSecondTimer = 60;
@@ -160,22 +262,22 @@ namespace ApacchiisClassesMod2
 
         public float vanguardPassiveReflectAmount = 1f;
 
-        public float vanguardShieldBaseDamageReduction = .2f;
-        public float vanguardShieldDamageReduction = .2f;
-        public int vanguardShieldBaseDuration = 480; //8s
+        public float vanguardShieldBaseDamageReduction;
+        public float vanguardShieldDamageReduction;
+        public int vanguardShieldBaseDuration;
         public int vanguardShieldDuration;
-        public int vanguardShieldDurationPerLevel = 20;
+        public int vanguardShieldDurationPerLevel;
         int vanguardShieldCurrentDuration = 0;
         int vanguardDustLocations = 20;
         bool vanguardDustFlag = false;
         int vanguardDustTimer = 5;
 
-        public int vanguardSpearBaseDamage = 20;
+        public int vanguardSpearBaseDamage;
         public int vanguardSpearDamage;
         bool vanguardSpearHeal = false;
 
-        public float vanguardUltimateBossExecute = .05f;
-        public int vanguardSwordBaseDamage = 24;
+        public float vanguardUltimateBossExecute;
+        public int vanguardSwordBaseDamage;
         public int vanguardSwordDamage;
         #endregion
 
@@ -390,16 +492,34 @@ namespace ApacchiisClassesMod2
 
         #region Inventor
         public bool hasInventor;
+        public int inventorLevel = 0;
+        public int inventorSkillPoints = 0;
+        public int inventorSpentSkillPoints = 0;
 
         public int inventorSentryFirerate;
         public int inventorSentryRange;
+        public int inventorRangePerLevel;
         public int inventorSentryDamage;
-        public bool inventorIsSentryOverclocked;
+        public int inventorSentryDamageBase;
+        public int inventorSentryDamagePerLevel;
+        public int inventorCogShotgunProjectiles;
+        public int inventorCogShotgunDamage;
+        public int inventorCogShotgunDamageBase;
+        public int inventorCogShotgunDamagePerLevel;
+        public int inventorOverclockCurDuration;
+        public int inventorOverclockDuration;
         #endregion
 
         #region Crusader
         public bool hasCrusader;
         public int crusaderLevel = 0;
+
+        public float crusaderEndurance;
+        public float crusaderEnduranceBuff;
+
+        public float crusaderHealing;
+        public float crusaderHealingDuration;
+        public float crusaderHealingCurDur = 0;
         #endregion
 
         public override void Initialize()
@@ -410,6 +530,7 @@ namespace ApacchiisClassesMod2
             commanderDefeatedBosses = new List<string>();
             soulmancerDefeatedBosses = new List<string>();
             crusaderDefeatedBosses = new List<string>();
+            inventorDefeatedBosses = new List<string>();
             base.Initialize();
         }
 
@@ -435,8 +556,12 @@ namespace ApacchiisClassesMod2
             hasOldBlood = false;
             hasLuckyLeaf = false;
             hasScalingWarbanner = false;
+            hasPeanut = false;
+            hasCactusRing = false;
+            hasPorcelainMask = false;
             #endregion
 
+            #region Player Stats
             abilityPower = 1f;
             healingPower = 1f;
             cooldownReduction = 1f;
@@ -447,10 +572,85 @@ namespace ApacchiisClassesMod2
             defenseMult = 1f;
             lifeMult = 1f;
             manaMult = 1f;
-            pSecHealthRegen = 0f;
+            pSecHealthRegen = 0;
             canAddDeaths = true;
             dodgeChance = 0f;
             critDamageMult = 1f;
+            #endregion
+
+            #region Class Menu Text
+            P_Name = "";
+            P_Desc_1 = "";
+            P_Desc_2 = "";
+            P_Desc_3 = "";
+            P_Desc_4 = "";
+            P_Effect_1 = "";
+            P_Effect_2 = "";
+            P_Effect_3 = "";
+            P_Effect_4 = "";
+            A1_Name = "";
+            A1_Desc_1 = "";
+            A1_Desc_2 = "";
+            A1_Desc_3 = "";
+            A1_Desc_4 = "";
+            A1_Effect_1 = "";
+            A1_Effect_2 = "";
+            A1_Effect_3 = "";
+            A1_Effect_4 = "";
+            A2_Name = "";
+            A2_Desc_1 = "";
+            A2_Desc_2 = "";
+            A2_Desc_3 = "";
+            A2_Desc_4 = "";
+            A2_Effect_1 = "";
+            A2_Effect_2 = "";
+            A2_Effect_3 = "";
+            A2_Effect_4 = "";
+            Ult_Name = "";
+            Ult_Desc_1 = "";
+            Ult_Desc_2 = "";
+            Ult_Desc_3 = "";
+            Ult_Desc_4 = "";
+            Ult_Effect_1 = "";
+            Ult_Effect_2 = "";
+            Ult_Effect_3 = "";
+            Ult_Effect_4 = "";
+            #endregion
+
+            #region Cards
+            // Basic
+            card_CarryValue = .0024f; //dmg
+            card_HealthyValue = .002f; //hp
+            card_PowerfulValue = .016f; //ap
+            card_MendingValue = .011f; //heal
+            card_TimelessValue = .0075f; //cdr
+            card_MightyValue = .0066f; //ucdr
+            card_SneakyValue = .0035f; //dodge
+            card_NimbleHandsValue = .004f; //as
+            card_ImpenetrableValue = .0033f; //def
+            card_MagicalValue = .0034f; //mana
+            card_DeadeyeValue = .0042f; //cdmg
+
+            // Complex
+            card_FortifiedValue_1 = .0016f; //hp
+            card_FortifiedValue_2 = .0015f; //def
+            card_MasterfulValue_1 = .01f; //ap
+            card_MasterfulValue_2 = .008f; //heal
+            card_SparkOfGeniusValue_1 = .0055f; //cdr
+            card_SparkOfGeniusValue_2 = .005f; //ucdr
+            card_ProwlerValue_1 = .0015f; //dmg
+            card_ProwlerValue_2 = .0032f; //cdmg
+            card_VeteranValue_1 = .0015f; //hp
+            card_VeteranValue_2 = .0024f; //mana
+            card_HealerValue_1 = .0065f; //heal
+            card_HealerValue_2 = .0035f; //cdr
+            card_MischievousValue_1 = .0026f; //cdmg
+            card_MischievousValue_2 = .0025f; //dodge
+            card_SeerValue_1 = .0085f; //ap
+            card_SeerValue_2 = .004f; //ucdr
+            card_FerociousValue_1 = .0013f; //dmg
+            card_FerociousValue_2 = .003f; //as
+            #endregion
 
             hasClass = false;
             hasRelic = false;
@@ -465,19 +665,19 @@ namespace ApacchiisClassesMod2
             ability2MaxCooldown = 1;
             vanguardShieldRegen = false;
             vanguardSpearHeal = false;
-            vanguardPassiveReflectAmount = 1f;
-            vanguardSpearBaseDamage = 20;
+            vanguardPassiveReflectAmount = .75f;
+            vanguardSpearBaseDamage = 22;
             vanguardSwordBaseDamage = 24;
-            vanguardShieldBaseDuration = 480;
-            vanguardShieldBaseDamageReduction = .2f;
+            vanguardShieldBaseDuration = 480; //8s
+            vanguardShieldBaseDamageReduction = .16f;
             vanguardUltimateBossExecute = .05f;
             vanguardShieldDamageReduction = vanguardShieldBaseDamageReduction;
 
             specVanguard_DefenseBase = .0025f;
             specVanguard_MeleeDamageBase = .002f;
             specVanguard_ShieldDamageReductionBase = .005f;
-            specVanguard_SpearDamageBase = 5;
-            specVanguard_UltCostBase = .0035f;
+            specVanguard_SpearDamageBase = 8;
+            specVanguard_UltCostBase = .003f;
             #endregion
 
             #region Blood Mage
@@ -556,12 +756,12 @@ namespace ApacchiisClassesMod2
             #region Soulmancer
             hasSoulmancer = false;
 
-            soulmancerSoulRipChance_Base = .25f;
+            soulmancerSoulRipChance_Base = .2f;
             soulmancerSoulRipChance = 0;
             soulmancerSoulRipChance_PerLevel = .01f;
-            soulmancerSoulRipDamage_Base = 12;
+            soulmancerSoulRipDamage_Base = 14;
             soulmancerSoulRipDamage = 0;
-            soulmancerSoulRipDamage_PerLevel = 6;
+            soulmancerSoulRipDamage_PerLevel = 4;
 
             soulmancerConsumeDuration_Base = 60 * 5;
             soulmancerConsumeDuration = 0;
@@ -569,13 +769,13 @@ namespace ApacchiisClassesMod2
             soulmancerConsumeHeal_Base = .0065f;
             soulmancerConsumeHeal = 0;
 
-            soulmancerSoulShatterDamage_Base = 30;
+            soulmancerSoulShatterDamage_Base = 25;
             soulmancerSoulShatterDamage = 0;
-            soulmancerShatterDamage_PerLevel = 8;
-            soulmancerSoulShatterRange = 360;
+            soulmancerShatterDamage_PerLevel = 10;
+            soulmancerSoulShatterRange = 380;
             soulmancerSoulShatterCastTarget = Player.Center;
 
-            soulmancerSacrificeHealthCost_Base = .006f;
+            soulmancerSacrificeHealthCost_Base = .0075f;
             soulmancerSacrificeHealthCost = 0;
             soulmancerSacrificeSoulCount_Base = 20;
             soulmancerSacrificeSoulCount = soulmancerSacrificeSoulCount_Base;
@@ -590,13 +790,27 @@ namespace ApacchiisClassesMod2
             #region Inventor
             hasInventor = false;
 
-            inventorSentryFirerate = 30;
+            inventorSentryFirerate = 60;
             inventorSentryRange = 360;
+            inventorRangePerLevel = 10;
             inventorSentryDamage = 5 + (int)(Player.HeldItem.damage * .2f);
-            #endregion
+            inventorSentryDamagePerLevel = 2;
 
+            inventorCogShotgunProjectiles = 5;
+            inventorCogShotgunDamage = 0;
+            inventorCogShotgunDamageBase = 5;
+            inventorCogShotgunDamagePerLevel = 3;
+
+            inventorOverclockDuration = 60 * 5;
+            #endregion
             #region Crusader
             hasCrusader = false;
+
+            crusaderEndurance = .03f;
+            crusaderEnduranceBuff = .04f;
+
+            crusaderHealing = .01f;
+            crusaderHealingDuration = 900;
             #endregion
 
             base.ResetEffects();
@@ -619,6 +833,9 @@ namespace ApacchiisClassesMod2
         {
         };
         public List<string> soulmancerDefeatedBosses = new List<string>()
+        {
+        };
+        public List<string> inventorDefeatedBosses = new List<string>()
         {
         };
         public List<string> crusaderDefeatedBosses = new List<string>()
@@ -684,23 +901,12 @@ namespace ApacchiisClassesMod2
 
         public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
-            mediumCoreDeath = false;
+            //mediumCoreDeath = false;
             
-            if (Configs._ACMConfigServer.Instance.startWithRelic)
-            {
-                return new[] {
-                new Item(ItemType<Items.WhiteCloth>()),
-                new Item(ItemType<Items.ClassBook>()),
-                new Item(ItemType<Items.Relics.RandomRelic>()),
-                };
-            }
-            else
-            {
-                return new[] {
-                new Item(ItemType<Items.WhiteCloth>()),
-                new Item(ItemType<Items.ClassBook>()),
-                };
-            }
+            return new[] {
+            new Item(ItemType<Items.WhiteCloth>()),
+            new Item(ItemType<Items.ClassBook>()),
+            };
         }
 
         public override void UpdateDead()
@@ -791,7 +997,7 @@ namespace ApacchiisClassesMod2
         public override void OnHitByNPC(NPC npc, int damage, bool crit)
         {
             InBattle();
-            if (ultCharge < ultChargeMax)
+            if (ultCharge < ultChargeMax && !hasCactusRing)
                 ultCharge = (int)(ultCharge * .95f);
 
             int hitDir;
@@ -822,7 +1028,7 @@ namespace ApacchiisClassesMod2
 
             if (hasFlanPudding)
             {
-                int heal = (int)(Player.statLifeMax2 * .02f);
+                int heal = (int)(Player.statLifeMax2 * .04f);
                 HealPlayer(1, 1, heal);
             }
 
@@ -832,7 +1038,7 @@ namespace ApacchiisClassesMod2
         public override void OnHitByProjectile(Projectile proj, int damage, bool crit)
         {
             InBattle();
-            if (ultCharge < ultChargeMax)
+            if (ultCharge < ultChargeMax && !hasCactusRing)
                 ultCharge = (int)(ultCharge * .95f);
 
             if (hasEldenRing)
@@ -854,7 +1060,7 @@ namespace ApacchiisClassesMod2
 
             if (hasFlanPudding)
             {
-                int heal = (int)(Player.statLifeMax2 * .02f);
+                int heal = (int)(Player.statLifeMax2 * .04f);
                 HealPlayer(1, 1, heal);
             }
 
@@ -956,7 +1162,7 @@ namespace ApacchiisClassesMod2
                     }
                 }
                 
-                if (proj.type == ProjectileType<Projectiles.Soulmancer.SoulFragment>() && soulmancerConsumeDuration_Cur > 0)
+                if (proj.type == ProjectileType<Projectiles.Soulmancer.SoulFragment>() && soulmancerConsumeDuration_Cur > 0 && Player.statLife < Player.statLifeMax2)
                 {
                     Vector2 speed = Main.rand.NextVector2CircularEdge(5f, 5f);
                     speed.Normalize();
@@ -1049,12 +1255,15 @@ namespace ApacchiisClassesMod2
 
         public override void PreUpdateBuffs()
         {
-            if (Player.HeldItem.damage > 1)
+            if (Player.HeldItem.damage > 1 && Player.HeldItem.useTime > 0)
             {
                 float shotsPerSecond = 60 / Player.HeldItem.useTime;
                 float dps = shotsPerSecond * Player.HeldItem.damage;
                 abilityPower += dps * Configs._ACMConfigServer.Instance.abilityPowerWeaponDPSMult / 100;
             }
+
+            if (Player.HeldItem.type == ItemType<Items.ClassWeapons.SoulBurner>())
+                soulmancerSoulRipChance += .25f;
 
             base.PreUpdateBuffs();
         }
@@ -1062,6 +1271,13 @@ namespace ApacchiisClassesMod2
         public override void PreUpdate()
         {
             chocolateBarTimer--;
+            inventorOverclockCurDuration--;
+
+            //if (Configs._ACMConfigServer.Instance.startWithRelic && !gotFreeRelic)
+            //{
+            //    Player.QuickSpawnItem(null, ItemType<Items.Relics.RandomRelic>(), 1);
+            //    gotFreeRelic = true;
+            //}
 
             if (levelUpText && Main.netMode != NetmodeID.Server)
             {
@@ -1073,6 +1289,8 @@ namespace ApacchiisClassesMod2
                     Main.NewText($"You have leveled up! You have {scoutSkillPoints} Skill Points to spend!");
                 if (hasVanguard)
                     Main.NewText($"You have leveled up! You have {vanguardSkillPoints} Skill Points to spend!");
+                if (hasSoulmancer)
+                    Main.NewText($"You have leveled up! You have {soulmancerSkillPoints} Skill Points to spend!");
                 levelUpText = false;
             }
 
@@ -1456,6 +1674,8 @@ namespace ApacchiisClassesMod2
                     dust.noGravity = true;
                     dust.noLight = true;
                 }
+
+                soulmancerSoulRipChance += 5;
             }
 
             if (soulmancerSacrificeTimer > 0)
@@ -1515,6 +1735,47 @@ namespace ApacchiisClassesMod2
             }
             //globalLevel = defeatedBosses.Count;   
 
+            #region Card Stats
+            lifeMult += card_HealthyCount * card_HealthyValue;
+            trueEndurance += card_ImpenetrableCount * card_ImpenetrableValue;
+            Player.GetAttackSpeed(DamageClass.Generic) += card_NimbleHandsCount * card_NimbleHandsValue;
+            Player.GetDamage(DamageClass.Generic) += card_CarryCount * card_CarryValue;
+            critDamageMult += card_DeadeyeCount * card_DeadeyeValue;
+            dodgeChance += card_SneakyCount * card_SneakyValue;
+            abilityPower += card_PowerfulCount * card_PowerfulValue;
+            cooldownReduction -= card_TimelessCount * card_TimelessValue;
+            ultCooldownReduction -= card_MightyCount * card_MightyValue;
+            healingPower += card_MendingCount * card_MendingValue;
+            manaMult += card_MagicalCount * card_MagicalValue;
+
+            lifeMult += card_VeteranCount * card_VeteranValue_1;
+            manaMult += card_VeteranCount * card_VeteranValue_2;
+
+            lifeMult += card_FortifiedCount * card_FortifiedValue_1;
+            trueEndurance += card_FortifiedCount * card_FortifiedValue_2;
+
+            Player.GetDamage(DamageClass.Generic) += card_FerociousCount * card_FerociousValue_1;
+            Player.GetAttackSpeed(DamageClass.Generic) += card_FerociousCount * card_FerociousValue_2;
+
+            critDamageMult += card_ProwlerCount * card_ProwlerValue_2;
+            Player.GetDamage(DamageClass.Generic) += card_ProwlerCount * card_ProwlerValue_1;
+
+            critDamageMult += card_MischievousCount * card_MischievousValue_1;
+            dodgeChance += card_MischievousCount * card_MischievousValue_2;
+
+            abilityPower += card_MasterfulCount * card_MasterfulValue_1;
+            healingPower += card_MasterfulCount + card_MasterfulValue_2;
+
+            abilityPower += card_SeerCount * card_SeerValue_1;
+            ultCooldownReduction -= card_SeerCount * card_SeerValue_2;
+
+            healingPower += card_HealerCount * card_HealerValue_1;
+            cooldownReduction -= card_HealerCount * card_HealerValue_2;
+
+            cooldownReduction -= card_SparkOfGeniusCount * card_SparkOfGeniusValue_1;
+            ultCooldownReduction -= card_SparkOfGeniusCount * card_SparkOfGeniusValue_2;
+            #endregion
+
             #region Vanguard
             vanguardLevel = vanguardDefeatedBosses.Count;
             if (vanguardLevel > Configs._ACMConfigServer.Instance.maxClassLevel)
@@ -1534,7 +1795,7 @@ namespace ApacchiisClassesMod2
                 if (vanguardTalent_1 == "L" || vanguardTalent_1 == "B")
                     Player.statDefense += 2;
                 else if (vanguardTalent_1 == "R" || vanguardTalent_1 == "B")
-                    cooldownReduction -= .05f;
+                    cooldownReduction -= .06f;
 
                 if (vanguardTalent_2 == "L" || vanguardTalent_2 == "B")
                     lifeMult += .015f;
@@ -1555,7 +1816,7 @@ namespace ApacchiisClassesMod2
                     ultCooldownReduction -= .08f;
 
                 if (vanguardTalent_6 == "R" || vanguardTalent_6 == "B")
-                    vanguardPassiveReflectAmount += .5f;
+                    vanguardPassiveReflectAmount += .35f;
 
                 if (vanguardTalent_7 == "L" || vanguardTalent_7 == "B")
                     Player.GetCritChance(DamageClass.Melee) += 2;
@@ -1563,12 +1824,12 @@ namespace ApacchiisClassesMod2
                     vanguardSpearHeal = true;
 
                 if (vanguardTalent_8 == "L" || vanguardTalent_8 == "B")
-                    vanguardSwordBaseDamage += 35;
+                    vanguardSwordBaseDamage += 28;
 
                 if (vanguardTalent_9 == "L" || vanguardTalent_9 == "B")
                     vanguardShieldRegen = true;
                 else if (vanguardTalent_9 == "R" || vanguardTalent_9 == "B")
-                    cooldownReduction -= .15f;
+                    cooldownReduction -= .17f;
 
                 if (vanguardTalent_10 == "L" || vanguardTalent_10 == "B")
                     lifeMult += .08f;
@@ -1576,9 +1837,9 @@ namespace ApacchiisClassesMod2
                     vanguardUltimateBossExecute += .04f;
                 #endregion
 
-                vanguardSpearDamage = vanguardSpearBaseDamage + 9 * vanguardLevel;
-                vanguardShieldDuration = vanguardShieldBaseDuration + 20 * vanguardLevel;
-                vanguardSwordDamage = vanguardSwordBaseDamage + 14 * vanguardLevel;
+                vanguardSpearDamage = vanguardSpearBaseDamage + 10 * vanguardLevel;
+                vanguardShieldDuration = vanguardShieldBaseDuration + 15 * vanguardLevel;
+                vanguardSwordDamage = vanguardSwordBaseDamage + 9 * vanguardLevel;
             }
             #endregion
 
@@ -1650,9 +1911,9 @@ namespace ApacchiisClassesMod2
                     bloodMageUltTicks += 3;
                 #endregion
 
-                pSecHealthRegen += bloodMagePassiveCurrentStacks * bloodMagePassiveRegen;
+                pSecHealthRegen += (int)(bloodMagePassiveCurrentStacks * bloodMagePassiveRegen);
                 bloodMageUltRegen = bloodMageBaseUltRegen + .001f * bloodMageLevel;
-                bloodMageSiphonDamage = bloodMageSiphonBaseDamage + 4 * bloodMageLevel;
+                bloodMageSiphonDamage = bloodMageSiphonBaseDamage + 6 * bloodMageLevel;
                 bloodMageDamageGain += bloodMageBaseDamageGain * bloodMageLevel;
                 //bloodMagePassiveMaxStacks += 2 * bloodMageLevel;
                 //bloodMageHealthDrain += bloodMageBaseHealthDrain;
@@ -1684,10 +1945,10 @@ namespace ApacchiisClassesMod2
                 if (commanderTalent_1 == "L" || commanderTalent_1 == "B")
                     commanderBannerDamage += .03f;
                 else if (commanderTalent_1 == "R" || commanderTalent_1 == "B")
-                    Player.whipRangeMultiplier += .05f;
+                    Player.whipRangeMultiplier += .04f;
 
                 if (commanderTalent_2 == "L" || commanderTalent_2 == "B")
-                    commanderBannerRange = (int)(commanderBannerRange * 1.25f);
+                    commanderBannerRange = (int)(commanderBannerRange * 1.28f);
                 else if (commanderTalent_2 == "R" || commanderTalent_2 == "B")
                     cooldownReduction -= .15f;
 
@@ -1719,7 +1980,7 @@ namespace ApacchiisClassesMod2
                 if (commanderTalent_8 == "L" || commanderTalent_8 == "B")
                     commanderCryBonusDamage += .05f;
                 else if (commanderTalent_8 == "R" || commanderTalent_8 == "B")
-                    Player.whipRangeMultiplier += .1f;
+                    Player.whipRangeMultiplier += .08f;
 
                 if (commanderTalent_9 == "L" || commanderTalent_9 == "B")
                     ultCooldownReduction -= .1f;
@@ -1729,11 +1990,11 @@ namespace ApacchiisClassesMod2
                 if (commanderTalent_10 == "L" || commanderTalent_10 == "B")
                     Player.whipRangeMultiplier += .05f;
                 else if (commanderTalent_10 == "R" || commanderTalent_10 == "B")
-                    commanderBannerEndurance -= .2f;
+                    commanderBannerEndurance -= .15f;
                 #endregion
 
 
-            trueEndurance += Player.maxMinions * commanderPassiveEndurance;
+            trueEndurance -= Player.maxMinions * commanderPassiveEndurance;
             commanderBannerDuration += 24 * commanderLevel;
             commanderUltDuration += 15 * commanderLevel;
             commanderCryDamage += commanderCryDamageLevel * commanderLevel;
@@ -1832,9 +2093,9 @@ namespace ApacchiisClassesMod2
             {
                 #region Soulmancer Talents
                 if (soulmancerTalent_1 == "L")
-                    soulmancerSoulRipChance_Base += .02f;
+                    soulmancerSoulRipChance_Base += .01f;
                 if (soulmancerTalent_1 == "R")
-                    abilityPower += .12f;
+                    abilityPower += .1f;
 
                 if (soulmancerTalent_2 == "L")
                     cooldownReduction -= .06f;
@@ -1847,14 +2108,14 @@ namespace ApacchiisClassesMod2
                     soulmancerSoulRipChance_Base += .02f;
 
                 if (soulmancerTalent_4 == "L")
-                    soulmancerSoulRipDamage_Base += 12;
+                    soulmancerSoulRipDamage_Base += 11;
                 if (soulmancerTalent_4 == "R")
-                    soulmancerSoulShatterRange += 50;
+                    soulmancerSoulShatterRange += 65;
 
                 if (soulmancerTalent_5 == "L")
                     ultCooldownReduction -= .04f;
                 if (soulmancerTalent_5 == "R")
-                    soulmancerSoulShatterDamage_Base += 25;
+                    soulmancerSoulShatterDamage_Base += 24;
 
                 if (soulmancerTalent_6 == "L")
                     soulmancerConsumeDuration_Base += 60;
@@ -1867,7 +2128,7 @@ namespace ApacchiisClassesMod2
                     Player.GetCritChance(DamageClass.Magic) += 2;
 
                 if (soulmancerTalent_8 == "L")
-                    soulmancerSoulShatterRange += 80;
+                    soulmancerSoulShatterRange += 95;
                 if (soulmancerTalent_8 == "R")
                     soulmancerSoulRipChance_Base += .03f;
 
@@ -1877,9 +2138,9 @@ namespace ApacchiisClassesMod2
                     cooldownReduction -= .08f;
 
                 if (soulmancerTalent_9 == "L")
-                    soulmancerSoulRipChance_Base += .05f;
+                    soulmancerSoulRipChance_Base += .04f;
                 if (soulmancerTalent_9 == "R")
-                    soulmancerConsumeDuration_Base += 90;
+                    soulmancerConsumeDuration_Base += 60;
                 #endregion
 
                 #region Specs
@@ -1900,8 +2161,13 @@ namespace ApacchiisClassesMod2
             }
             #endregion
 
-            #region Ability Ready Sounds
-            if (ability1Cooldown == 0 && !a1Sound)
+            #region Inventor
+            if (inventorOverclockCurDuration > 0)
+                Player.GetAttackSpeed(DamageClass.Generic) += .25f;
+            #endregion
+
+                #region Ability Ready Sounds
+                if (ability1Cooldown == 0 && !a1Sound)
             {
                 a1Sound = true;
                 SoundEngine.PlaySound(SoundID.MaxMana);
@@ -1926,11 +2192,14 @@ namespace ApacchiisClassesMod2
             if (hasPocketSlime)
                 lifeMult -= .05f;
 
+            if (hasPeanut)
+                lifeMult -= .16f;
+
             if (hasOldBlood)
-                defenseMult -= .15f;
+                defenseMult -= .1f;
 
             if(hasLuckyLeaf)
-                lifeMult -= .2f;
+                lifeMult -= .16f;
 
             if (hasChaosAccelerant)
             {
@@ -1942,7 +2211,16 @@ namespace ApacchiisClassesMod2
                 lifeMult -= .03f;
 
             if (hasSqueaker)
-                lifeMult -= .75f;
+                lifeMult -= .8f;
+
+            if (hasFlanPudding)
+                lifeMult += .04f;
+
+            if (hasPorcelainMask)
+                defenseMult -= .25f;
+
+            if(hasScout)
+                lifeMult -= scoutLevel * .0045f;
 
             ultChargeMax = (int)(ultChargeMax * ultCooldownReduction);
             Player.statLifeMax2 = (int)(Player.statLifeMax2 * lifeMult);
@@ -1971,7 +2249,7 @@ namespace ApacchiisClassesMod2
                     int heal = (int)(Player.statLifeMax2 * bloodMageUltRegen * healingPower);
                     HealPlayer(1, 3, heal);
                     bloodMageCurUltTicks--;
-                    Main.NewText($"{bloodMageCurUltTicks}/{bloodMageUltTicks}");
+                    //Main.NewText($"{bloodMageCurUltTicks}/{bloodMageUltTicks}");
                 }
                 pSecHealthTimer = 60;
             }
@@ -2198,19 +2476,19 @@ namespace ApacchiisClassesMod2
                         case "Vanguard":
                             
                             PointToCursor.Normalize();
-                            PointToCursor *= 20f;
+                            PointToCursor *= 21f;
 
                             if (vanguardSpearHeal && Player.statLife < Player.statLifeMax2)
                             {
-                                Player.statLife += (int)(Player.statLifeMax2 * .024f * healingPower);
-                                Player.HealEffect((int)(Player.statLifeMax2 * .024f * healingPower));
+                                Player.statLife += (int)(Player.statLifeMax2 * .026f * healingPower);
+                                Player.HealEffect((int)(Player.statLifeMax2 * .026f * healingPower));
                                 for (int x = 0; x < 3; x++)
                                     Dust.NewDustDirect(Player.position, Player.width, Player.height, DustType<Dusts.HealingDust>(), 0f, 0f, 0, default, Main.rand.NextFloat(1f, 2f));
                             }
 
 
                             SoundEngine.PlaySound(SoundID.DD2_BallistaTowerShot);
-                            Projectile.NewProjectile(default, new Vector2(Player.position.X + Player.width / 2, Player.position.Y), new Vector2(PointToCursor.X, PointToCursor.Y), ProjectileType<Projectiles.Vanguard.VanguardSpear>(), (int)(vanguardSpearDamage * abilityPower), 0, Player.whoAmI);
+                            Projectile.NewProjectile(null, new Vector2(Player.position.X + Player.width / 2, Player.position.Y), new Vector2(PointToCursor.X, PointToCursor.Y), ProjectileType<Projectiles.Vanguard.VanguardSpear>(), (int)(vanguardSpearDamage * abilityPower), 0, Player.whoAmI);
 
                             AddAbilityCooldown(1, ability1MaxCooldown);
                             CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Spear Of Light!", true);
@@ -2221,7 +2499,7 @@ namespace ApacchiisClassesMod2
                             PointToCursor *= 18f;
 
                             SoundEngine.PlaySound(SoundID.Item21);
-                            Projectile.NewProjectile(default, new Vector2(Player.position.X + Player.width / 2, Player.position.Y), new Vector2(PointToCursor.X, PointToCursor.Y), ProjectileType<Projectiles.BloodMage.Transfusion>(), (int)(bloodMageSiphonDamage * abilityPower), 0, Player.whoAmI);
+                            Projectile.NewProjectile(null, new Vector2(Player.position.X + Player.width / 2, Player.position.Y), new Vector2(PointToCursor.X, PointToCursor.Y), ProjectileType<Projectiles.BloodMage.Transfusion>(), (int)(bloodMageSiphonDamage * abilityPower), 0, Player.whoAmI);
 
                             AddAbilityCooldown(1, ability1MaxCooldown);
                             CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Transfusion!", true);
@@ -2229,7 +2507,7 @@ namespace ApacchiisClassesMod2
 
                         case "Commander":
                             AddAbilityCooldown(1, ability1MaxCooldown);
-                            Projectile.NewProjectile(default, Player.Center, Vector2.Zero, ProjectileType<Projectiles.Commander.WarBanner>(), 0, 0, Player.whoAmI);
+                            Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Projectiles.Commander.WarBanner>(), 0, 0, Player.whoAmI);
                             CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "War Banner!", true);
                             break;
 
@@ -2256,18 +2534,18 @@ namespace ApacchiisClassesMod2
                             for (int p = 0; p < Main.maxProjectiles; p++)
                             {
                                 if (Player.ownedProjectileCounts[ProjectileType<Projectiles.Inventor.Sentry>()] > 0)
-                                    if (Main.projectile[p].type == ProjectileType<Projectiles.Inventor.Sentry>())
-                                        ProjectileLoader.Kill(Main.projectile[p], 0);
+                                    if (Main.projectile[p].type == ProjectileType<Projectiles.Inventor.Sentry>() && Main.projectile[p].owner == Main.myPlayer)
+                                        Main.projectile[p].Kill();
                             }
                             
                                
                             int xx = (int)((float)Main.mouseX + Main.screenPosition.X) / 16;
                             int yy = (int)((float)Main.mouseY + Main.screenPosition.Y) / 16;
-                            int bump = -16;
+                            int bump = -32;
                             if (Player.gravDir == -1f)
                                 yy = (int)(Main.screenPosition.Y + (float)Main.screenHeight - (float)Main.mouseY) / 16;
                             Player.FindSentryRestingSpot(ProjectileType<Projectiles.Inventor.Sentry>(), out xx, out yy, out bump);
-                            Projectile.NewProjectile(null, xx, yy - 30, 0, 0, ProjectileType<Projectiles.Inventor.Sentry>(), 0, 0, Player.whoAmI);
+                            Projectile.NewProjectile(null, xx, yy - 22, 0, 0, ProjectileType<Projectiles.Inventor.Sentry>(), 0, 0, Player.whoAmI);
 
                             SoundEngine.PlaySound(SoundID.DD2_DefenseTowerSpawn, Player.position);
                             break;
@@ -2312,9 +2590,9 @@ namespace ApacchiisClassesMod2
                             else
                             {
                                 bloodMageBloodEnchantment = true;
-                                Projectile.NewProjectile(default, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment>(), 0, 0, Player.whoAmI);
-                                Projectile.NewProjectile(default, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment2>(), 0, 0, Player.whoAmI);
-                                Projectile.NewProjectile(default, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment3>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment2>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Projectiles.BloodMage.BloodEnchantment3>(), 0, 0, Player.whoAmI);
                             }
                                 
                             if (!bloodMageBloodEnchantment)
@@ -2333,7 +2611,7 @@ namespace ApacchiisClassesMod2
                             if (Collision.CanHitLine(Player.Center, 1, 1, Main.MouseWorld, 1, 1))
                             {
                                 AddAbilityCooldown(2, ability2MaxCooldown);
-                                Projectile.NewProjectile(default, Main.MouseWorld, Vector2.Zero, ProjectileType<Projectiles.Scout.ScoutTrap>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Main.MouseWorld, Vector2.Zero, ProjectileType<Projectiles.Scout.ScoutTrap>(), 0, 0, Player.whoAmI);
                                 CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Explosive Trap!", true);
                                 SoundEngine.PlaySound(SoundID.Item37, Player.position);
                             }
@@ -2342,10 +2620,27 @@ namespace ApacchiisClassesMod2
                         case "Soulmancer":
                             AddAbilityCooldown(2, ability2MaxCooldown);
                             if (hasAghanims)
-                                Projectile.NewProjectile(default, Main.MouseWorld, Vector2.Zero, ProjectileType<Projectiles.Soulmancer.SoulShatter>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Main.MouseWorld, Vector2.Zero, ProjectileType<Projectiles.Soulmancer.SoulShatter>(), 0, 0, Player.whoAmI);
                             else
-                                Projectile.NewProjectile(default, Player.Center, Vector2.Zero, ProjectileType<Projectiles.Soulmancer.SoulShatter>(), 0, 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, Player.Center, Vector2.Zero, ProjectileType<Projectiles.Soulmancer.SoulShatter>(), 0, 0, Player.whoAmI);
                             SoundEngine.PlaySound(SoundID.DD2_LightningBugZap, Player.position);
+                            break;
+
+                        case "Inventor":
+                            Vector2 vel = Main.MouseWorld - Player.Center;
+                            vel.Normalize();
+                            vel *= 28f;
+
+                            for (int i = 0; i < inventorCogShotgunProjectiles; i++)
+                            {
+                                Vector2 perturbedSpeed = new Vector2(vel.X, vel.Y).RotatedBy(MathHelper.ToRadians(Main.rand.NextFloat(-5f, 5f)));
+
+                                if(inventorOverclockCurDuration > 0)
+                                    Projectile.NewProjectile(null, Player.Center, perturbedSpeed, ProjectileType<Projectiles.Inventor.Cog>(), inventorSentryDamage * 2, 0, Player.whoAmI);
+                                else
+                                    Projectile.NewProjectile(null, Player.Center, perturbedSpeed, ProjectileType<Projectiles.Inventor.Cog>(), inventorSentryDamage, 0, Player.whoAmI);
+                            }
+                            SoundEngine.PlaySound(SoundID.Item36, Player.position);
                             break;
                     }
                     a2Sound = false;
@@ -2374,7 +2669,7 @@ namespace ApacchiisClassesMod2
                         switch (equippedClass)
                         {
                             case "Vanguard":
-                                Projectile.NewProjectile(default, new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 1000), new Vector2(0f, 50f), ProjectileType<Projectiles.Vanguard.VanguardUltimate>(), (int)(vanguardSwordDamage * abilityPower), 0, Player.whoAmI);
+                                Projectile.NewProjectile(null, new Vector2(Main.MouseWorld.X, Main.MouseWorld.Y - 1000), new Vector2(0f, 50f), ProjectileType<Projectiles.Vanguard.VanguardUltimate>(), (int)(vanguardSwordDamage * abilityPower), 0, Player.whoAmI);
                                 CombatText.NewText(new Rectangle((int)Player.position.X, (int)Player.position.Y + 20, Player.width, Player.height), Color.White, "Sword Of Judgement!", true);
                                 //NetworkText text;
                                 //text = NetworkText.FromKey(player.name + " was healed for " + healAmount + " health", acmPlayer.player.name);
@@ -2406,6 +2701,11 @@ namespace ApacchiisClassesMod2
                                 soulmancerSacrificeTimer = 3;
                                 soulmancerSacrificeSoulCount_Cur = soulmancerSacrificeSoulCount_Base;
                                 break;
+
+                            case "Inventor":
+                                inventorOverclockCurDuration = inventorOverclockDuration;
+                                SoundEngine.PlaySound(SoundID.DD2_KoboldIgnite, Player.Center);
+                                break;
                         }
                         ultSound = false;
                     }
@@ -2423,6 +2723,32 @@ namespace ApacchiisClassesMod2
             tag.Add("highestDPS", highestDPS);
             tag.Add("highestCrit", highestCrit);
             tag.Add("totalDamageTaken", totalDamageTaken);
+
+            tag.Add("gotFreeRelic", gotFreeRelic);
+
+            #region Cards
+            tag.Add("cardsPoints", cardsPoints);
+            tag.Add("card_ProwlerCount", card_ProwlerCount);
+            tag.Add("card_CarryCount", card_CarryCount);
+            tag.Add("card_DeadeyeCount", card_DeadeyeCount);
+            tag.Add("card_FortifiedCount", card_FortifiedCount);
+            tag.Add("card_HealerCount", card_HealerCount);
+            tag.Add("card_HealthyCount", card_HealthyCount);
+            tag.Add("card_ImpenetrableCount", card_ImpenetrableCount);
+            tag.Add("card_MagicalCount", card_MagicalCount);
+            tag.Add("card_MasterfulCount", card_MasterfulCount);
+            tag.Add("card_MendingCount", card_MendingCount);
+            tag.Add("card_MightyCount", card_MightyCount);
+            tag.Add("card_NimbleHandsCount", card_NimbleHandsCount);
+            tag.Add("card_PowerfulCount", card_PowerfulCount);
+            tag.Add("card_SneakyCount", card_SneakyCount);
+            tag.Add("card_SparkOfGeniusCount", card_SparkOfGeniusCount);
+            tag.Add("card_TimelessCount", card_TimelessCount);
+            tag.Add("card_VeteranCount", card_VeteranCount);
+            tag.Add("card_MischievousCount", card_MischievousCount);
+            tag.Add("card_SeerCount", card_SeerCount);
+            tag.Add("card_FerociousCount", card_FerociousCount);
+            #endregion
 
             #region Vanguard
             tag.Add("vanguardDefeatedBosses", vanguardDefeatedBosses);
@@ -2468,7 +2794,6 @@ namespace ApacchiisClassesMod2
             tag.Add("specBloodMage_EnchantDamage", specBloodMage_EnchantDamage);
             tag.Add("specBloodMage_TransfusionDamage", specBloodMage_TransfusionDamage);
             tag.Add("specBloodMage_UltHeal", specBloodMage_UltHeal);
-
             #endregion
 
             #region Commander
@@ -2555,6 +2880,32 @@ namespace ApacchiisClassesMod2
             highestDPS = tag.GetInt("highestDPS");
             highestCrit = tag.GetInt("highestCrit");
             totalDamageTaken = tag.GetInt("totalDamageTaken");
+
+            gotFreeRelic = tag.GetBool("gotFreeRelic");
+
+            #region Cards
+            cardsPoints = tag.GetInt("cardsPoints");
+            card_ProwlerCount = tag.GetInt("card_ProwlerCount");
+            card_CarryCount = tag.GetInt("card_CarryCount");
+            card_DeadeyeCount = tag.GetInt("card_DeadeyeCount");
+            card_FortifiedCount = tag.GetInt("card_FortifiedCount");
+            card_HealerCount = tag.GetInt("card_HealerCount");
+            card_HealthyCount = tag.GetInt("card_HealthyCount");
+            card_ImpenetrableCount = tag.GetInt("card_ImpenetrableCount");
+            card_MagicalCount = tag.GetInt("card_MagicalCount");
+            card_MasterfulCount = tag.GetInt("card_MasterfulCount");
+            card_MendingCount = tag.GetInt("card_MendingCount");
+            card_MightyCount = tag.GetInt("card_MightyCount");
+            card_NimbleHandsCount = tag.GetInt("card_NimbleHandsCount");
+            card_PowerfulCount = tag.GetInt("card_PowerfulCount");
+            card_SneakyCount = tag.GetInt("card_SneakyCount");
+            card_SparkOfGeniusCount = tag.GetInt("card_SparkOfGeniusCount");
+            card_TimelessCount = tag.GetInt("card_TimelessCount");
+            card_VeteranCount = tag.GetInt("card_VeteranCount");
+            card_MischievousCount = tag.GetInt("card_MischievousCount");
+            card_SeerCount = tag.GetInt("card_SeerCount");
+            card_FerociousCount = tag.GetInt("card_FerociousCount");
+            #endregion
 
             #region Vanguard
             vanguardDefeatedBosses.AddRange(tag.GetList<string>("vanguardDefeatedBosses"));
@@ -2754,7 +3105,7 @@ namespace ApacchiisClassesMod2
                                 {
                                     ModPacket packet = Mod.GetPacket();
                                     packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayer);
-                                    packet.Write((byte)i);
+                                    packet.Write(i);
                                     packet.Write(healAmount);
                                     packet.Send(-1, -1);
                                 }
@@ -2766,7 +3117,7 @@ namespace ApacchiisClassesMod2
                                 {
                                     ModPacket packet = Mod.GetPacket();
                                     packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayerSnail);
-                                    packet.Write((byte)i);
+                                    packet.Write(i);
                                     packet.Write(healAmount);
                                     packet.Send(-1, -1);
                                 }
@@ -2778,7 +3129,7 @@ namespace ApacchiisClassesMod2
                                 {
                                     ModPacket packet = Mod.GetPacket();
                                     packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayerSlow);
-                                    packet.Write((byte)i);
+                                    packet.Write(i);
                                     packet.Write(healAmount);
                                     packet.Send(-1, -1);
                                 }
@@ -2790,7 +3141,7 @@ namespace ApacchiisClassesMod2
                                 {
                                     ModPacket packet = Mod.GetPacket();
                                     packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayerMedium);
-                                    packet.Write((byte)i);
+                                    packet.Write(i);
                                     packet.Write(healAmount);
                                     packet.Send(-1, -1);
                                 }
@@ -2802,7 +3153,7 @@ namespace ApacchiisClassesMod2
                                 {
                                     ModPacket packet = Mod.GetPacket();
                                     packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayerFast);
-                                    packet.Write((byte)i);
+                                    packet.Write(i);
                                     packet.Write(healAmount);
                                     packet.Send(-1, -1);
                                 }
@@ -2831,7 +3182,7 @@ namespace ApacchiisClassesMod2
                                     {
                                         ModPacket packet = Mod.GetPacket();
                                         packet.Write((byte)ACM2.ACMHandlePacketMessage.HealPlayer);
-                                        packet.Write((byte)selectedPlayer);
+                                        packet.Write(selectedPlayer);
                                         packet.Write(healAmount);
                                         packet.Send(-1, -1);
                                     }
@@ -2891,7 +3242,7 @@ namespace ApacchiisClassesMod2
 
         void ApplyBuffToAllPlayers(int buffType, int duration)
         {
-            if (Main.netMode == NetmodeID.MultiplayerClient)
+            if (Main.netMode != NetmodeID.SinglePlayer)
             {
                 for (int i = 0; i < 255; i++)
                 {
@@ -2899,13 +3250,14 @@ namespace ApacchiisClassesMod2
                     {
                         ModPacket packet = Mod.GetPacket();
                         packet.Write((byte)ACM2.ACMHandlePacketMessage.BuffPlayer);
-                        packet.Write((byte)i);
+                        packet.Write(i);
                         packet.Write(buffType);
                         packet.Write(duration);
                         packet.Send(-1, -1);
                     }
                 }
             }
+
             if(Main.netMode == NetmodeID.SinglePlayer)
             {
                 Player.AddBuff(buffType, duration);

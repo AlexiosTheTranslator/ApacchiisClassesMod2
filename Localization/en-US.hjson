@@ -1,7 +1,39 @@
 Mods: {
 	ApacchiisClassesMod2: {
 
-	    # 
+	    #
+		#
+
+		ItemName: 
+        {
+			# Items
+			RandomRelic: Random Relic
+			ClassBook: Class Book
+			WhiteCloth: White Cloth
+			BlueCloth: Blue Cloth
+			GreenCloth: Green Cloth
+			OrangeCloth: Orange Cloth
+			PinkCloth: Pink Cloth
+			RedCloth: Red Cloth
+
+
+			# Classes
+            BloodMage: Class: Blood Mage
+			Commander: Class: Commander
+			Scout: Class: Scout
+			Soulmancer: Class: Soulmancer
+			Vanguard: Class: Vanguard
+
+			# Class Weapons
+			BloodSpray: Blood Spray
+			FadingDagger: Fading Dagger
+			SeekingSpirit: Seeking Spirit
+			SoulBurner: Soul Burner
+			TrainingRapier: Training Rapier
+
+			# Relics
+			AghanimsScepter: -Relic- Aghanim's Scepter
+        }
 
 		# Player Stats
 		PlayerStatsText: Player Stats
@@ -36,25 +68,28 @@ Mods: {
 		HighestCrit: Highest Crit
 
 		# General
+		Level: Level
 		HoldToPreviewAbilities: Hold 'UP' to preview abilities
 		ClassPrefix: Class
 		Passive: Passive
 		Ability1: Ability 1
 		Ability2: Ability 2
 		Ultimate: Ultimate
-		RandomRelic: Random Relic
 	    RelicPrefix: Relic
+		GivesRelic: Gives you a random relic
+		EquipableRelic: Equipable Relic
 		Talents: Talents
 		Specializations: Specializations
 		UnlocksAfter10Text: Unlocks after spending 10 skill points on the talent tree
 		Locked: Locked
+		RelicsList: Relics List
+		Runes: Runes
 
 		# -------------------------------------------------------------------------------------------------------------------------------
 		# FOR CLASSES, YOU DONT NEED TO TRANSLATE ABILITY/CLASS NAMES IF YOU DON'T WANT TO OR IF THERE ISN'T A DIRECT/CORRECT TRANSLATION
 		# -------------------------------------------------------------------------------------------------------------------------------
 
 		# Blood Mage
-		BloodMage: Blood Mage
 		BloodMage_P_Name: Blood Well
 		BloodMage_P_Prev: Every second in battle gain a stack of 'Blood', each stack slightly increases your life regen.
 
@@ -67,10 +102,11 @@ Mods: {
 		BloodMage_Ult_Name: Regeneration
 		BloodMage_Ult_Prev: Regen yours and your allies' health every second over a duration.
 
+		BloodMage_Aghanims: a
+
 
 
 		# Commander
-		Commander: Commander
 		Commander_P_Name: Commander's Will
 		Commander_P_Prev: For each minion slot you have gain a small amount of damage reduction.
 
@@ -83,10 +119,11 @@ Mods: {
 		Commander_Ult_Name: Inspire
 		Commander_Ult_Prev: Inspire yourself and your teammates, granting everyone guaranteed critical hits for a period of time.
 
+		Commander_Aghanims: a
+
 
 
 		# Scout
-		Scout: Scout
 		Scout_P_Name: Agility
 		Scout_P_Prev: The scout can double jump and has slightly increased movement speed.
 		Scout_P_DisableDoubleJump: Disable scout's passive double jump
@@ -100,18 +137,20 @@ Mods: {
 
 		Scout_Ult_Name: Nuclear-Slap (TM)
 		Scout_Ult_Prev_1: Become invincible for
-		Scout_Ult_Prev_2: seconds, and gain increased mobility for a perid of time.
+		Scout_Ult_Prev_2: seconds, and gain increased mobility.
+
+		Scout_Aghanims: a
 
 
 
 		# Soulmancer
-		Soulmancer: Soulmancer
 		Soulmancer_P_Name: Soul Rip
 		Soulmancer_P_Prev_1: Hitting enemies with magic weapons has a chance to rip a fragment of their soul, causing it to harm any nearby enemies.
 		Soulmancer_P_Prev_2: These soul fragments can critically strike.
 
 		Soulmancer_A1_Name: Consume
-		Soulmancer_A1_Prev: For a short duration, everytime you hit an enemy with a soul fragment, recall it to yourself, consuming it and healing you for a small percentage of your max health per fragment consumed.
+		Soulmancer_A1_Prev: For a short duration, if you are below 50% health, everytime you hit an enemy with a soul fragment, recall it to 
+		Soulmancer_A1_Prev_2: yourself, consuming it and healing you for a small percentage of your max health per fragment consumed.
 
 		Soulmancer_A2_Name: Soul Shatter
 		Soulmancer_A2_Prev: Shatter the soul of nearby enemies dealing heavy damage and ripping an additional fragment per soul shattered.
@@ -119,10 +158,11 @@ Mods: {
 		Soulmancer_Ult_Name: Self Sacrifice
 		Soulmancer_Ult_Prev: Rapidly rip fragments of your own soul, slightly draining your own health per fragment. Each soul fragment deals 1.5x [Soul Rip]'s damage.
 
+		Soulmancer_Aghanims: a
+
 
 
 		# Vanguard
-		Vanguard: Vanguard
 		Vanguard_P_Name: Enchanted Armor
 		Vanguard_P_Prev: Enemies take damage when hitting you.
 
@@ -134,5 +174,7 @@ Mods: {
 
 		Vanguard_Ult_Name: Sword Of Judgement
 		Vanguard_Ult_Prev: A huge sword comes falling from the skies, dealing heavy damage and executing enemies.
+
+		Vanguard_Aghanims: a
 	}
 }

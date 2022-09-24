@@ -2,6 +2,7 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ApacchiisClassesMod2.Items.Relics
@@ -9,12 +10,12 @@ namespace ApacchiisClassesMod2.Items.Relics
 	public class LuckyLeaf : ModItem
 	{
         public string desc = "Increases dodge chance by 8%\n" +
-                             "Increases crit chance by 3%\n" +
-                             "Reduces your max health by 20%";
+                             "Increases crit chance by 4%\n" +
+                             "Reduces your max health by 16%";
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[Relic] Lucky Leaf");
+            DisplayName.SetDefault($"[Relic] Lucky Leaf");
             Tooltip.SetDefault(desc);
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -36,16 +37,23 @@ namespace ApacchiisClassesMod2.Items.Relics
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
             acmPlayer.hasLuckyLeaf = true;
-            player.GetCritChance(DamageClass.Generic) += 2;
-            acmPlayer.dodgeChance += .03f;
+            player.GetCritChance(DamageClass.Generic) += 4;
+            acmPlayer.dodgeChance += .08f;
 
             base.UpdateVanity(player);
         }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            foreach (TooltipLine line in tooltips)
+                if (line.Mod == "Terraria" && line.Name == "Equipable")
+                    line.Text = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.EquipableRelic")}";
+
+            base.ModifyTooltips(tooltips);
+        }
+
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
-            if (player.GetModPlayer<ACMPlayer>().hasRelic == true)
-                return false;
-
             if (!modded)
                 return false;
 

@@ -1,0 +1,8 @@
+General
+-/ Fixed being able to use 'Lost Rune Fragments'.
+-/ Fixed being able to infinitely use a 'Lost Rune' to get infinite draws.
+
+Runes
+-/ You now get 2 Rune Draws with each level up instead of just 1.
+-/ Fixed Mischievous, Seer and Ferocious runes not saving.
+-/ Fixed Ferocious rune granting 100.13% attack speed instead of just 0.13%. 

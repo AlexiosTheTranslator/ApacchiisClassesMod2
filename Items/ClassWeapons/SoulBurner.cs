@@ -9,12 +9,9 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 {
     public class SoulBurner : ModItem
 	{
-        Player player = Main.player[Main.myPlayer];
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Soul Buner");
-            Tooltip.SetDefault("");
+            Tooltip.SetDefault("Holding this weapon increases your Soulmancer's class passive chance by 25%");
         }
 
 		public override void SetDefaults()
@@ -24,12 +21,12 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
             Item.noMelee = true;
             Item.scale = 1f;
             Item.DamageType = DamageClass.Magic;
-            Item.damage = 9;
+            Item.damage = 3;
             Item.crit = 1;
-            Item.mana = 2;
+            Item.mana = 1;
             Item.useStyle = ItemUseStyleID.HoldUp;
-            Item.useAnimation = 22;
-            Item.useTime = 22;
+            Item.useAnimation = 21;
+            Item.useTime = 21;
             Item.UseSound = SoundID.Item8;
             Item.rare = 1;
             Item.knockBack = 0;
@@ -48,7 +45,7 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 
         public override bool CanUseItem(Player player)
         {
-            if (Collision.CanHitLine(player.Top, 1, 1, Main.MouseWorld, 1, 1))
+            if (Collision.CanHitLine(new Vector2(player.Center.X, player.Center.Y - 8), 1, 1, Main.MouseWorld, 1, 1))
                 return true;
             else
                 return false;

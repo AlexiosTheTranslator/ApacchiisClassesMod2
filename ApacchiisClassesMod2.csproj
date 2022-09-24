@@ -52,6 +52,7 @@
     <None Remove="Items\Relics\LeysMushroom.png" />
     <None Remove="Items\Relics\LuckyLeaf.png" />
     <None Remove="Items\Relics\ManaBag.png" />
+    <None Remove="Items\Relics\MinionsRightsContract.png" />
     <None Remove="Items\Relics\MoonStone.png" />
     <None Remove="Items\Relics\MushroomConcentrate.png" />
     <None Remove="Items\Relics\Nessie.png" />

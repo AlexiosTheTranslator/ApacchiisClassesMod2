@@ -60,6 +60,11 @@ namespace ApacchiisClassesMod2
         internal Specs Specs;
         internal UserInterface _Specs;
 
+        internal GeneralCards Cards;
+        internal UserInterface _Cards;
+        internal MyDeck MyDeck;
+        internal UserInterface _MyDeck;
+
         public override void Load()
         {
             ClassAbility1 = KeybindLoader.RegisterKeybind(Mod, "Class Ability: 1", "Q");
@@ -105,6 +110,11 @@ namespace ApacchiisClassesMod2
 
                 Specs = new Specs();
                 _Specs = new UserInterface();
+
+                Cards = new GeneralCards();
+                _Cards = new UserInterface();
+                MyDeck = new MyDeck();
+                _MyDeck =new UserInterface();
             }
 
             base.Load();
@@ -150,6 +160,11 @@ namespace ApacchiisClassesMod2
 
             if (_Specs?.CurrentState != null)
                 _Specs.Update(gameTime);
+
+            if (_Cards?.CurrentState != null)
+                _Cards.Update(gameTime);
+            if (_MyDeck?.CurrentState != null)
+                _MyDeck?.Update(gameTime);
 
             base.UpdateUI(gameTime);
         }
@@ -329,6 +344,28 @@ namespace ApacchiisClassesMod2
                    },
                       InterfaceScaleType.UI));
                 #endregion
+
+                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                   "ApacchiisClassesMod2: Cards",
+                   delegate
+                   {
+                       if (_lastUpdateUiGameTime != null && _Cards?.CurrentState != null)
+                           _Cards.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+
+                       return true;
+                   },
+                      InterfaceScaleType.UI));
+
+                layers.Insert(mouseTextIndex, new LegacyGameInterfaceLayer(
+                   "ApacchiisClassesMod2: My Deck",
+                   delegate
+                   {
+                       if (_lastUpdateUiGameTime != null && _MyDeck?.CurrentState != null)
+                           _MyDeck.Draw(Main.spriteBatch, _lastUpdateUiGameTime);
+
+                       return true;
+                   },
+                      InterfaceScaleType.UI));
             }
             base.ModifyInterfaceLayers(layers);
         }

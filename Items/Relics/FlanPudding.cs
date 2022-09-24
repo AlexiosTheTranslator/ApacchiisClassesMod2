@@ -2,18 +2,19 @@ using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ApacchiisClassesMod2.Items.Relics
 {
 	public class FlanPudding : ModItem
 	{
-        public string desc = "Being hit by enemies causes you and all other players to slowly regenerate 2% of your max health\n" +
+        public string desc = "Being hit by enemies causes you and all other players to slowly regenerate 4% of your max health\n" +
                              "Increases max health by 4%";
 
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("[Relic] Flan Pudding");
+            DisplayName.SetDefault($"[Relic] Flan Pudding");
             Tooltip.SetDefault(desc);
             Terraria.GameContent.Creative.CreativeItemSacrificesCatalog.Instance.SacrificeCountNeededByItemId[Type] = 1;
         }
@@ -35,15 +36,21 @@ namespace ApacchiisClassesMod2.Items.Relics
             var acmPlayer = player.GetModPlayer<ACMPlayer>();
             acmPlayer.hasRelic = true;
             acmPlayer.hasFlanPudding = true;
-            acmPlayer.lifeMult += .04f;
 
             base.UpdateVanity(player);
         }
+
+        public override void ModifyTooltips(List<TooltipLine> tooltips)
+        {
+            foreach (TooltipLine line in tooltips)
+                if (line.Mod == "Terraria" && line.Name == "Equipable")
+                    line.Text = $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.EquipableRelic")}";
+
+            base.ModifyTooltips(tooltips);
+        }
+
         public override bool CanEquipAccessory(Player player, int slot, bool modded)
         {
-            if (player.GetModPlayer<ACMPlayer>().hasRelic == true)
-                return false;
-
             if (!modded)
                 return false;
 

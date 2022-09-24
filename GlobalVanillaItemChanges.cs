@@ -29,6 +29,21 @@ namespace ApacchiisClassesMod2
             base.SetDefaults(item);
         }
 
+        /// <summary>
+        /// Adds a new line after the specified line of a vanilla item. UNUSED
+        /// </summary>
+        /// <param name="itemToUpdate"></param>
+        /// <param name="lineToUpdate"><para>Starts at 0</para></param>
+        /// <param name="text"></param>
+        /// <param name="tooltips"></param>
+        /// <param name="item"></param>
+        void UpdateItemText(int itemToUpdate, int lineToUpdate, string text, List<TooltipLine> tooltips, Item item)
+        {
+                if (item.type == itemToUpdate)
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == $"Tooltip{lineToUpdate}")
+                        line.Text += $"\n{text}";
+        }
         public override void ModifyTooltips(Item item, List<TooltipLine> tooltips)
         {
             #region Vanilla

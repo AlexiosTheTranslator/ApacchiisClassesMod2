@@ -31,11 +31,11 @@ namespace ApacchiisClassesMod2.UI
         float L1Scale = 1f;
         float R1Scale = 1f;
         string L1 = "+3% Banner Damage";
-        string R1 = "+5% Whip Range";
+        string R1 = "+4% Whip Range";
 
         float L2Scale = 1f;
         float R2Scale = 1f;
-        string L2 = "+30% Banner Range";
+        string L2 = "+28% Banner Range";
         string R2 = "-15% Cooldown Reduction";
 
         float L3Scale = .85f;
@@ -66,7 +66,7 @@ namespace ApacchiisClassesMod2.UI
         float L8Scale = .9f;
         float R8Scale = 1f;
         string L8 = "+5% Battle Cry Bonus Damage";
-        string R8 = "+10% Whip Range";
+        string R8 = "+8% Whip Range";
 
         float L9Scale = 1f;
         float R9Scale = .85f;
@@ -76,7 +76,7 @@ namespace ApacchiisClassesMod2.UI
         float L10Scale = 1f;
         float R10Scale = 1f;
         string L10 = "+5% Whip Range";
-        string R10 = "+20% Banner Endurance";
+        string R10 = "+15% Banner Endurance";
 
         UIPanel background;
         UIText classText;
@@ -736,45 +736,114 @@ namespace ApacchiisClassesMod2.UI
             }
 
             if (acmPlayer.commanderTalent_1 == "L")
+            {
                 button1_Left.BackgroundColor = Color.DarkOrange;
+                button1_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_1 == "R")
+            {
                 button1_Right.BackgroundColor = Color.DarkOrange;
+                button1_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_2 == "L")
+            {
                 button2_Left.BackgroundColor = Color.DarkOrange;
+                button2_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_2 == "R")
+            {
                 button2_Right.BackgroundColor = Color.DarkOrange;
+                button2_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_3 == "L")
+            {
                 button3_Left.BackgroundColor = Color.DarkOrange;
+                button3_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_3 == "R")
+            {
                 button3_Right.BackgroundColor = Color.DarkOrange;
+                button3_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_4 == "L")
+            {
                 button4_Left.BackgroundColor = Color.DarkOrange;
+                button4_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_4 == "R")
+            {
                 button4_Right.BackgroundColor = Color.DarkOrange;
+                button4_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_5 == "L")
+            {
                 button5_Left.BackgroundColor = Color.DarkOrange;
+                button5_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_5 == "R")
+            {
                 button5_Right.BackgroundColor = Color.DarkOrange;
+                button5_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_6 == "L")
+            {
                 button6_Left.BackgroundColor = Color.DarkOrange;
+                button6_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_6 == "R")
+            {
                 button6_Right.BackgroundColor = Color.DarkOrange;
+                button6_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_7 == "L")
+            {
                 button7_Left.BackgroundColor = Color.DarkOrange;
+                button7_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_7 == "R")
+            {
                 button7_Right.BackgroundColor = Color.DarkOrange;
+                button7_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_8 == "L")
+            {
                 button8_Left.BackgroundColor = Color.DarkOrange;
+                button8_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_8 == "R")
+            {
                 button8_Right.BackgroundColor = Color.DarkOrange;
+                button8_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_9 == "L")
+            {
                 button9_Left.BackgroundColor = Color.DarkOrange;
+                button9_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_9 == "R")
+            {
                 button9_Right.BackgroundColor = Color.DarkOrange;
+                button9_Left.BackgroundColor = new Color(75, 75, 75);
+            }
+
             if (acmPlayer.commanderTalent_10 == "L")
+            {
                 button10_Left.BackgroundColor = Color.DarkOrange;
+                button10_Right.BackgroundColor = new Color(75, 75, 75);
+            }
             if (acmPlayer.commanderTalent_10 == "R")
+            {
                 button10_Right.BackgroundColor = Color.DarkOrange;
+                button10_Left.BackgroundColor = new Color(75, 75, 75);
+            }
 
             base.Update(gameTime);
         }
@@ -788,6 +857,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_1 = "L";
             }
+
+            if (acmPlayer.commanderTalent_1 == "R")
+                acmPlayer.commanderTalent_1 = "L";
         }
 
         private void Button1R(UIMouseEvent evt, UIElement listeningElement)
@@ -799,6 +871,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_1 = "R";
             }
+
+            if (acmPlayer.commanderTalent_1 == "L")
+                acmPlayer.commanderTalent_1 = "R";
         }
 
         private void Button2L(UIMouseEvent evt, UIElement listeningElement)
@@ -810,6 +885,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_2 = "L";
             }
+
+            if (acmPlayer.commanderTalent_2 == "R")
+                acmPlayer.commanderTalent_2 = "L";
         }
         private void Button2R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -820,6 +898,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_2 = "R";
             }
+
+            if (acmPlayer.commanderTalent_2 == "L")
+                acmPlayer.commanderTalent_2 = "R";
         }
 
         private void Button3L(UIMouseEvent evt, UIElement listeningElement)
@@ -831,6 +912,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_3 = "L";
             }
+
+            if (acmPlayer.commanderTalent_3 == "R")
+                acmPlayer.commanderTalent_3 = "L";
         }
         private void Button3R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -841,6 +925,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_3 = "R";
             }
+
+            if (acmPlayer.commanderTalent_3 == "L")
+                acmPlayer.commanderTalent_3 = "R";
         }
 
         private void Button4L(UIMouseEvent evt, UIElement listeningElement)
@@ -852,6 +939,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_4 = "L";
             }
+
+            if (acmPlayer.commanderTalent_4 == "R")
+                acmPlayer.commanderTalent_4 = "L";
         }
         private void Button4R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -862,6 +952,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_4 = "R";
             }
+
+            if (acmPlayer.commanderTalent_4 == "L")
+                acmPlayer.commanderTalent_4 = "R";
         }
 
         private void Button5L(UIMouseEvent evt, UIElement listeningElement)
@@ -873,6 +966,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_5 = "L";
             }
+
+            if (acmPlayer.commanderTalent_5 == "R")
+                acmPlayer.commanderTalent_5 = "L";
         }
         private void Button5R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -883,6 +979,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_5 = "R";
             }
+
+            if (acmPlayer.commanderTalent_5 == "L")
+                acmPlayer.commanderTalent_5 = "R";
         }
 
         private void Button6L(UIMouseEvent evt, UIElement listeningElement)
@@ -894,6 +993,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_6 = "L";
             }
+
+            if (acmPlayer.commanderTalent_6 == "R")
+                acmPlayer.commanderTalent_6 = "L";
         }
         private void Button6R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -904,6 +1006,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_6 = "R";
             }
+
+            if (acmPlayer.commanderTalent_6 == "L")
+                acmPlayer.commanderTalent_6 = "R";
         }
 
         private void Button7L(UIMouseEvent evt, UIElement listeningElement)
@@ -915,6 +1020,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_7 = "L";
             }
+
+            if (acmPlayer.commanderTalent_7 == "R")
+                acmPlayer.commanderTalent_7 = "L";
         }
         private void Button7R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -925,6 +1033,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_7 = "R";
             }
+
+            if (acmPlayer.commanderTalent_7 == "L")
+                acmPlayer.commanderTalent_7 = "R";
         }
 
         private void Button8L(UIMouseEvent evt, UIElement listeningElement)
@@ -936,6 +1047,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_8 = "L";
             }
+
+            if (acmPlayer.commanderTalent_8 == "R")
+                acmPlayer.commanderTalent_8 = "L";
         }
         private void Button8R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -946,6 +1060,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_8 = "R";
             }
+
+            if (acmPlayer.commanderTalent_8 == "L")
+                acmPlayer.commanderTalent_8 = "R";
         }
 
         private void Button9L(UIMouseEvent evt, UIElement listeningElement)
@@ -957,6 +1074,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_9 = "L";
             }
+
+            if (acmPlayer.commanderTalent_9 == "R")
+                acmPlayer.commanderTalent_9 = "L";
         }
         private void Button9R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -967,6 +1087,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_9 = "R";
             }
+
+            if (acmPlayer.commanderTalent_9 == "L")
+                acmPlayer.commanderTalent_9 = "R";
         }
 
         private void Button10L(UIMouseEvent evt, UIElement listeningElement)
@@ -978,6 +1101,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_10 = "L";
             }
+
+            if (acmPlayer.commanderTalent_10 == "R")
+                acmPlayer.commanderTalent_10 = "L";
         }
         private void Button10R(UIMouseEvent evt, UIElement listeningElement)
         {
@@ -988,6 +1114,9 @@ namespace ApacchiisClassesMod2.UI
                 acmPlayer.commanderSpentSkillPoints++;
                 acmPlayer.commanderTalent_10 = "R";
             }
+
+            if (acmPlayer.commanderTalent_10 == "L")
+                acmPlayer.commanderTalent_10 = "R";
         }
 
         private void Close(UIMouseEvent evt, UIElement listeningElement)

@@ -11,7 +11,6 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 	{
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Seeking Spirit");
             Tooltip.SetDefault("Fires a homing spirit at enemies");
         }
 

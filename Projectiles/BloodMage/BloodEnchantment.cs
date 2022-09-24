@@ -43,22 +43,22 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
                     Projectile.Kill();
                 else
                     Projectile.timeLeft = 60;
-                Projectile.ai[1] = Projectile.rotation;
+                //Projectile.ai[1] = Projectile.rotation;
                 Projectile.netUpdate = true;
             }
         }
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(Projectile.ai[1]);
-            base.SendExtraAI(writer);
-        }
-        
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            Projectile.rotation = reader.Read();
-            base.ReceiveExtraAI(reader);
-        }
+        //public override void SendExtraAI(BinaryWriter writer)
+        //{
+        //    writer.Write(Projectile.ai[1]);
+        //    base.SendExtraAI(writer);
+        //}
+        //
+        //public override void ReceiveExtraAI(BinaryReader reader)
+        //{
+        //    Projectile.rotation = reader.Read();
+        //    base.ReceiveExtraAI(reader);
+        //}
 
         public override bool? CanHitNPC(NPC target) => false;
     }
@@ -99,22 +99,22 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
                     Projectile.Kill();
                 else
                     Projectile.timeLeft = 60;
-                Projectile.ai[1] = Projectile.rotation;
+                //Projectile.ai[1] = Projectile.rotation;
                 Projectile.netUpdate = true;
             }
         }
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(Projectile.ai[1]);
-            base.SendExtraAI(writer);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            Projectile.rotation = reader.Read();
-            base.ReceiveExtraAI(reader);
-        }
+        //public override void SendExtraAI(BinaryWriter writer)
+        //{
+        //    writer.Write(Projectile.ai[1]);
+        //    base.SendExtraAI(writer);
+        //}
+        //
+        //public override void ReceiveExtraAI(BinaryReader reader)
+        //{
+        //    Projectile.rotation = reader.Read();
+        //    base.ReceiveExtraAI(reader);
+        //}
 
         public override bool? CanHitNPC(NPC target) => false;
     }
@@ -155,22 +155,22 @@ namespace ApacchiisClassesMod2.Projectiles.BloodMage
                     Projectile.Kill();
                 else
                     Projectile.timeLeft = 60;
-                Projectile.ai[1] = Projectile.rotation;
+                //Projectile.ai[1] = Projectile.rotation;
                 Projectile.netUpdate = true;
             }
         }
 
-        public override void SendExtraAI(BinaryWriter writer)
-        {
-            writer.Write(Projectile.ai[1]);
-            base.SendExtraAI(writer);
-        }
-
-        public override void ReceiveExtraAI(BinaryReader reader)
-        {
-            Projectile.rotation = reader.Read();
-            base.ReceiveExtraAI(reader);
-        }
+        //public override void SendExtraAI(BinaryWriter writer)
+        //{
+        //    writer.Write(Projectile.ai[1]);
+        //    base.SendExtraAI(writer);
+        //}
+        //
+        //public override void ReceiveExtraAI(BinaryReader reader)
+        //{
+        //    Projectile.rotation = reader.Read();
+        //    base.ReceiveExtraAI(reader);
+        //}
 
         public override bool? CanHitNPC(NPC target) => false;
     }

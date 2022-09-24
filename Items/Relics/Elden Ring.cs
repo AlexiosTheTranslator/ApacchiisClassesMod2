@@ -43,7 +43,7 @@
 //
 //        public override bool CanEquipAccessory(Player player, int slot, bool modded)
 //        {
-//            if (player.GetModPlayer<ACMPlayer>().hasRelic == true)
+//            
 //                return false;
 //
 //            if (!modded)

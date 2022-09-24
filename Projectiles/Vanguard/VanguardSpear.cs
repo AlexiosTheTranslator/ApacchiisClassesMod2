@@ -54,15 +54,15 @@ namespace ApacchiisClassesMod2.Projectiles.Vanguard
             d2.noGravity = true;
 
             if (acmPlayer.vanguardTalent_4 == "L")
-                range = 600;
+                range = 800;
             else
-                range = 300;
+                range = 400;
 
             for (int i = 0; i < Main.maxNPCs; i++)
             {
                 if (Main.npc[i].active)
                 {
-                    if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) <= 64 && !Main.npc[i].townNPC && !Main.npc[i].dontTakeDamage && Main.npc[i].type != NPCID.DD2Bartender && Main.npc[i].type != NPCID.DD2EterniaCrystal && Main.npc[i].type != NPCID.DD2LanePortal && !Main.npc[i].friendly)
+                    if (Vector2.Distance(Projectile.Center, Main.npc[i].Center) <= 100 && !Main.npc[i].townNPC && !Main.npc[i].dontTakeDamage && Main.npc[i].type != NPCID.DD2Bartender && Main.npc[i].type != NPCID.DD2EterniaCrystal && Main.npc[i].type != NPCID.DD2LanePortal && !Main.npc[i].friendly)
                     {
                         int hitDir;
                         if (Main.npc[i].position.X < Main.player[Projectile.owner].position.X)
@@ -72,28 +72,28 @@ namespace ApacchiisClassesMod2.Projectiles.Vanguard
 
                         if (acmPlayer.vanguardTalent_6 == "L") // Double range
                         {
-                            Projectile.width = 600;
-                            Projectile.height = 600;
-                            range = 600;
+                            Projectile.width = 800;
+                            Projectile.height = 800;
+                            range = 800;
                         }
                         else
                         {
-                            Projectile.width = 300;
-                            Projectile.height = 300;
-                            range = 300;
+                            Projectile.width = 400;
+                            Projectile.height = 400;
+                            range = 400;
                         }
 
                         if (!flag)
                         {
                             if (acmPlayer.vanguardTalent_6 == "L")
                             {
-                                Projectile.position.X -= 300;
-                                Projectile.position.Y -= 300;
+                                Projectile.position.X -= 400;
+                                Projectile.position.Y -= 400;
                             }
                             else
                             {
-                                Projectile.position.X -= 150;
-                                Projectile.position.Y -= 150;
+                                Projectile.position.X -= 200;
+                                Projectile.position.Y -= 200;
                             }
                             flag = true;
                         }
@@ -108,8 +108,8 @@ namespace ApacchiisClassesMod2.Projectiles.Vanguard
                         {
                             for (int x = 0; x < 30; x++)
                             {
-                                var d3 = Dust.NewDustDirect(Projectile.position, 600, 600, DustID.AmberBolt, Main.rand.Next(-20, 20), Main.rand.Next(-20, 20), 0, Color.White, 2f);
-                                var d4 = Dust.NewDustDirect(Projectile.position, 600, 600, DustID.AmberBolt, Main.rand.Next(-10, 10), Main.rand.Next(-10, 10), 0, Color.White, 1f);
+                                var d3 = Dust.NewDustDirect(Projectile.position, 800, 800, DustID.AmberBolt, Main.rand.Next(-20, 20), Main.rand.NextFloat(-20f, 20f), 0, Color.White, 2.25f);
+                                var d4 = Dust.NewDustDirect(Projectile.position, 800, 800, DustID.AmberBolt, Main.rand.Next(-10, 10), Main.rand.NextFloat(-10f, 10f), 0, Color.White, .75f);
                                 d3.noGravity = true;
                                 d4.noGravity = false;
                             }
@@ -118,8 +118,8 @@ namespace ApacchiisClassesMod2.Projectiles.Vanguard
                         {
                             for (int y = 0; y < 70; y++)
                             {
-                                var d3 = Dust.NewDustDirect(Projectile.position, 300, 300, DustID.AmberBolt, Main.rand.Next(-20, 20), Main.rand.Next(-20, 20), 0, Color.White, 2f);
-                                var d4 = Dust.NewDustDirect(Projectile.position, 300, 300, DustID.AmberBolt, Main.rand.Next(-10, 10), Main.rand.Next(-10, 10), 0, Color.White, 1f);
+                                var d3 = Dust.NewDustDirect(Projectile.position, 400, 400, DustID.AmberBolt, Main.rand.Next(-20, 20), Main.rand.NextFloat(-10f, 10f), 0, Color.White, 2.25f);
+                                var d4 = Dust.NewDustDirect(Projectile.position, 400, 400, DustID.AmberBolt, Main.rand.Next(-10, 10), Main.rand.NextFloat(-10f, 10f), 0, Color.White, .75f);
                                 d3.noGravity = true;
                                 d4.noGravity = false;
                             }

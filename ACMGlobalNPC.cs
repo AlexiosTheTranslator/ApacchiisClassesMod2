@@ -1,17 +1,20 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.Chat;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
+using Terraria.Localization;
 using Terraria.ModLoader;
 
 namespace ApacchiisClassesMod2
 {
 	public class ACMGlobalNPC : GlobalNPC
 	{
-        
         public int battleCryBoost = 0;
+        bool hasIncreasedMaxHealth = false;
 
+        protected override bool CloneNewInstances => true; 
         public override bool InstancePerEntity
         {
             get
@@ -54,6 +57,23 @@ namespace ApacchiisClassesMod2
         {
             Player Player = Main.player[Main.myPlayer];
 
+            if (!hasIncreasedMaxHealth)
+            {
+                if (npc.lifeMax > 5 && !npc.boss && !npc.townNPC && !npc.CountsAsACritter)
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * Configs._ACMConfigServer.Instance.enemyHealthMultiplier);
+                    npc.life = npc.lifeMax;
+                }
+
+                if (npc.boss)
+                {
+                    npc.lifeMax = (int)(npc.lifeMax * Configs._ACMConfigServer.Instance.bossHealthMultiplier);
+                    npc.life = npc.lifeMax;
+                }
+
+                hasIncreasedMaxHealth = true;
+            }
+
             if (battleCryBoost > 0)
             {
                 battleCryBoost--;
@@ -67,109 +87,82 @@ namespace ApacchiisClassesMod2
         {
             if (npc.boss)
             {
+                //if (Main.netMode == NetmodeID.Server)
+                //    ChatHelper.BroadcastChatMessage(NetworkText.FromLiteral("To level up, type '/acr levelUp' in chat if you haven't defeated this boss before. [TEMPORARY MULTIPLAYER BUG WORKAROUND]"), Color.White);
+
                 for (int playerToUpdate = 0; playerToUpdate < 255; playerToUpdate++)
                 {
                     if(Main.player[playerToUpdate].active)
                     {
                         var acmPlayer = Main.player[playerToUpdate].GetModPlayer<ACMPlayer>();
 
-                        //Vanguard List
-                        if (acmPlayer.hasVanguard && !acmPlayer.vanguardDefeatedBosses.Contains(npc.TypeName))
+                        if (Main.netMode == NetmodeID.SinglePlayer)
                         {
-                            if (Main.netMode != NetmodeID.SinglePlayer)
+                            if (acmPlayer.hasVanguard)
                             {
-                                var packet = Mod.GetPacket();
-                                packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
-                                packet.Write((byte)playerToUpdate);
-                                packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.TypeName);
-                                packet.Send();
+                                if (!acmPlayer.vanguardDefeatedBosses.Contains(npc.TypeName))
+                                {
+                                    acmPlayer.vanguardDefeatedBosses.Add(npc.TypeName);
+                                    acmPlayer.vanguardSkillPoints++;
+                                    //acmPlayer.levelUpText = true;
+                                    acmPlayer.cardsPoints += 2;
+                                }
                             }
-                            else
+
+                            if (acmPlayer.hasBloodMage)
                             {
-                                acmPlayer.vanguardDefeatedBosses.Add(npc.TypeName);
-                                acmPlayer.vanguardSkillPoints++;
-                                acmPlayer.levelUpText = true;
+                                if (!acmPlayer.bloodMageDefeatedBosses.Contains(npc.TypeName))
+                                {
+                                    acmPlayer.bloodMageDefeatedBosses.Add(npc.TypeName);
+                                    acmPlayer.bloodMageSkillPoints++;
+                                    //acmPlayer.levelUpText = true;
+                                    acmPlayer.cardsPoints += 2;
+                                }
+                            }
+
+                            if (acmPlayer.hasCommander)
+                            {
+                                if (!acmPlayer.commanderDefeatedBosses.Contains(npc.TypeName))
+                                {
+                                    acmPlayer.commanderDefeatedBosses.Add(npc.TypeName);
+                                    acmPlayer.commanderSkillPoints++;
+                                    //acmPlayer.levelUpText = true;
+                                    acmPlayer.cardsPoints += 2;
+                                }
+                            }
+
+                            if (acmPlayer.hasScout)
+                            {
+                                if (!acmPlayer.scoutDefeatedBosses.Contains(npc.TypeName))
+                                {
+                                    acmPlayer.scoutDefeatedBosses.Add(npc.TypeName);
+                                    acmPlayer.scoutSkillPoints++;
+                                    //acmPlayer.levelUpText = true;
+                                    acmPlayer.cardsPoints += 2;
+                                }
+                            }
+
+                            if (acmPlayer.hasSoulmancer)
+                            {
+                                if (!acmPlayer.soulmancerDefeatedBosses.Contains(npc.TypeName))
+                                {
+                                    acmPlayer.soulmancerDefeatedBosses.Add(npc.TypeName);
+                                    acmPlayer.soulmancerSkillPoints++;
+                                    //acmPlayer.levelUpText = true;
+                                    acmPlayer.cardsPoints += 2;
+                                }
                             }
                         }
-
-                        //Blood Mage List
-                        if (acmPlayer.hasBloodMage && !acmPlayer.bloodMageDefeatedBosses.Contains(npc.TypeName))
+                        else
                         {
-                            if (Main.netMode != NetmodeID.SinglePlayer)
+                            if (Main.netMode == NetmodeID.Server)
                             {
                                 var packet = Mod.GetPacket();
                                 packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
-                                packet.Write((byte)playerToUpdate);
+                                packet.Write(playerToUpdate);
                                 packet.Write(acmPlayer.equippedClass);
                                 packet.Write(npc.TypeName);
                                 packet.Send();
-                            }
-                            else
-                            {
-                                acmPlayer.bloodMageDefeatedBosses.Add(npc.TypeName);
-                                acmPlayer.bloodMageSkillPoints++;
-                                acmPlayer.levelUpText = true;
-                            }
-                        }
-
-                        //Commander List
-                        if (acmPlayer.hasCommander && !acmPlayer.commanderDefeatedBosses.Contains(npc.TypeName))
-                        {
-                            if (Main.netMode != NetmodeID.SinglePlayer)
-                            {
-                                var packet = Mod.GetPacket();
-                                packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
-                                packet.Write((byte)playerToUpdate);
-                                packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.TypeName);
-                                packet.Send();
-                            }
-                            else
-                            {
-                                acmPlayer.commanderDefeatedBosses.Add(npc.TypeName);
-                                acmPlayer.commanderSkillPoints++;
-                                acmPlayer.levelUpText = true;
-                            }
-                        }
-
-                        //Scout List
-                        if (acmPlayer.hasScout && !acmPlayer.scoutDefeatedBosses.Contains(npc.TypeName))
-                        {
-                            if (Main.netMode != NetmodeID.SinglePlayer)
-                            {
-                                var packet = Mod.GetPacket();
-                                packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
-                                packet.Write((byte)playerToUpdate);
-                                packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.TypeName);
-                                packet.Send();
-                            }
-                            else
-                            {
-                                acmPlayer.scoutDefeatedBosses.Add(npc.TypeName);
-                                acmPlayer.scoutSkillPoints++;
-                                acmPlayer.levelUpText = true;
-                            }
-                        }
-
-                        //Soulmancer List
-                        if (acmPlayer.hasSoulmancer && !acmPlayer.soulmancerDefeatedBosses.Contains(npc.TypeName))
-                        {
-                            if (Main.netMode != NetmodeID.SinglePlayer)
-                            {
-                                var packet = Mod.GetPacket();
-                                packet.Write((byte)ACM2.ACMHandlePacketMessage.SyncBosses);
-                                packet.Write((byte)playerToUpdate);
-                                packet.Write(acmPlayer.equippedClass);
-                                packet.Write(npc.TypeName);
-                                packet.Send();
-                            }
-                            else
-                            {
-                                acmPlayer.soulmancerDefeatedBosses.Add(npc.TypeName);
-                                acmPlayer.soulmancerSkillPoints++;
-                                acmPlayer.levelUpText = true;
                             }
                         }
                     }

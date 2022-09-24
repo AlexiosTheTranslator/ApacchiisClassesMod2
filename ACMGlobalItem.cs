@@ -392,6 +392,62 @@ namespace ApacchiisClassesMod2
                         line.Text = GetInstance<ScalingWarbanner>().desc;
             }
 
+            if (item.type == ItemType<MinionsRightsContract>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<MinionsRightsContract>().desc;
+            }
+
+            if (item.type == ItemType<Peanut>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<Peanut>().desc;
+            }
+
+            if (item.type == ItemType<RapidFirecannon>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<RapidFirecannon>().desc;
+            }
+
+            if (item.type == ItemType<TornWhipPart>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<TornWhipPart>().desc;
+            }
+
+            if (item.type == ItemType<DerelictCactusRing>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<DerelictCactusRing>().desc;
+            }
+
+            if (item.type == ItemType<ManaInhibitor>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<ManaInhibitor>().desc;
+            }
+
+            if (item.type == ItemType<PorcelainMask>())
+            {
+                tooltips.RemoveAll(x => x.Name == "Terraria" || x.Name == "Social");
+                foreach (TooltipLine line in tooltips)
+                    if (line.Mod == "Terraria" && line.Name == "SocialDesc")
+                        line.Text = GetInstance<PorcelainMask>().desc;
+            }
+
             #endregion
         }
     }

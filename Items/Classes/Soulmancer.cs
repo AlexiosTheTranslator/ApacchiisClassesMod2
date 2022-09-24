@@ -10,28 +10,21 @@ namespace ApacchiisClassesMod2.Items.Classes
 {
 	public class Soulmancer : ModItem
 	{
-        float baseStat1 = .0225f;
+        float baseStat1 = .0235f;
         float stat1; // Ability Power
 
         float baseStat2 = .5f;
         float stat2; // Magic Crit
 
-        float baseStat3 = .006f;
+        float baseStat3 = .0045f;
         float stat3; // Mana Cost
 
-        float baseBadStat = .007f;
+        float baseBadStat = .008f;
         float badStat; // Magic Damage
-
-        
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Soulmancer");
-        }
 
 		public override void SetDefaults()
 		{
-			Item.width = 30;
+            Item.width = 30;
 			Item.height = 30;
 			Item.accessory = true;	
 			Item.value = 0;
@@ -52,12 +45,12 @@ namespace ApacchiisClassesMod2.Items.Classes
             recipe.Register();
         }
 
-        public override void OnCreate(ItemCreationContext context)
-        {
-            if(_ACMConfigServer.Instance.classWeaponsEnabled)
-                Main.player[Main.myPlayer].QuickSpawnItem(Main.player[Main.myPlayer].GetSource_GiftOrReward(), ModContent.ItemType<ClassWeapons.SoulBurner>(), 1);
-                base.OnCreate(context);
-        }
+        //public override void OnCreate(ItemCreationContext context)
+        //{
+        //    if(_ACMConfigServer.Instance.classWeaponsEnabled)
+        //        Main.player[Main.myPlayer].QuickSpawnItemDirect(null, ModContent.ItemType<ClassWeapons.SoulBurner>(), 1);
+        //        base.OnCreate(context);
+        //}
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -67,9 +60,9 @@ namespace ApacchiisClassesMod2.Items.Classes
             TooltipLine HoldSToPreview = new TooltipLine(Mod, "HoldPreview", $"[{Language.GetTextValue("Mods.ApacchiisClassesMod2.HoldToPreviewAbilities")}]");
             TooltipLine AbilityPreview = new TooltipLine(Mod, "AbilityPreview",
                 $"-(P: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Name")})-\n" +
-                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_1")}\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_1")}\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_1")}\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_P_Prev_2")}\n" +
                 $"-(A1: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Name")})-\n" +
-                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Prev")}\n" +
+                $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Prev")}\n{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A1_Prev2")}\n" +
                 $"-(A2: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A2_Name")})-\n" +
                 $"{Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_A2_Prev")}\n" +
                 $"-(Ult: {Language.GetTextValue("Mods.ApacchiisClassesMod2.Soulmancer_Ult_Name")})-\n" +
@@ -123,7 +116,7 @@ namespace ApacchiisClassesMod2.Items.Classes
             acmPlayer.hasSoulmancer = true;
             acmPlayer.equippedClass = "Soulmancer";
             acmPlayer.ultChargeMax = 1920;
-            acmPlayer.ability1MaxCooldown = 27;
+            acmPlayer.ability1MaxCooldown = 29;
             acmPlayer.ability2MaxCooldown = 12;
 
             stat1 = baseStat1 * _ACMConfigServer.Instance.classStatMult; // Magic Damage

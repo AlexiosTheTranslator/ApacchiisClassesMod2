@@ -9,11 +9,8 @@ namespace ApacchiisClassesMod2.Items.ClassWeapons
 {
     public class TrainingRapier : ModItem
 	{
-        Player player = Main.player[Main.myPlayer];
-
         public override void SetStaticDefaults()
         {
-            DisplayName.SetDefault("Training Rapier");
             Tooltip.SetDefault("While holding this weapon you reduce any damage taken from enemies by 6");
         }
 

@@ -16,20 +16,15 @@ namespace ApacchiisClassesMod2.Items.Classes
         float baseStat2 = .1f;
         float stat2; // Minion Slots
 
-        float baseStat3 = .0125f;
+        float baseStat3 = .0115f;
         float stat3;// Whip Range
 
-        float baseBadStat = .003f;
+        float baseBadStat = .0015f;
         float badStat; // Acceleration
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Commander");
-        }
 
 		public override void SetDefaults()
 		{
-			Item.width = 30;
+            Item.width = 30;
 			Item.height = 30;
 			Item.accessory = true;	
 			Item.value = 0;
@@ -50,12 +45,14 @@ namespace ApacchiisClassesMod2.Items.Classes
             recipe.Register();
         }
 
-        public override void OnCreate(ItemCreationContext context)
-        {
-            if (_ACMConfigServer.Instance.classWeaponsEnabled)
-                Main.player[Main.myPlayer].QuickSpawnItem(Main.player[Main.myPlayer].GetSource_GiftOrReward(), ModContent.ItemType<ClassWeapons.SeekingSpirit>(), 1);
-            base.OnCreate(context);
-        }
+        //public override void OnCreate(ItemCreationContext context)
+        //{
+        //    if (_ACMConfigServer.Instance.classWeaponsEnabled)
+        //        Main.player[Main.myPlayer].QuickSpawnItemDirect(null, ModContent.ItemType<ClassWeapons.SeekingSpirit>(), 1);
+        //        //Main.player[Main.myPlayer].QuickSpawnItem(Main.player[Main.myPlayer].GetSource_GiftOrReward(), ModContent.ItemType<ClassWeapons.SeekingSpirit>(), 1);
+        //
+        //    base.OnCreate(context);
+        //}
 
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
@@ -78,7 +75,7 @@ namespace ApacchiisClassesMod2.Items.Classes
             AbilityPreview.OverrideColor = Color.CadetBlue;
 
             TooltipLine lineStatsPreview = new TooltipLine(Mod, "Stats", "+" + (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.SummonDamage")} p/lvl\n" +
-                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MinionSlots")} p/lvl\n" +
+                                                                         "+" + (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxMinions")} p/lvl\n" +
                                                                          "+" + (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.WhipRange")} p/lvl");
             TooltipLine lineBadStatPreview = new TooltipLine(Mod, "BadStat", "-" + (decimal)badStat * 100 + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")} p/lvl");
 
@@ -86,7 +83,7 @@ namespace ApacchiisClassesMod2.Items.Classes
 
             TooltipLine lineLevel = new TooltipLine(Mod, "Level", "Level: " + level);
             TooltipLine lineStats = new TooltipLine(Mod, "Stats", "+" + level * (decimal)(stat1 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.SummonDamage")}\n" +
-                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MinionSlots")}\n" +
+                                                                      "+" + level * (decimal)(stat2 * modPlayer.classStatMultiplier) + $" {Language.GetTextValue("Mods.ApacchiisClassesMod2.MaxMinions")}\n" +
                                                                       "+" + level * (decimal)(stat3 * 100 * modPlayer.classStatMultiplier) + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.WhipRange")}");
             TooltipLine lineBadStat = new TooltipLine(Mod, "BadStat", "-" + level * (decimal)badStat * 100 + $"% {Language.GetTextValue("Mods.ApacchiisClassesMod2.MovementAcceleration")}");
 

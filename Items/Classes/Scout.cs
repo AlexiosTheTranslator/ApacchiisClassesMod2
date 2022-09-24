@@ -19,17 +19,12 @@ namespace ApacchiisClassesMod2.Items.Classes
         float baseStat3 = .0035f;
         float stat3; // Dodge
 
-        float baseBadStat = .0048f;
+        float baseBadStat = .0045f;
         float badStat; // Health
-
-        public override void SetStaticDefaults()
-        {
-            DisplayName.SetDefault($"{Language.GetTextValue("Mods.ApacchiisClassesMod2.ClassPrefix")}: Scout");
-        }
 
 		public override void SetDefaults()
 		{
-			Item.width = 30;
+            Item.width = 30;
 			Item.height = 30;
 			Item.accessory = true;	
 			Item.value = 0;
@@ -50,12 +45,13 @@ namespace ApacchiisClassesMod2.Items.Classes
             recipe.Register();
         }
 
-        public override void OnCreate(ItemCreationContext context)
-        {
-            if (_ACMConfigServer.Instance.classWeaponsEnabled)
-                Main.player[Main.myPlayer].QuickSpawnItem(Main.player[Main.myPlayer].GetSource_GiftOrReward(), ModContent.ItemType<ClassWeapons.FadingDagger>(), 1);
-            base.OnCreate(context);
-        }
+        //public override void OnCreate(ItemCreationContext context)
+        //{
+        //    if (_ACMConfigServer.Instance.classWeaponsEnabled)
+        //        Main.player[Main.myPlayer].QuickSpawnItemDirect(null, ModContent.ItemType<ClassWeapons.FadingDagger>(), 1);
+        //    base.OnCreate(context);
+        //}
+
         public override void ModifyTooltips(List<TooltipLine> tooltips)
         {
             Player Player = Main.player[Main.myPlayer];
@@ -136,7 +132,6 @@ namespace ApacchiisClassesMod2.Items.Classes
                     Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1 * acmPlayer.classStatMultiplier;
                     Player.runAcceleration += stat2 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
                     acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
-                    acmPlayer.lifeMult -= (int)(badStat * acmPlayer.scoutLevel);
                 }
             }
             else
@@ -144,7 +139,6 @@ namespace ApacchiisClassesMod2.Items.Classes
                 Player.GetDamage(DamageClass.Ranged) += acmPlayer.scoutLevel * stat1 * acmPlayer.classStatMultiplier;
                 Player.runAcceleration += stat2 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
                 acmPlayer.dodgeChance += stat3 * acmPlayer.scoutLevel * acmPlayer.classStatMultiplier;
-                acmPlayer.lifeMult -= (int)(badStat * acmPlayer.scoutLevel);
             }
 
             if (acmPlayer.scoutTalent_2 == "R" || acmPlayer.scoutTalent_2 == "B")
