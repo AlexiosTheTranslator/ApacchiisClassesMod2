@@ -7,14 +7,14 @@ Mods: {
 		ItemName: 
         {
 			# Items
-			RandomRelic: Random Relic
-			ClassBook: Class Book
-			WhiteCloth: White Cloth
-			BlueCloth: Blue Cloth
-			GreenCloth: Green Cloth
-			OrangeCloth: Orange Cloth
-			PinkCloth: Pink Cloth
-			RedCloth: Red Cloth
+			RandomRelic: Рандомная Реликвия
+			ClassBook: Книга Классов 
+			WhiteCloth: Белая Ткань
+			BlueCloth: Синии Ткань
+			GreenCloth: Зеленая  Ткань
+			OrangeCloth: Оранжевая Ткань
+			PinkCloth: Розовая Ткань
+			RedCloth: Красная Ткань
 
 
 			# Classes
@@ -25,14 +25,14 @@ Mods: {
 			Vanguard: Class: Авангард
 
 			# Class Weapons
-			BloodSpray: Blood Spray
-			FadingDagger: Fading Dagger
-			SeekingSpirit: Seeking Spirit
-			SoulBurner: Soul Burner
-			TrainingRapier: Training Rapier
+			BloodSpray: Струя Крови
+			FadingDagger: Изчезающий Кинжал
+			SeekingSpirit: Ищущий
+			SoulBurner: Испепилитель Душ
+			TrainingRapier: Тренировачная Рапира
 
 			# Relics
-			AghanimsScepter: -Relic- Aghanim's Scepter
+			AghanimsScepter: -Реликвии- Скипетр Агханима
         }
 
 		# Player Stats
@@ -76,14 +76,14 @@ Mods: {
 		Ability2: Способность 2
 		Ultimate: Ульта
 	    RelicPrefix: Реликвия
-		GivesRelic: Gives you a random relic
-		EquipableRelic: Equipable Relic
+		GivesRelic: Даёт тебе рандомную реликвии
+		EquipableRelic: Оснащаемая Реликвия
 		Talents: Талант
 		Specializations: Специализация
 		UnlocksAfter10Text: Открывается после траты 10 очков навыка в дереве навыков
 		Locked: Закрыто
-		RelicsList: Relics List
-		Runes: Runes
+		RelicsList: Лист реликвий
+		Runes: Руны
 
 		# -------------------------------------------------------------------------------------------------------------------------------
 		# FOR CLASSES, YOU DONT NEED TO TRANSLATE ABILITY/CLASS NAMES IF YOU DON'T WANT TO OR IF THERE ISN'T A DIRECT/CORRECT TRANSLATION
